@@ -52,201 +52,210 @@
 <a name="l00027"></a>00027 <span class="comment">// LIABILITY FOR ALL CLAIMS REGARDLESS OF THEIR BASIS EXCEED US$250.00.</span>
 <a name="l00028"></a>00028 <span class="comment">//</span>
 <a name="l00030"></a>00030 <span class="comment"></span><span class="comment">//</span>
-<a name="l00034"></a>00034 <span class="comment"></span>
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 <span class="preprocessor">#ifndef OPENVDB_TOOLS_ATTRIBUTE_SET_HAS_BEEN_INCLUDED</span>
-<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define OPENVDB_TOOLS_ATTRIBUTE_SET_HAS_BEEN_INCLUDED</span>
-<a name="l00038"></a>00038 <span class="preprocessor"></span>
-<a name="l00039"></a>00039 <span class="preprocessor">#include &quot;<a class="code" href="AttributeArray_8h.html">AttributeArray.h</a>&quot;</span>
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="keyword">namespace </span>openvdb {
-<a name="l00043"></a>00043 OPENVDB_USE_VERSION_NAMESPACE
-<a name="l00044"></a>00044 <span class="keyword">namespace </span>OPENVDB_VERSION_NAME {
-<a name="l00045"></a>00045 <span class="keyword">namespace </span>tools {
+<a name="l00037"></a>00037 <span class="comment"></span>
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="preprocessor">#ifndef OPENVDB_TOOLS_ATTRIBUTE_SET_HAS_BEEN_INCLUDED</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#define OPENVDB_TOOLS_ATTRIBUTE_SET_HAS_BEEN_INCLUDED</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>
+<a name="l00042"></a>00042 <span class="preprocessor">#include &lt;openvdb/version.h&gt;</span>
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="preprocessor">#include &lt;boost/integer_traits.hpp&gt;</span> <span class="comment">// integer_traits</span>
+<a name="l00045"></a>00045 <span class="preprocessor">#include &lt;boost/shared_ptr.hpp&gt;</span> <span class="comment">// shared_ptr</span>
 <a name="l00046"></a>00046 
-<a name="l00047"></a>00047 
-<a name="l00049"></a>00049 
+<a name="l00047"></a>00047 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="preprocessor">#include &lt;<a class="code" href="AttributeArray_8h.html" title="Attribute Array storage templated on type and compression codec.">openvdb_points/tools/AttributeArray.h</a>&gt;</span>
 <a name="l00050"></a>00050 
-<a name="l00052"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">00052</a> <span class="keyword">class </span><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>
-<a name="l00053"></a>00053 {
-<a name="l00054"></a>00054 <span class="keyword">public</span>:
-<a name="l00055"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#adf764cbdea00d65edcd07bb9953ad2b7a10c975a0295f37a44e3d73c532c76f12">00055</a>     <span class="keyword">enum</span> { INVALID_POS = boost::integer_traits&lt;size_t&gt;::const_max };
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="keyword">namespace </span>openvdb {
+<a name="l00053"></a>00053 OPENVDB_USE_VERSION_NAMESPACE
+<a name="l00054"></a>00054 <span class="keyword">namespace </span>OPENVDB_VERSION_NAME {
+<a name="l00055"></a>00055 <span class="keyword">namespace </span>tools {
 <a name="l00056"></a>00056 
-<a name="l00057"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a3e8fbaec7a0172150382fa69b839b3ea">00057</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;AttributeSet&gt; Ptr;
-<a name="l00058"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aaf23fe8c83cec6c61f966ac86e2a5ced">00058</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;const AttributeSet&gt; ConstPtr;
+<a name="l00057"></a>00057 
 <a name="l00059"></a>00059 
-<a name="l00060"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">00060</a>     <span class="keyword">class </span><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>;
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062     <span class="keyword">typedef</span> boost::shared_ptr&lt;Descriptor&gt; DescriptorPtr;
-<a name="l00063"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#adb57bf7bb2aa8454a38fe9059e7a5591">00063</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;const Descriptor&gt; DescriptorConstPtr;
-<a name="l00064"></a>00064 
+<a name="l00060"></a>00060 
+<a name="l00062"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">00062</a> <span class="keyword">class </span><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>
+<a name="l00063"></a>00063 {
+<a name="l00064"></a>00064 <span class="keyword">public</span>:
+<a name="l00065"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#adf764cbdea00d65edcd07bb9953ad2b7a10c975a0295f37a44e3d73c532c76f12">00065</a>     <span class="keyword">enum</span> { INVALID_POS = boost::integer_traits&lt;size_t&gt;::const_max };
 <a name="l00066"></a>00066 
-<a name="l00067"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html">00067</a>     <span class="keyword">struct </span><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html">Util</a>
-<a name="l00068"></a>00068     {
-<a name="l00070"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">00070</a>         <span class="keyword">struct </span><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a> {
-<a name="l00071"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#af813e879f2ffc20963394df0686135a5">00071</a>             <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>(<span class="keyword">const</span> std::string&amp; n, <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; t)
-<a name="l00072"></a>00072                 : name(n), type(t) {}
-<a name="l00073"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#a7082db574ba2d2d69ccafb060398b7d8">00073</a>             Name name;
-<a name="l00074"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#a9859f14436184690d3e5ec37d989be5b">00074</a>             <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> type;
-<a name="l00075"></a>00075         };
+<a name="l00067"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a3e8fbaec7a0172150382fa69b839b3ea">00067</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;AttributeSet&gt; Ptr;
+<a name="l00068"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aaf23fe8c83cec6c61f966ac86e2a5ced">00068</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;const AttributeSet&gt; ConstPtr;
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">00070</a>     <span class="keyword">class </span><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072     <span class="keyword">typedef</span> boost::shared_ptr&lt;Descriptor&gt; DescriptorPtr;
+<a name="l00073"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#adb57bf7bb2aa8454a38fe9059e7a5591">00073</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;const Descriptor&gt; DescriptorConstPtr;
+<a name="l00074"></a>00074 
 <a name="l00076"></a>00076 
-<a name="l00077"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#a598e4509c7d4827bbdcafdfeb492fa09">00077</a>         <span class="keyword">typedef</span> std::vector&lt;NameAndType&gt; NameAndTypeVec;
-<a name="l00078"></a>00078     };
-<a name="l00079"></a>00079 
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>();
-<a name="l00083"></a>00083 
-<a name="l00085"></a>00085     <span class="keyword">explicit</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>(<span class="keyword">const</span> DescriptorPtr&amp;, <span class="keywordtype">size_t</span> arrayLength = 1);
+<a name="l00077"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html">00077</a>     <span class="keyword">struct </span><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html">Util</a>
+<a name="l00078"></a>00078     {
+<a name="l00080"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">00080</a>         <span class="keyword">struct </span><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a> {
+<a name="l00081"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#af813e879f2ffc20963394df0686135a5">00081</a>             <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>(<span class="keyword">const</span> std::string&amp; n, <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; t)
+<a name="l00082"></a>00082                 : name(n), type(t) {}
+<a name="l00083"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#a7082db574ba2d2d69ccafb060398b7d8">00083</a>             Name name;
+<a name="l00084"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#a9859f14436184690d3e5ec37d989be5b">00084</a>             <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> type;
+<a name="l00085"></a>00085         };
 <a name="l00086"></a>00086 
-<a name="l00088"></a>00088     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp;);
+<a name="l00087"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#a598e4509c7d4827bbdcafdfeb492fa09">00087</a>         <span class="keyword">typedef</span> std::vector&lt;NameAndType&gt; NameAndTypeVec;
+<a name="l00088"></a>00088     };
 <a name="l00089"></a>00089 
 <a name="l00091"></a>00091 
-<a name="l00092"></a>00092 
-<a name="l00093"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ae063389842dee246ceae48c6373545ee">00093</a>     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ae063389842dee246ceae48c6373545ee" title="Return a reference to this attribute set&amp;#39;s descriptor, which might be shared...">descriptor</a>() { <span class="keywordflow">return</span> *mDescr; }
-<a name="l00094"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#af994fa8c4e72ff8b959bc7785cb35bce">00094</a>     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#af994fa8c4e72ff8b959bc7785cb35bce" title="Return a reference to this attribute set&amp;#39;s descriptor, which might be shared...">descriptor</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> *mDescr; }
+<a name="l00092"></a>00092     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>();
+<a name="l00093"></a>00093 
+<a name="l00095"></a>00095     <span class="keyword">explicit</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>(<span class="keyword">const</span> DescriptorPtr&amp;, <span class="keywordtype">size_t</span> arrayLength = 1);
 <a name="l00096"></a>00096 
-<a name="l00099"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#addf24d244ff30a253f4a22a9a4552910">00099</a>     DescriptorPtr <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#addf24d244ff30a253f4a22a9a4552910" title="Return a pointer to this attribute set&amp;#39;s descriptor, which might be shared with...">descriptorPtr</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mDescr; }
-<a name="l00100"></a>00100 
-<a name="l00102"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aac782da1f912bceb5d8ad00c8dc892ac">00102</a>     <span class="keywordtype">size_t</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aac782da1f912bceb5d8ad00c8dc892ac" title="Return the number of attributes in this set.">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mAttrs.size(); }
-<a name="l00103"></a>00103 
-<a name="l00105"></a>00105     <span class="keywordtype">size_t</span> memUsage() <span class="keyword">const</span>;
+<a name="l00098"></a>00098     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp;);
+<a name="l00099"></a>00099 
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 
+<a name="l00103"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ae063389842dee246ceae48c6373545ee">00103</a>     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ae063389842dee246ceae48c6373545ee" title="Return a reference to this attribute set&amp;#39;s descriptor, which might be shared...">descriptor</a>() { <span class="keywordflow">return</span> *mDescr; }
+<a name="l00104"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#af994fa8c4e72ff8b959bc7785cb35bce">00104</a>     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#af994fa8c4e72ff8b959bc7785cb35bce" title="Return a reference to this attribute set&amp;#39;s descriptor, which might be shared...">descriptor</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> *mDescr; }
 <a name="l00106"></a>00106 
-<a name="l00109"></a>00109     <span class="keywordtype">size_t</span> find(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
+<a name="l00109"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#addf24d244ff30a253f4a22a9a4552910">00109</a>     DescriptorPtr <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#addf24d244ff30a253f4a22a9a4552910" title="Return a pointer to this attribute set&amp;#39;s descriptor, which might be shared with...">descriptorPtr</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mDescr; }
 <a name="l00110"></a>00110 
-<a name="l00115"></a>00115     <span class="keywordtype">size_t</span> replace(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> AttributeArray::Ptr&amp;);
+<a name="l00112"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aac782da1f912bceb5d8ad00c8dc892ac">00112</a>     <span class="keywordtype">size_t</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aac782da1f912bceb5d8ad00c8dc892ac" title="Return the number of attributes in this set.">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mAttrs.size(); }
+<a name="l00113"></a>00113 
+<a name="l00115"></a>00115     <span class="keywordtype">size_t</span> memUsage() <span class="keyword">const</span>;
 <a name="l00116"></a>00116 
-<a name="l00121"></a>00121     <span class="keywordtype">size_t</span> replace(<span class="keywordtype">size_t</span> pos, <span class="keyword">const</span> AttributeArray::Ptr&amp;);
-<a name="l00122"></a>00122 
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing point attribute information in a LeafNode.">AttributeArray</a>* getConst(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
-<a name="l00127"></a>00127     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing point attribute information in a LeafNode.">AttributeArray</a>* <span class="keyword">get</span>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
-<a name="l00128"></a>00128     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing point attribute information in a LeafNode.">AttributeArray</a>*       <span class="keyword">get</span>(<span class="keyword">const</span> std::string&amp; name);
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131 
-<a name="l00133"></a>00133 
+<a name="l00119"></a>00119     <span class="keywordtype">size_t</span> find(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
+<a name="l00120"></a>00120 
+<a name="l00125"></a>00125     <span class="keywordtype">size_t</span> replace(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> AttributeArray::Ptr&amp;);
+<a name="l00126"></a>00126 
+<a name="l00131"></a>00131     <span class="keywordtype">size_t</span> replace(<span class="keywordtype">size_t</span> pos, <span class="keyword">const</span> AttributeArray::Ptr&amp;);
+<a name="l00132"></a>00132 
 <a name="l00134"></a>00134 
-<a name="l00135"></a>00135     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing point attribute information in a LeafNode.">AttributeArray</a>* getConst(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
-<a name="l00136"></a>00136     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing point attribute information in a LeafNode.">AttributeArray</a>* <span class="keyword">get</span>(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
-<a name="l00137"></a>00137     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing point attribute information in a LeafNode.">AttributeArray</a>*       <span class="keyword">get</span>(<span class="keywordtype">size_t</span> pos);
-<a name="l00139"></a>00139 
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing attribute data.">AttributeArray</a>* getConst(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
+<a name="l00137"></a>00137     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing attribute data.">AttributeArray</a>* <span class="keyword">get</span>(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
+<a name="l00138"></a>00138     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing attribute data.">AttributeArray</a>*       <span class="keyword">get</span>(<span class="keyword">const</span> std::string&amp; name);
 <a name="l00140"></a>00140 
-<a name="l00142"></a>00142     <span class="keywordtype">bool</span> isShared(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
-<a name="l00146"></a>00146     <span class="keywordtype">void</span> makeUnique(<span class="keywordtype">size_t</span> pos);
-<a name="l00147"></a>00147 
-<a name="l00149"></a>00149     <span class="keywordtype">void</span> copyAttributeValues(<span class="keyword">const</span> Index n, <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; attributeSet, <span class="keyword">const</span> Index source);
+<a name="l00141"></a>00141 
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing attribute data.">AttributeArray</a>* getConst(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
+<a name="l00146"></a>00146     <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing attribute data.">AttributeArray</a>* <span class="keyword">get</span>(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
+<a name="l00147"></a>00147     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing attribute data.">AttributeArray</a>*       <span class="keyword">get</span>(<span class="keywordtype">size_t</span> pos);
+<a name="l00149"></a>00149 
 <a name="l00150"></a>00150 
-<a name="l00152"></a>00152     AttributeArray::Ptr appendAttribute(<span class="keyword">const</span> Util::NameAndType&amp; attribute);
-<a name="l00153"></a>00153 
-<a name="l00157"></a>00157     AttributeArray::Ptr appendAttribute(<span class="keyword">const</span> Util::NameAndType&amp; attribute,
-<a name="l00158"></a>00158                                         <span class="keyword">const</span> Descriptor&amp; expected, DescriptorPtr&amp; replacement);
-<a name="l00159"></a>00159 
-<a name="l00162"></a>00162     <span class="keywordtype">void</span> dropAttributes(<span class="keyword">const</span> std::vector&lt;size_t&gt;&amp; pos);
+<a name="l00152"></a>00152     <span class="keywordtype">bool</span> isShared(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
+<a name="l00156"></a>00156     <span class="keywordtype">void</span> makeUnique(<span class="keywordtype">size_t</span> pos);
+<a name="l00157"></a>00157 
+<a name="l00159"></a>00159     <span class="keywordtype">void</span> copyAttributeValues(<span class="keyword">const</span> Index n, <span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; attributeSet, <span class="keyword">const</span> Index source);
+<a name="l00160"></a>00160 
+<a name="l00162"></a>00162     AttributeArray::Ptr <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6c159add727760312df3eb6d5bb60789" title="Appends a new attribute to the VDB tree.">appendAttribute</a>(<span class="keyword">const</span> Util::NameAndType&amp; attribute);
 <a name="l00163"></a>00163 
-<a name="l00167"></a>00167     <span class="keywordtype">void</span> dropAttributes(<span class="keyword">const</span> std::vector&lt;size_t&gt;&amp; pos,
-<a name="l00168"></a>00168                         <span class="keyword">const</span> Descriptor&amp; expected, DescriptorPtr&amp; replacement);
+<a name="l00167"></a>00167     AttributeArray::Ptr <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6c159add727760312df3eb6d5bb60789" title="Appends a new attribute to the VDB tree.">appendAttribute</a>(<span class="keyword">const</span> Util::NameAndType&amp; attribute,
+<a name="l00168"></a>00168                                         <span class="keyword">const</span> Descriptor&amp; expected, DescriptorPtr&amp; replacement);
 <a name="l00169"></a>00169 
-<a name="l00171"></a>00171     <span class="keywordtype">void</span> read(std::istream&amp;);
-<a name="l00173"></a>00173     <span class="keywordtype">void</span> write(std::ostream&amp;) <span class="keyword">const</span>;
-<a name="l00174"></a>00174 
-<a name="l00176"></a>00176     <span class="keywordtype">void</span> readMetadata(std::istream&amp;);
-<a name="l00178"></a>00178     <span class="keywordtype">void</span> writeMetadata(std::ostream&amp;) <span class="keyword">const</span>;
+<a name="l00172"></a>00172     <span class="keywordtype">void</span> dropAttributes(<span class="keyword">const</span> std::vector&lt;size_t&gt;&amp; pos);
+<a name="l00173"></a>00173 
+<a name="l00177"></a>00177     <span class="keywordtype">void</span> dropAttributes(<span class="keyword">const</span> std::vector&lt;size_t&gt;&amp; pos,
+<a name="l00178"></a>00178                         <span class="keyword">const</span> Descriptor&amp; expected, DescriptorPtr&amp; replacement);
 <a name="l00179"></a>00179 
-<a name="l00181"></a>00181     <span class="keywordtype">void</span> readAttributes(std::istream&amp;);
-<a name="l00183"></a>00183     <span class="keywordtype">void</span> writeAttributes(std::ostream&amp;) <span class="keyword">const</span>;
+<a name="l00181"></a>00181     <span class="keywordtype">void</span> read(std::istream&amp;);
+<a name="l00183"></a>00183     <span class="keywordtype">void</span> write(std::ostream&amp;) <span class="keyword">const</span>;
 <a name="l00184"></a>00184 
-<a name="l00187"></a>00187     <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; other) <span class="keyword">const</span>;
-<a name="l00188"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a0eee4e08b4b3007e885e7dc374f1b3d9">00188</a>     <span class="keywordtype">bool</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a0eee4e08b4b3007e885e7dc374f1b3d9">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !this-&gt;operator==(other); }
+<a name="l00186"></a>00186     <span class="keywordtype">void</span> readMetadata(std::istream&amp;);
+<a name="l00188"></a>00188     <span class="keywordtype">void</span> writeMetadata(std::ostream&amp;) <span class="keyword">const</span>;
 <a name="l00189"></a>00189 
-<a name="l00190"></a>00190 <span class="keyword">private</span>:
-<a name="l00192"></a>00192     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp;);
-<a name="l00193"></a>00193 
-<a name="l00194"></a>00194     <span class="keyword">typedef</span> std::vector&lt;AttributeArray::Ptr&gt; AttrArrayVec;
-<a name="l00195"></a>00195 
-<a name="l00196"></a>00196     DescriptorPtr mDescr;
-<a name="l00197"></a>00197     AttrArrayVec  mAttrs;
-<a name="l00198"></a>00198 }; <span class="comment">// class AttributeSet</span>
+<a name="l00191"></a>00191     <span class="keywordtype">void</span> readAttributes(std::istream&amp;);
+<a name="l00193"></a>00193     <span class="keywordtype">void</span> writeAttributes(std::ostream&amp;) <span class="keyword">const</span>;
+<a name="l00194"></a>00194 
+<a name="l00197"></a>00197     <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; other) <span class="keyword">const</span>;
+<a name="l00198"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a0eee4e08b4b3007e885e7dc374f1b3d9">00198</a>     <span class="keywordtype">bool</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a0eee4e08b4b3007e885e7dc374f1b3d9">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; other)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !this-&gt;operator==(other); }
 <a name="l00199"></a>00199 
-<a name="l00201"></a>00201 
-<a name="l00202"></a>00202 
-<a name="l00207"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">00207</a> <span class="keyword">class </span><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">AttributeSet::Descriptor</a>
-<a name="l00208"></a>00208 {
-<a name="l00209"></a>00209 <span class="keyword">public</span>:
-<a name="l00210"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">00210</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;Descriptor&gt; Ptr;
-<a name="l00211"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ac077ee371814ca12ff6458ba632201f3">00211</a>     <span class="keyword">typedef</span> std::map&lt;std::string, size_t&gt; NameToPosMap;
-<a name="l00212"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5074a03082540df3fa1a2bfa7157212d">00212</a>     <span class="keyword">typedef</span> NameToPosMap::const_iterator  ConstIterator;
-<a name="l00213"></a>00213 
-<a name="l00214"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aff76c18c95660660e06a507fca910e9c">00214</a>     <span class="keyword">typedef</span> <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">Util::NameAndType</a>             <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>;
-<a name="l00215"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad31c9da6c176081e3f2fff4014599df0">00215</a>     <span class="keyword">typedef</span> Util::NameAndTypeVec          NameAndTypeVec;
-<a name="l00216"></a>00216 
-<a name="l00218"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html">00218</a>     <span class="keyword">struct </span><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a> {
-<a name="l00219"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#ab0a7cbae8a7e3353d4564daee665b1d1">00219</a>         NameAndTypeVec vec;
-<a name="l00220"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a551806dfb311db01d1397a41156521d4">00220</a>         <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a>&amp; <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a551806dfb311db01d1397a41156521d4">add</a>(<span class="keyword">const</span> <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>&amp; nameAndType) {
-<a name="l00221"></a>00221             vec.push_back(nameAndType); <span class="keywordflow">return</span> *<span class="keyword">this</span>;
-<a name="l00222"></a>00222         }
-<a name="l00223"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a2e6828cc7fcd979ab2d0fc652f762673">00223</a>         <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a>&amp; <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a2e6828cc7fcd979ab2d0fc652f762673">add</a>(<span class="keyword">const</span> Name&amp; name, <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type) {
-<a name="l00224"></a>00224             vec.push_back(<a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>(name, type)); <span class="keywordflow">return</span> *<span class="keyword">this</span>;
-<a name="l00225"></a>00225         }
-<a name="l00226"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#ae055f844f2d1782142f0bda1412d9b27">00226</a>         <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a>&amp; <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#ae055f844f2d1782142f0bda1412d9b27">add</a>(<span class="keyword">const</span> NameAndTypeVec&amp; other) {
-<a name="l00227"></a>00227             <span class="keywordflow">for</span> (NameAndTypeVec::const_iterator it = other.begin(), itEnd = other.end(); it != itEnd; ++it) {
-<a name="l00228"></a>00228                 vec.push_back(<a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>(it-&gt;name, it-&gt;type));
-<a name="l00229"></a>00229             }
-<a name="l00230"></a>00230             <span class="keywordflow">return</span> *<span class="keyword">this</span>;
-<a name="l00231"></a>00231         }
-<a name="l00232"></a>00232     };
-<a name="l00233"></a>00233 
-<a name="l00235"></a>00235 
-<a name="l00236"></a>00236     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>();
-<a name="l00237"></a>00237 
-<a name="l00239"></a>00239     <span class="keyword">static</span> Ptr create(<span class="keyword">const</span> NameAndTypeVec&amp;);
-<a name="l00240"></a>00240 
-<a name="l00241"></a>00241     Ptr duplicateAppend(<span class="keyword">const</span> NameAndType&amp; attribute) <span class="keyword">const</span>;
-<a name="l00242"></a>00242     Ptr duplicateAppend(<span class="keyword">const</span> NameAndTypeVec&amp; vec) <span class="keyword">const</span>;
-<a name="l00243"></a>00243     Ptr duplicateDrop(<span class="keyword">const</span> std::vector&lt;size_t&gt;&amp; pos) <span class="keyword">const</span>;
-<a name="l00244"></a>00244 
-<a name="l00246"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aac782da1f912bceb5d8ad00c8dc892ac">00246</a>     <span class="keywordtype">size_t</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aac782da1f912bceb5d8ad00c8dc892ac" title="Return the number of attributes in this descriptor.">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mTypes.size(); }
+<a name="l00200"></a>00200 <span class="keyword">private</span>:
+<a name="l00202"></a>00202     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a>&amp;);
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204     <span class="keyword">typedef</span> std::vector&lt;AttributeArray::Ptr&gt; AttrArrayVec;
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206     DescriptorPtr mDescr;
+<a name="l00207"></a>00207     AttrArrayVec  mAttrs;
+<a name="l00208"></a>00208 }; <span class="comment">// class AttributeSet</span>
+<a name="l00209"></a>00209 
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212 
+<a name="l00217"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">00217</a> <span class="keyword">class </span><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">AttributeSet::Descriptor</a>
+<a name="l00218"></a>00218 {
+<a name="l00219"></a>00219 <span class="keyword">public</span>:
+<a name="l00220"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">00220</a>     <span class="keyword">typedef</span> boost::shared_ptr&lt;Descriptor&gt; Ptr;
+<a name="l00221"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ac077ee371814ca12ff6458ba632201f3">00221</a>     <span class="keyword">typedef</span> std::map&lt;std::string, size_t&gt; NameToPosMap;
+<a name="l00222"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5074a03082540df3fa1a2bfa7157212d">00222</a>     <span class="keyword">typedef</span> NameToPosMap::const_iterator  ConstIterator;
+<a name="l00223"></a>00223 
+<a name="l00224"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aff76c18c95660660e06a507fca910e9c">00224</a>     <span class="keyword">typedef</span> <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">Util::NameAndType</a>             <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>;
+<a name="l00225"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad31c9da6c176081e3f2fff4014599df0">00225</a>     <span class="keyword">typedef</span> Util::NameAndTypeVec          NameAndTypeVec;
+<a name="l00226"></a>00226 
+<a name="l00228"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html">00228</a>     <span class="keyword">struct </span><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a> {
+<a name="l00229"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#ab0a7cbae8a7e3353d4564daee665b1d1">00229</a>         NameAndTypeVec vec;
+<a name="l00230"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a551806dfb311db01d1397a41156521d4">00230</a>         <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a>&amp; <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a551806dfb311db01d1397a41156521d4">add</a>(<span class="keyword">const</span> <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>&amp; nameAndType) {
+<a name="l00231"></a>00231             vec.push_back(nameAndType); <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00232"></a>00232         }
+<a name="l00233"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a2e6828cc7fcd979ab2d0fc652f762673">00233</a>         <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a>&amp; <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#a2e6828cc7fcd979ab2d0fc652f762673">add</a>(<span class="keyword">const</span> Name&amp; name, <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type) {
+<a name="l00234"></a>00234             vec.push_back(<a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>(name, type)); <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00235"></a>00235         }
+<a name="l00236"></a><a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#ae055f844f2d1782142f0bda1412d9b27">00236</a>         <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html" title="Utility method to construct a NameAndType sequence.">Inserter</a>&amp; <a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor_1_1Inserter.html#ae055f844f2d1782142f0bda1412d9b27">add</a>(<span class="keyword">const</span> NameAndTypeVec&amp; other) {
+<a name="l00237"></a>00237             <span class="keywordflow">for</span> (NameAndTypeVec::const_iterator it = other.begin(), itEnd = other.end(); it != itEnd; ++it) {
+<a name="l00238"></a>00238                 vec.push_back(<a class="code" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html" title="Attribute and type name pair.">NameAndType</a>(it-&gt;name, it-&gt;type));
+<a name="l00239"></a>00239             }
+<a name="l00240"></a>00240             <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00241"></a>00241         }
+<a name="l00242"></a>00242     };
+<a name="l00243"></a>00243 
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246     <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>();
 <a name="l00247"></a>00247 
-<a name="l00249"></a>00249     <span class="keywordtype">size_t</span> memUsage() <span class="keyword">const</span>;
+<a name="l00249"></a>00249     <span class="keyword">static</span> Ptr create(<span class="keyword">const</span> NameAndTypeVec&amp;);
 <a name="l00250"></a>00250 
-<a name="l00253"></a>00253     <span class="keywordtype">size_t</span> find(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
-<a name="l00254"></a>00254 
-<a name="l00256"></a>00256     <span class="keywordtype">size_t</span> rename(<span class="keyword">const</span> std::string&amp; fromName, <span class="keyword">const</span> std::string&amp; toName);
+<a name="l00252"></a>00252     <span class="keyword">static</span> Ptr create(<span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp;);
+<a name="l00253"></a>00253 
+<a name="l00254"></a>00254     Ptr duplicateAppend(<span class="keyword">const</span> NameAndType&amp; attribute) <span class="keyword">const</span>;
+<a name="l00255"></a>00255     Ptr duplicateAppend(<span class="keyword">const</span> NameAndTypeVec&amp; vec) <span class="keyword">const</span>;
+<a name="l00256"></a>00256     Ptr duplicateDrop(<span class="keyword">const</span> std::vector&lt;size_t&gt;&amp; pos) <span class="keyword">const</span>;
 <a name="l00257"></a>00257 
-<a name="l00259"></a>00259     <span class="keyword">const</span> std::string&amp; valueType(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
-<a name="l00261"></a>00261     <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
-<a name="l00262"></a>00262 
-<a name="l00264"></a>00264     <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp;) <span class="keyword">const</span>;
-<a name="l00266"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5be9c43313441362a89362794edc4284">00266</a>     <span class="keywordtype">bool</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5be9c43313441362a89362794edc4284" title="Return true if this descriptor is not equal to the given one.">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp; rhs)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !this-&gt;operator==(rhs); }
+<a name="l00259"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aac782da1f912bceb5d8ad00c8dc892ac">00259</a>     <span class="keywordtype">size_t</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aac782da1f912bceb5d8ad00c8dc892ac" title="Return the number of attributes in this descriptor.">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mTypes.size(); }
+<a name="l00260"></a>00260 
+<a name="l00262"></a>00262     <span class="keywordtype">size_t</span> memUsage() <span class="keyword">const</span>;
+<a name="l00263"></a>00263 
+<a name="l00266"></a>00266     <span class="keywordtype">size_t</span> find(<span class="keyword">const</span> std::string&amp; name) <span class="keyword">const</span>;
 <a name="l00267"></a>00267 
-<a name="l00269"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a253b74b4095775bd5cb07907d495d2e8">00269</a>     <span class="keyword">const</span> NameToPosMap&amp; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a253b74b4095775bd5cb07907d495d2e8" title="Return a reference to the name-to-position map.">map</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mNameMap; }
+<a name="l00269"></a>00269     <span class="keywordtype">size_t</span> rename(<span class="keyword">const</span> std::string&amp; fromName, <span class="keyword">const</span> std::string&amp; toName);
 <a name="l00270"></a>00270 
-<a name="l00272"></a>00272     <span class="keywordtype">void</span> appendTo(NameAndTypeVec&amp; attrs) <span class="keyword">const</span>;
-<a name="l00273"></a>00273 
-<a name="l00275"></a>00275     <span class="keywordtype">void</span> write(std::ostream&amp;) <span class="keyword">const</span>;
-<a name="l00277"></a>00277     <span class="keywordtype">void</span> read(std::istream&amp;);
-<a name="l00278"></a>00278 
-<a name="l00279"></a>00279 <span class="keyword">private</span>:
-<a name="l00280"></a>00280     <span class="keywordtype">size_t</span> insert(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; typeName);
-<a name="l00281"></a>00281     NameToPosMap                mNameMap;
-<a name="l00282"></a>00282     std::vector&lt;NamePair&gt;       mTypes;
-<a name="l00283"></a>00283 }; <span class="comment">// class Descriptor</span>
-<a name="l00284"></a>00284 
-<a name="l00285"></a>00285 
-<a name="l00286"></a>00286 } <span class="comment">// namespace tools</span>
-<a name="l00287"></a>00287 } <span class="comment">// namespace OPENVDB_VERSION_NAME</span>
-<a name="l00288"></a>00288 } <span class="comment">// namespace openvdb</span>
-<a name="l00289"></a>00289 
-<a name="l00290"></a>00290 
-<a name="l00291"></a>00291 <span class="preprocessor">#endif // OPENVDB_TOOLS_ATTRIBUTE_ARRAY_HAS_BEEN_INCLUDED</span>
-<a name="l00292"></a>00292 <span class="preprocessor"></span>
-<a name="l00293"></a>00293 
-<a name="l00294"></a>00294 <span class="comment">// Copyright (c) 2015 Double Negative Visual Effects</span>
-<a name="l00295"></a>00295 <span class="comment">// All rights reserved. This software is distributed under the</span>
-<a name="l00296"></a>00296 <span class="comment">// Mozilla Public License 2.0 ( http://www.mozilla.org/MPL/2.0/ )</span>
+<a name="l00272"></a>00272     <span class="keyword">const</span> std::string&amp; valueType(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
+<a name="l00274"></a>00274     <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type(<span class="keywordtype">size_t</span> pos) <span class="keyword">const</span>;
+<a name="l00275"></a>00275 
+<a name="l00277"></a>00277     <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp;) <span class="keyword">const</span>;
+<a name="l00279"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5be9c43313441362a89362794edc4284">00279</a>     <span class="keywordtype">bool</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5be9c43313441362a89362794edc4284" title="Return true if this descriptor is not equal to the given one.">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a>&amp; rhs)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> !this-&gt;operator==(rhs); }
+<a name="l00280"></a>00280 
+<a name="l00282"></a><a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a253b74b4095775bd5cb07907d495d2e8">00282</a>     <span class="keyword">const</span> NameToPosMap&amp; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a253b74b4095775bd5cb07907d495d2e8" title="Return a reference to the name-to-position map.">map</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> mNameMap; }
+<a name="l00283"></a>00283 
+<a name="l00285"></a>00285     <span class="keywordtype">void</span> appendTo(NameAndTypeVec&amp; attrs) <span class="keyword">const</span>;
+<a name="l00286"></a>00286 
+<a name="l00288"></a>00288     <span class="keywordtype">void</span> write(std::ostream&amp;) <span class="keyword">const</span>;
+<a name="l00290"></a>00290     <span class="keywordtype">void</span> read(std::istream&amp;);
+<a name="l00291"></a>00291 
+<a name="l00292"></a>00292 <span class="keyword">private</span>:
+<a name="l00293"></a>00293     <span class="keywordtype">size_t</span> insert(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; typeName);
+<a name="l00294"></a>00294     NameToPosMap                mNameMap;
+<a name="l00295"></a>00295     std::vector&lt;NamePair&gt;       mTypes;
+<a name="l00296"></a>00296 }; <span class="comment">// class Descriptor</span>
 <a name="l00297"></a>00297 
+<a name="l00298"></a>00298 
+<a name="l00299"></a>00299 } <span class="comment">// namespace tools</span>
+<a name="l00300"></a>00300 } <span class="comment">// namespace OPENVDB_VERSION_NAME</span>
+<a name="l00301"></a>00301 } <span class="comment">// namespace openvdb</span>
+<a name="l00302"></a>00302 
+<a name="l00303"></a>00303 
+<a name="l00304"></a>00304 <span class="preprocessor">#endif // OPENVDB_TOOLS_ATTRIBUTE_ARRAY_HAS_BEEN_INCLUDED</span>
+<a name="l00305"></a>00305 <span class="preprocessor"></span>
+<a name="l00306"></a>00306 
+<a name="l00307"></a>00307 <span class="comment">// Copyright (c) 2015 Double Negative Visual Effects</span>
+<a name="l00308"></a>00308 <span class="comment">// All rights reserved. This software is distributed under the</span>
+<a name="l00309"></a>00309 <span class="comment">// Mozilla Public License 2.0 ( http://www.mozilla.org/MPL/2.0/ )</span>
+<a name="l00310"></a>00310 
 </pre></div></div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 14 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

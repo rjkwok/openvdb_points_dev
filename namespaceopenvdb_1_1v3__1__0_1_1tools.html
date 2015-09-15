@@ -29,6 +29,8 @@
 <div class="contents">
 <h1>openvdb::v3_1_0::tools Namespace Reference</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal.html">point_attribute_internal</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal.html">point_conversion_internal</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal.html">point_data_grid_internal</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__masks.html">point_masks</a></td></tr>
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
@@ -36,20 +38,19 @@
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1FixedPointAttributeCodec.html">FixedPointAttributeCodec</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1UnitVecAttributeCodec.html">UnitVecAttributeCodec</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Base class for storing point attribute information in a LeafNode.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#_details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Base class for storing attribute data.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html">TypedAttributeArray</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Templated attribute class to hold specific types.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#_details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Typed class for storing attribute data.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Write-able version of <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ordered collection of uniquely-named attribute arrays.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#_details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html">PointAttributeList</a></td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A list of wrapped point attributes.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeVector.html">PointAttributeVector</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Point-partitioner compatible STL vector attribute wrapper for convenience.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeVector.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html">PointDataAccessor</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">PointDataLeafNode</a></td></tr>
 <tr><td colspan="2"><h2>Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; Name, Name &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>&lt; float &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af486c571a88c79d59d3d0b813250c283">AttributeHandleROF</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a><br class="typebreak"/>
 &lt; float &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a27cad4cffdea226086d1ffcd1603a9f4">AttributeHandleRWF</a></td></tr>
@@ -74,12 +75,18 @@
 <tr><td class="memTemplItemLeft" align="right" valign="top">IntegerVectorT&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a1b75c9c397b3c33655959d8649015da1">floatingPointToFixedPoint</a> (const math::Vec3&lt; FloatT &gt; &amp;v)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename FloatVectorT , typename IntegerT &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">FloatVectorT&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a79bf5cb194384168fc754a778421e42e">fixedPointToFloatingPoint</a> (const math::Vec3&lt; IntegerT &gt; &amp;v)</td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename PointArrayT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#aa37db4a19befe34903145aa271375d10">createPointDataGrid</a> (const PointArrayT &amp;points, const math::Transform &amp;xform)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stores <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> within leaf nodes of a point data grid.  <a href="#aa37db4a19befe34903145aa271375d10"></a><br/></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename PointArrayT , typename PointIndexGridT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a012638270a677c8d209eb4f5a644da50">createPointDataGrid</a> (const PointIndexGridT &amp;pointIndexGrid, const PointArrayT &amp;points, const math::Transform &amp;xform)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stores <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> within leaf nodes of a point data grid.  <a href="#a012638270a677c8d209eb4f5a644da50"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6c159add727760312df3eb6d5bb60789">appendAttribute</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;newAttribute)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Appends a new attribute to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6c159add727760312df3eb6d5bb60789"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename PositionArrayT , typename PointIndexGridT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a839bb9c17c26f7727114567ead9217aa">createPointDataGrid</a> (const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Localises <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> with position into a <code>PointDataGrid</code> into two stages: allocation of the leaf attribute data and population of the positions.  <a href="#a839bb9c17c26f7727114567ead9217aa"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename ValueT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#ad96d74d3ca4a354ef49f115a6cdd160c">createPointDataGrid</a> (const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convenience method to create a <code>PointDataGrid</code> from a std::vector of point positions.  <a href="#ad96d74d3ca4a354ef49f115a6cdd160c"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT , typename PointIndexTreeT , typename PointArrayT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a77eb403529730a7c910c96b7b60d11f0">populateAttribute</a> (PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, const openvdb::Name &amp;attributeName, const PointArrayT &amp;data)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stores point attribute data in an existing <code>PointDataGrid</code> attribute.  <a href="#a77eb403529730a7c910c96b7b60d11f0"></a><br/></td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="af486c571a88c79d59d3d0b813250c283"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeHandleROF" ref="af486c571a88c79d59d3d0b813250c283" args="" -->
@@ -134,19 +141,6 @@
 
 </div>
 </div>
-<a class="anchor" id="a3600fce7acc24c648a0f3516a62a9c41"></a><!-- doxytag: member="openvdb::v3_1_0::tools::NamePair" ref="a3600fce7acc24c648a0f3516a62a9c41" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::pair&lt;Name, Name&gt; <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a70b7bd483936a2492586913c7307a82b"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataGrid" ref="a70b7bd483936a2492586913c7307a82b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -178,7 +172,87 @@
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a012638270a677c8d209eb4f5a644da50"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="a012638270a677c8d209eb4f5a644da50" args="(const PointIndexGridT &amp;pointIndexGrid, const PointArrayT &amp;points, const math::Transform &amp;xform)" -->
+<a class="anchor" id="a6c159add727760312df3eb6d5bb60789"></a><!-- doxytag: member="openvdb::v3_1_0::tools::appendAttribute" ref="a6c159add727760312df3eb6d5bb60789" args="(PointDataTree &amp;tree, const AttributeSet::Util::NameAndType &amp;newAttribute)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void appendAttribute </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const AttributeSet::Util::NameAndType &amp;&nbsp;</td>
+          <td class="paramname"> <em>newAttribute</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Appends a new attribute to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be appended to. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>newAttribute</em>&nbsp;</td><td>name and type for the new attribute. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad96d74d3ca4a354ef49f115a6cdd160c"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="ad96d74d3ca4a354ef49f115a6cdd160c" args="(const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PointDataGridT::Ptr createPointDataGrid </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; ValueT &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const openvdb::NamePair &amp;&nbsp;</td>
+          <td class="paramname"> <em>positionType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const math::Transform &amp;&nbsp;</td>
+          <td class="paramname"> <em>xform</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convenience method to create a <code>PointDataGrid</code> from a std::vector of point positions. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>positions</em>&nbsp;</td><td>list of world space point positions. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>positionType</em>&nbsp;</td><td>the type of the position (includes compression info). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>xform</em>&nbsp;</td><td>world to index space transform.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>This method implicitly wraps the std::vector for a Point-Partitioner compatible data structure and creates the required <code>PointIndexGrid</code> to the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a839bb9c17c26f7727114567ead9217aa"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="a839bb9c17c26f7727114567ead9217aa" args="(const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -191,8 +265,14 @@
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const PointArrayT &amp;&nbsp;</td>
-          <td class="paramname"> <em>points</em>, </td>
+          <td class="paramtype">const PositionArrayT &amp;&nbsp;</td>
+          <td class="paramname"> <em>positions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const openvdb::NamePair &amp;&nbsp;</td>
+          <td class="paramname"> <em>positionType</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -209,55 +289,21 @@
 </div>
 <div class="memdoc">
 
-<p>Stores <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> within leaf nodes of a point data grid. </p>
-<p>Localises point attributes into a <code>PointDataGrid</code> into two stages: allocation of the leaf attribute data and population of this data.</p>
+<p>Localises <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> with position into a <code>PointDataGrid</code> into two stages: allocation of the leaf attribute data and population of the positions. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>pointIndexGrid</em>&nbsp;</td><td>a PointIndexGrid into the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a></em>&nbsp;</td><td>list of world space <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pointIndexGrid</em>&nbsp;</td><td>a PointIndexGrid into the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>positions</em>&nbsp;</td><td>list of world space point positions. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>positionType</em>&nbsp;</td><td>the type of the position (includes compression info). </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>xform</em>&nbsp;</td><td>world to index space transform.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="note"><dt><b>Note:</b></dt><dd>The position data is populated separately to perform world space to voxel space conversion and apply quantisation.</dd>
+<dl class="note"><dt><b>Note:</b></dt><dd>The position data must be supplied in a Point-Partitioner compatible data structure. A convenience <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeVector.html" title="Point-partitioner compatible STL vector attribute wrapper for convenience.">PointAttributeVector</a> class is offered.</dd>
+<dd>
+The position data is populated separately to perform world space to voxel space conversion and apply quantisation.</dd>
 <dd>
 A <code>PointIndexGrid</code> to the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> must be supplied to perform this operation. Typically this is built implicitly by the PointDataGrid constructor. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa37db4a19befe34903145aa271375d10"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="aa37db4a19befe34903145aa271375d10" args="(const PointArrayT &amp;points, const math::Transform &amp;xform)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PointDataGridT::Ptr createPointDataGrid </td>
-          <td>(</td>
-          <td class="paramtype">const PointArrayT &amp;&nbsp;</td>
-          <td class="paramname"> <em>points</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const math::Transform &amp;&nbsp;</td>
-          <td class="paramname"> <em>xform</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Stores <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> within leaf nodes of a point data grid. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a></em>&nbsp;</td><td>list of world space <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>xform</em>&nbsp;</td><td>world to index space transform. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -333,8 +379,59 @@ A <code>PointIndexGrid</code> to the <a class="el" href="namespaceopenvdb_1_1v3_
 
 </div>
 </div>
+<a class="anchor" id="a77eb403529730a7c910c96b7b60d11f0"></a><!-- doxytag: member="openvdb::v3_1_0::tools::populateAttribute" ref="a77eb403529730a7c910c96b7b60d11f0" args="(PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, const openvdb::Name &amp;attributeName, const PointArrayT &amp;data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void populateAttribute </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PointIndexTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>pointIndexTree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const openvdb::Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>attributeName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PointArrayT &amp;&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<div class="memdoc">
+
+<p>Stores point attribute data in an existing <code>PointDataGrid</code> attribute. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataGrid to be populated. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pointIndexTree</em>&nbsp;</td><td>a PointIndexTree into the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>attributeName</em>&nbsp;</td><td>the name of the VDB Points attribute to be populated. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>data</em>&nbsp;</td><td>a wrapper to the attribute data.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>A <code>PointIndexGrid</code> to the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> must be supplied to perform this operation. This is required to ensure the same point index ordering. </dd></dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Generated on 14 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

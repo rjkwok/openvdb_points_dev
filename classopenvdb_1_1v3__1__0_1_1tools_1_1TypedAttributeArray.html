@@ -29,7 +29,7 @@
 </div>
 <div class="contents">
 <h1>TypedAttributeArray&lt; ValueType_, Codec_ &gt; Class Template Reference</h1><!-- doxytag: class="openvdb::v3_1_0::tools::TypedAttributeArray" --><!-- doxytag: inherits="openvdb::v3_1_0::tools::AttributeArray" -->
-<p>Templated attribute class to hold specific types.  
+<p>Typed class for storing attribute data.  
 <a href="#_details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="AttributeArray_8h_source.html">AttributeArray.h</a>&gt;</code></p>
@@ -46,8 +46,6 @@
 <tr><td class="memItemLeft" align="right" valign="top">typedef ValueType_&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a2bf6f4ff7ad07785ab4a1a2764f3dd34">ValueType</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef Codec_&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a3674033ccd5711bc2281d5dbe99aa259">Codec</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef Codec::StorageType&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a4299baf248c630f60808e6d0b29ef91f">StorageType</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1AccessorBase.html">AccessorBase</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af506ce41cce39d4337dbc15d0eb24922">AccessorBasePtr</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab197dc5f93721f680028ce7a37ec9d9c">Ptr</a>(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a7ed5de63dbe82081c75d97e563b318da">FactoryMethod</a> )(size_t)</td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a446d9fa4984404833dca9ddf229c7f90">TypedAttributeArray</a> (size_t n=1, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a2bf6f4ff7ad07785ab4a1a2764f3dd34">ValueType</a> &amp;uniformValue=zeroVal&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a2bf6f4ff7ad07785ab4a1a2764f3dd34">ValueType</a> &gt;())</td></tr>
@@ -61,7 +59,7 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a copy of this attribute.  <a href="#aae3ddd2f1a1982fb31cad9a6dec6b095"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ad4feb7f18710a4a2bcd337e60f2f2310">copyUncompressed</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return an uncompressed copy of this attribute (will just return a copy if not compressed).  <a href="#ad4feb7f18710a4a2bcd337e60f2f2310"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#acb5330e5e1a7a69749e239506e856e59">type</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#acb5330e5e1a7a69749e239506e856e59">type</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the name of this attribute's type.  <a href="#acb5330e5e1a7a69749e239506e856e59"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a596d820f44e38c0883c3d689efb3fc04">size</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the length of this array.  <a href="#a596d820f44e38c0883c3d689efb3fc04"></a><br/></td></tr>
@@ -117,7 +115,7 @@
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab197dc5f93721f680028ce7a37ec9d9c">Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#aef0220fa623fdafc6d4c41568d6a03fe">create</a> (size_t n)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a new attribute array of the given length <em>n</em> with uniform value zero.  <a href="#aef0220fa623fdafc6d4c41568d6a03fe"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9680b68aa57b5812720923e6b5559305">attributeType</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9680b68aa57b5812720923e6b5559305">attributeType</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the name of this attribute's type (includes codec).  <a href="#a9680b68aa57b5812720923e6b5559305"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab8b207a6f55ef986ed6e22fa7d23ae2f">isRegistered</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return <code>true</code> if this attribute type is registered.  <a href="#ab8b207a6f55ef986ed6e22fa7d23ae2f"></a><br/></td></tr>
@@ -126,12 +124,12 @@
 <tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a885f39d1666cf6461877ffc11949cb50">unregisterType</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remove this attribute type from the registry.  <a href="#a885f39d1666cf6461877ffc11949cb50"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a2bf6f4ff7ad07785ab4a1a2764f3dd34">ValueType</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a61129e4e5617c15bb485806fa60e5362">get</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *array, const Index n)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9377b47e182a05c497efd3da978ceafc" title="Return the value at index n.">get()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Templated attribute class to hold specific types.">TypedAttributeArray</a>.  <a href="#a61129e4e5617c15bb485806fa60e5362"></a><br/></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9377b47e182a05c497efd3da978ceafc" title="Return the value at index n.">get()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Typed class for storing attribute data.">TypedAttributeArray</a>.  <a href="#a61129e4e5617c15bb485806fa60e5362"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9203e3eeef677a99365109633820c5dd">set</a> (<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *array, const Index n, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a2bf6f4ff7ad07785ab4a1a2764f3dd34">ValueType</a> &amp;value)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9203e3eeef677a99365109633820c5dd" title="Non-member equivalent to set() that static_casts array to this TypedAttributeArray...">set()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Templated attribute class to hold specific types.">TypedAttributeArray</a>.  <a href="#a9203e3eeef677a99365109633820c5dd"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab197dc5f93721f680028ce7a37ec9d9c">Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a26ea4063f50ca352ac955f2457549b94">create</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type, size_t length)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9203e3eeef677a99365109633820c5dd" title="Non-member equivalent to set() that static_casts array to this TypedAttributeArray...">set()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Typed class for storing attribute data.">TypedAttributeArray</a>.  <a href="#a9203e3eeef677a99365109633820c5dd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab197dc5f93721f680028ce7a37ec9d9c">Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a26ea4063f50ca352ac955f2457549b94">create</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type, size_t length)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a new attribute array of the given (registered) type and length.  <a href="#a26ea4063f50ca352ac955f2457549b94"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af297c4f8add3710512f64f566a926233">isRegistered</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af297c4f8add3710512f64f566a926233">isRegistered</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return <code>true</code> if the given attribute type name is registered.  <a href="#af297c4f8add3710512f64f566a926233"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#acf71679f2c3fee401465b443a08a77c0">clearRegistry</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clear the attribute type registry.  <a href="#acf71679f2c3fee401465b443a08a77c0"></a><br/></td></tr>
@@ -139,13 +137,15 @@
 <tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a06fc87d81c62e9abb8790b6e5713c55ba189628bd9c66ada3fb11593230091ad4">TRANSIENT</a> =  0x1, 
 <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a06fc87d81c62e9abb8790b6e5713c55ba41ae0a505430bf564b119bc82db7592d">HIDDEN</a> =  0x2
  }</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1AccessorBase.html">AccessorBase</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af506ce41cce39d4337dbc15d0eb24922">AccessorBasePtr</a></td></tr>
 <tr><td colspan="2"><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af506ce41cce39d4337dbc15d0eb24922">AccessorBasePtr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ac504067206d6c5f2b0d014b401c2bf53">getAccessor</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Obtain an Accessor that stores getter and setter functors.  <a href="#ac504067206d6c5f2b0d014b401c2bf53"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Static Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a3f3b8a56af67bb2812bc16235a50f580">registerType</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a7ed5de63dbe82081c75d97e563b318da">FactoryMethod</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a3f3b8a56af67bb2812bc16235a50f580">registerType</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a7ed5de63dbe82081c75d97e563b318da">FactoryMethod</a>)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Register a attribute type along with a factory function.  <a href="#a3f3b8a56af67bb2812bc16235a50f580"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a648621fdfb0c3115b4835ca0c8793ded">unregisterType</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a648621fdfb0c3115b4835ca0c8793ded">unregisterType</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;type)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remove a attribute type from the registry.  <a href="#a648621fdfb0c3115b4835ca0c8793ded"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af237646cdfeb2d97506607d992e5e711">mCompressedBytes</a></td></tr>
@@ -157,14 +157,14 @@
 <h3>template&lt;typename ValueType_, typename Codec_ = NullAttributeCodec&lt;ValueType_&gt;&gt;<br/>
  class openvdb::v3_1_0::tools::TypedAttributeArray&lt; ValueType_, Codec_ &gt;</h3>
 
-<p>Templated attribute class to hold specific types. </p>
+<p>Typed class for storing attribute data. </p>
 <hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="af506ce41cce39d4337dbc15d0eb24922"></a><!-- doxytag: member="openvdb::v3_1_0::tools::TypedAttributeArray::AccessorBasePtr" ref="af506ce41cce39d4337dbc15d0eb24922" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1AccessorBase.html">AccessorBase</a>&gt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af506ce41cce39d4337dbc15d0eb24922">AccessorBasePtr</a><code> [inherited]</code></td>
+          <td class="memname">typedef boost::shared_ptr&lt;<a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1AccessorBase.html">AccessorBase</a>&gt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#af506ce41cce39d4337dbc15d0eb24922">AccessorBasePtr</a><code> [protected, inherited]</code></td>
         </tr>
       </table>
 </div>
@@ -358,7 +358,7 @@
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp; attributeType </td>
+          <td class="memname">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp; attributeType </td>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
@@ -502,7 +502,7 @@
         <tr>
           <td class="memname">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab197dc5f93721f680028ce7a37ec9d9c">Ptr</a> create </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>type</em>, </td>
         </tr>
         <tr>
@@ -639,7 +639,7 @@
 </div>
 <div class="memdoc">
 
-<p>Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9377b47e182a05c497efd3da978ceafc" title="Return the value at index n.">get()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Templated attribute class to hold specific types.">TypedAttributeArray</a>. </p>
+<p>Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9377b47e182a05c497efd3da978ceafc" title="Return the value at index n.">get()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Typed class for storing attribute data.">TypedAttributeArray</a>. </p>
 
 </div>
 </div>
@@ -758,7 +758,7 @@
         <tr>
           <td class="memname">static bool isRegistered </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>type</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [static, inherited]</code></td>
@@ -923,7 +923,7 @@
       </table>
 </div>
 <div class="memdoc">
-<p>Check the compressed bytes and flags. If they are equal, perform a deeper comparison check necessary on the inherited types (<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Templated attribute class to hold specific types.">TypedAttributeArray</a>) Requires non operator implementation due to inheritance </p>
+<p>Check the compressed bytes and flags. If they are equal, perform a deeper comparison check necessary on the inherited types (<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Typed class for storing attribute data.">TypedAttributeArray</a>) Requires non operator implementation due to inheritance </p>
 
 </div>
 </div>
@@ -956,7 +956,7 @@
         <tr>
           <td class="memname">static void registerType </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>type</em>, </td>
         </tr>
         <tr>
@@ -1156,7 +1156,7 @@
 </div>
 <div class="memdoc">
 
-<p>Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9203e3eeef677a99365109633820c5dd" title="Non-member equivalent to set() that static_casts array to this TypedAttributeArray...">set()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Templated attribute class to hold specific types.">TypedAttributeArray</a>. </p>
+<p>Non-member equivalent to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a9203e3eeef677a99365109633820c5dd" title="Non-member equivalent to set() that static_casts array to this TypedAttributeArray...">set()</a> that static_casts array to this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html" title="Typed class for storing attribute data.">TypedAttributeArray</a>. </p>
 
 </div>
 </div>
@@ -1229,7 +1229,7 @@
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type </td>
+          <td class="memname">virtual const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type </td>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
@@ -1252,7 +1252,7 @@
         <tr>
           <td class="memname">static void unregisterType </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
+          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>type</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [static, protected, inherited]</code></td>
@@ -1351,7 +1351,7 @@
 <li><a class="el" href="AttributeArray_8h_source.html">AttributeArray.h</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 14 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

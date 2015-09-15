@@ -26,26 +26,15 @@
 </div>
 <div class="contents">
 <h1>PointDataGrid.h File Reference</h1>
-<p>Attribute-owned data structure for points. Point attributes are stored within the leaf nodes themselves and ordered locally by voxels.  
+<p>Attribute-owned data structure for points. Point attributes are stored in leaf nodes and ordered by voxel for fast random and sequential access.  
 <a href="#_details">More...</a></p>
-<code>#include &lt;openvdb/version.h&gt;</code><br/>
-<code>#include &lt;openvdb/Types.h&gt;</code><br/>
 <code>#include &lt;openvdb/openvdb.h&gt;</code><br/>
 <code>#include &lt;openvdb/Grid.h&gt;</code><br/>
-<code>#include &lt;openvdb/math/Transform.h&gt;</code><br/>
 <code>#include &lt;openvdb/tree/Tree.h&gt;</code><br/>
 <code>#include &lt;openvdb/tree/LeafNode.h&gt;</code><br/>
-<code>#include &lt;openvdb/tree/LeafNodeBool.h&gt;</code><br/>
-<code>#include &lt;openvdb/util/Name.h&gt;</code><br/>
 <code>#include &lt;openvdb/tools/PointIndexGrid.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="AttributeArray_8h_source.html">openvdb_points/tools/AttributeArray.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="AttributeSet_8h_source.html">openvdb_points/tools/AttributeSet.h</a>&gt;</code><br/>
 <code>#include &lt;utility&gt;</code><br/>
-<code>#include &lt;map&gt;</code><br/>
-<code>#include &lt;limits&gt;</code><br/>
-<code>#include &lt;boost/scoped_ptr.hpp&gt;</code><br/>
-<code>#include &lt;boost/ptr_container/ptr_vector.hpp&gt;</code><br/>
-<code>#include &lt;boost/type_traits/is_floating_point.hpp&gt;</code><br/>
 
 <p><a href="PointDataGrid_8h_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
@@ -80,7 +69,7 @@
  }</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>Attribute-owned data structure for points. Point attributes are stored within the leaf nodes themselves and ordered locally by voxels. </p>
+<p>Attribute-owned data structure for points. Point attributes are stored in leaf nodes and ordered by voxel for fast random and sequential access. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Dan Bailey, Nick Avramoussis, Matt Warner </dd></dl>
 <hr/><h2>Define Documentation</h2>
 <a class="anchor" id="acc9b8d1e7cf8440093509526152fb82a"></a><!-- doxytag: member="PointDataGrid.h::VMASK_" ref="acc9b8d1e7cf8440093509526152fb82a" args="" -->
@@ -97,7 +86,7 @@
 </div>
 </div>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 14 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

@@ -29,103 +29,10 @@
 <div class="contents">
 <h1>openvdb::v3_1_0::tools::point_data_grid_internal Namespace Reference</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal_1_1InitialiseAttributesOp.html">InitialiseAttributesOp</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal_1_1PopulateAttributeOp.html">PopulateAttributeOp</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal_1_1PopulatePositionAttributeOp.html">PopulatePositionAttributeOp</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal_1_1UniquePtr.html">UniquePtr</a></td></tr>
-<tr><td colspan="2"><h2>Functions</h2></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename PointAttributeT , typename AttributeT , typename PointDataTreeT , typename PointIndexTreeT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal.html#a10379617ac2b70d197afb39552d4d796">populatePositionAttribute</a> (PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, const math::Transform &amp;xform, PointAttributeT &amp;attribute, const unsigned index)</td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename PointAttributeT , typename AttributeT , typename PointDataTreeT , typename PointIndexTreeT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal.html#a8328480593bfc7b6f8db71c63de385b5">populateAttribute</a> (PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, PointAttributeT &amp;attribute, const unsigned index)</td></tr>
 </table>
-<hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a8328480593bfc7b6f8db71c63de385b5"></a><!-- doxytag: member="openvdb::v3_1_0::tools::point_data_grid_internal::populateAttribute" ref="a8328480593bfc7b6f8db71c63de385b5" args="(PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, PointAttributeT &amp;attribute, const unsigned index)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void openvdb::v3_1_0::tools::point_data_grid_internal::populateAttribute </td>
-          <td>(</td>
-          <td class="paramtype">PointDataTreeT &amp;&nbsp;</td>
-          <td class="paramname"> <em>tree</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const PointIndexTreeT &amp;&nbsp;</td>
-          <td class="paramname"> <em>pointIndexTree</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">PointAttributeT &amp;&nbsp;</td>
-          <td class="paramname"> <em>attribute</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned&nbsp;</td>
-          <td class="paramname"> <em>index</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
 </div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a10379617ac2b70d197afb39552d4d796"></a><!-- doxytag: member="openvdb::v3_1_0::tools::point_data_grid_internal::populatePositionAttribute" ref="a10379617ac2b70d197afb39552d4d796" args="(PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, const math::Transform &amp;xform, PointAttributeT &amp;attribute, const unsigned index)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void openvdb::v3_1_0::tools::point_data_grid_internal::populatePositionAttribute </td>
-          <td>(</td>
-          <td class="paramtype">PointDataTreeT &amp;&nbsp;</td>
-          <td class="paramname"> <em>tree</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const PointIndexTreeT &amp;&nbsp;</td>
-          <td class="paramname"> <em>pointIndexTree</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const math::Transform &amp;&nbsp;</td>
-          <td class="paramname"> <em>xform</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">PointAttributeT &amp;&nbsp;</td>
-          <td class="paramname"> <em>attribute</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned&nbsp;</td>
-          <td class="paramname"> <em>index</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-</div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 14 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

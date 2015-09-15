@@ -63,7 +63,7 @@ NameToPosMap::const_iterator&nbsp;</td><td class="memItemRight" valign="bottom">
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rename an attribute array.  <a href="#a34f83c3e1a01f5d34eeecc792e40e974"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const std::string &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a394b5114562387c5dbf2ba5e7c726229">valueType</a> (size_t pos) const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the name of the attribute array's type.  <a href="#a394b5114562387c5dbf2ba5e7c726229"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a84eadffa60fb77303408d689fe76e8b0">type</a> (size_t pos) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a84eadffa60fb77303408d689fe76e8b0">type</a> (size_t pos) const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the name of the attribute array's type.  <a href="#a84eadffa60fb77303408d689fe76e8b0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a6755de829aa9765feee52c50c6583919">operator==</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;) const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return true if this descriptor is equal to the given one.  <a href="#a6755de829aa9765feee52c50c6583919"></a><br/></td></tr>
@@ -80,6 +80,8 @@ NameToPosMap::const_iterator&nbsp;</td><td class="memItemRight" valign="bottom">
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad06d033b636d93036f7cbb2903b34a6f">create</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad31c9da6c176081e3f2fff4014599df0">NameAndTypeVec</a> &amp;)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a new descriptor from the given attribute and type name pairs.  <a href="#ad06d033b636d93036f7cbb2903b34a6f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aeb0172f18b842d7e7819c511f5fadec0">create</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a new descriptor from a position attribute type and assumes "P" (for convenience).  <a href="#aeb0172f18b842d7e7819c511f5fadec0"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>An immutable object that stores name, type and <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a> position for a constant collection of attribute arrays. </p>
@@ -186,6 +188,26 @@ NameToPosMap::const_iterator&nbsp;</td><td class="memItemRight" valign="bottom">
 <div class="memdoc">
 
 <p>Append to a vector of names and types from this <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html" title="An immutable object that stores name, type and AttributeSet position for a constant...">Descriptor</a> in position order. </p>
+
+</div>
+</div>
+<a class="anchor" id="aeb0172f18b842d7e7819c511f5fadec0"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::Descriptor::create" ref="aeb0172f18b842d7e7819c511f5fadec0" args="(const NamePair &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Ptr</a> create </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a> &amp;&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Create a new descriptor from a position attribute type and assumes "P" (for convenience). </p>
 
 </div>
 </div>
@@ -434,7 +456,7 @@ NameToPosMap::const_iterator&nbsp;</td><td class="memItemRight" valign="bottom">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type </td>
+          <td class="memname">const <a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a>&amp; type </td>
           <td>(</td>
           <td class="paramtype">size_t&nbsp;</td>
           <td class="paramname"> <em>pos</em></td>
@@ -493,7 +515,7 @@ NameToPosMap::const_iterator&nbsp;</td><td class="memItemRight" valign="bottom">
 <li><a class="el" href="AttributeSet_8h_source.html">AttributeSet.h</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 14 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

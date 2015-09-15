@@ -116,6 +116,8 @@ DenseIter&lt; const <br class="typebreak"/>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename TypedAttributeArrayType &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6c70f4d7b692fc2a5f47970231de9e1f">hasAttribute</a> (const Name &amp;attributeName) const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns whether an attribute exists.  <a href="#a6c70f4d7b692fc2a5f47970231de9e1f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#af5d6483211f704ae9bf431088c0c62d4">appendAttribute</a> (const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;attribute, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;replacement)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Append an attribute to the leaf.  <a href="#af5d6483211f704ae9bf431088c0c62d4"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename AttributeType &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a><br class="typebreak"/>
 &lt; AttributeType &gt; *&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a9d9d82a86a2af3270a885bcda045e3aa">attributeWriteHandle</a> (const size_t pos)</td></tr>
@@ -920,6 +922,41 @@ DenseIter&lt; const <br class="typebreak"/>
       </table>
 </div>
 <div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af5d6483211f704ae9bf431088c0c62d4"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::appendAttribute" ref="af5d6483211f704ae9bf431088c0c62d4" args="(const AttributeSet::Util::NameAndType &amp;attribute, const Descriptor &amp;expected, Descriptor::Ptr &amp;replacement)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void appendAttribute </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>attribute</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>expected</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>replacement</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Append an attribute to the leaf. </p>
 
 </div>
 </div>
@@ -3233,7 +3270,7 @@ DenseIter&lt; const <br class="typebreak"/>
 <li><a class="el" href="PointDataGrid_8h_source.html">PointDataGrid.h</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 14 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

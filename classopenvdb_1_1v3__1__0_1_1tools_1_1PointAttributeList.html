@@ -29,9 +29,6 @@
 </div>
 <div class="contents">
 <h1>PointAttributeList&lt; PositionT, PointAttributeT &gt; Class Template Reference</h1><!-- doxytag: class="openvdb::v3_1_0::tools::PointAttributeList" -->
-<p>A list of wrapped point attributes.  
-<a href="#_details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="PointConversion_8h_source.html">PointConversion.h</a>&gt;</code></p>
 
 <p><a href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList-members.html">List of all members.</a></p>
@@ -42,8 +39,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">typedef PointAttributeT&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#aab11ce440aa4c2dfefcc9667bffc2615">PointAttributeType</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef PointAttributeType::Ptr&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a5cf56b0bb032ca7e51dde2d83c52b808">PointAttributePtr</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
-PointAttributeType::template <br class="typebreak"/>
-Accessor&lt; PositionT &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a063da90ec17a8725d03c8829b1676661">PositionAccessor</a></td></tr>
+PointAttributeType::Accessor&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#ab3c3d93e2904aa37ae87b2eab03ab4b3">PositionAccessor</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef PositionAccessor::Ptr&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a94d94bcfbd29769e91f25a1eff378a80">PositionAccessorPtr</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html">PointAttributeList</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#abf967a582107bd6d7f97c4432115d73b">Ptr</a></td></tr>
@@ -62,34 +58,9 @@ Accessor&lt; PositionT &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a9f704fade194ed9a7c7113ba3d53799b">const_iterator</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a02ed5283a097925e2c2f96e6daae6a80">cend</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a326338bd5b51c9a6a643f9b192c58ce5">attributeDescriptor</a> () const </td></tr>
 </table>
-<hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;typename PositionT, typename PointAttributeT&gt;<br/>
  class openvdb::v3_1_0::tools::PointAttributeList&lt; PositionT, PointAttributeT &gt;</h3>
 
-<p>A list of wrapped point attributes. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>PositionT</em>&nbsp;</td><td>vector type used to represent the position attribute </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>PointAttributeT</em>&nbsp;</td><td>PointAttribute class</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="note"><dt><b>Note:</b></dt><dd>The point attributes are application-specific and must match the following interface <div class="fragment"><pre class="fragment"> <span class="keyword">struct </span>PointAttribute {
-   <span class="keyword">typedef</span> shared_ptr&lt;PointAttribute&gt; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#abf967a582107bd6d7f97c4432115d73b">Ptr</a>;
-   <span class="keyword">typedef</span> VectorType <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a30ede1aa1a6aa775c65c1d8fa1d440c2">position_type</a>;
-   PointAttrPair info() <span class="keyword">const</span>;
-   <span class="keyword">const</span> Name&amp; name() <span class="keyword">const</span>;
-   AttrType type() <span class="keyword">const</span>;
-   Index64 <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a2534a1987428f4d3f8b6ca6c10726e5b">size</a>() <span class="keyword">const</span>;
-
-   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;
-   <span class="keyword">struct </span>Accessor {
-   <span class="keyword">typedef</span> shared_ptr&lt;Accessor&lt;T&gt; &gt; <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#abf967a582107bd6d7f97c4432115d73b">Ptr</a>;
-   <span class="keywordtype">void</span> getValue(Index64, T&amp; xyz) <span class="keyword">const</span>; };
-
-   <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; Accessor&lt;T&gt;::Ptr getAccessor() <span class="keyword">const</span>;
- };
-</pre></div> </dd></dl>
 <hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a9f704fade194ed9a7c7113ba3d53799b"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointAttributeList::const_iterator" ref="a9f704fade194ed9a7c7113ba3d53799b" args="" -->
 <div class="memitem">
@@ -156,12 +127,12 @@ Accessor&lt; PositionT &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><
 
 </div>
 </div>
-<a class="anchor" id="a063da90ec17a8725d03c8829b1676661"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointAttributeList::PositionAccessor" ref="a063da90ec17a8725d03c8829b1676661" args="" -->
+<a class="anchor" id="ab3c3d93e2904aa37ae87b2eab03ab4b3"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointAttributeList::PositionAccessor" ref="ab3c3d93e2904aa37ae87b2eab03ab4b3" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef PointAttributeType::template Accessor&lt;PositionT&gt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#a063da90ec17a8725d03c8829b1676661">PositionAccessor</a></td>
+          <td class="memname">typedef PointAttributeType::Accessor <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeList.html#ab3c3d93e2904aa37ae87b2eab03ab4b3">PositionAccessor</a></td>
         </tr>
       </table>
 </div>
@@ -380,7 +351,7 @@ Accessor&lt; PositionT &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><
 <li><a class="el" href="PointConversion_8h_source.html">PointConversion.h</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 9 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 11 Sep 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>
