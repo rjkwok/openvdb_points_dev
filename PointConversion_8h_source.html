@@ -190,7 +190,7 @@
 <a name="l00210"></a>00210 
 <a name="l00211"></a>00211             <span class="keywordflow">if</span> (!pointIndexLeaf)    <span class="keywordflow">continue</span>;
 <a name="l00212"></a>00212 
-<a name="l00213"></a>00213             <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html" title="Write-able version of AttributeHandle.">AttributeWriteHandle&lt;ValueType&gt;</a>* attributeWriteHandle =
+<a name="l00213"></a>00213             <span class="keyword">typename</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html" title="Write-able version of AttributeHandle.">AttributeWriteHandle&lt;ValueType&gt;::Ptr</a> attributeWriteHandle =
 <a name="l00214"></a>00214                 leaf-&gt;template attributeWriteHandle&lt;ValueType&gt;(<span class="stringliteral">&quot;P&quot;</span>);
 <a name="l00215"></a>00215 
 <a name="l00216"></a>00216             Index64 index = 0;
@@ -252,7 +252,7 @@
 <a name="l00273"></a>00273 
 <a name="l00274"></a>00274             <span class="keywordflow">if</span> (!pointIndexLeaf)    <span class="keywordflow">continue</span>;
 <a name="l00275"></a>00275 
-<a name="l00276"></a>00276             <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html" title="Write-able version of AttributeHandle.">AttributeWriteHandle&lt;ValueType&gt;</a>* attributeWriteHandle =
+<a name="l00276"></a>00276             <span class="keyword">typename</span> <a class="code" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html" title="Write-able version of AttributeHandle.">AttributeWriteHandle&lt;ValueType&gt;::Ptr</a> attributeWriteHandle =
 <a name="l00277"></a>00277                 leaf-&gt;template attributeWriteHandle&lt;ValueType&gt;(mAttributeName);
 <a name="l00278"></a>00278 
 <a name="l00279"></a>00279             Index64 index = 0;
@@ -377,7 +377,7 @@
 <a name="l00403"></a>00403 <span class="comment">// All rights reserved. This software is distributed under the</span>
 <a name="l00404"></a>00404 <span class="comment">// Mozilla Public License 2.0 ( http://www.mozilla.org/MPL/2.0/ )</span>
 </pre></div></div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 25 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

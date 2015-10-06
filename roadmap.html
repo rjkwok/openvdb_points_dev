@@ -46,12 +46,13 @@ Contents</a></h2>
 <li><a class="el" href="roadmap.html#sClipping">Clipping (Core API)</a> Clipping</li>
 <li><a class="el" href="roadmap.html#sPointRayIntersector">PointRayIntersector (Core API)</a></li>
 <li><a class="el" href="roadmap.html#sPackedPrims">Packed Primitives (Houdini)</a></li>
-<li><a class="el" href="roadmap.html#sPointRasterization">Point Rasterization (Core API / Houdini)</a></li>
+<li><a class="el" href="roadmap.html#sPointSurfacing">Point Surfacing (Core API / Houdini)</a></li>
 </ul>
 </li>
 <li><a class="el" href="roadmap.html#sLongTerm">Long Term (6 months - 12 months)</a><ul>
 <li><a class="el" href="roadmap.html#sArraysOfArrays">Array-of-array attributes (Core API)</a></li>
-<li><a class="el" href="roadmap.html#sPointSampling">(Core API / Houdini)</a></li>
+<li><a class="el" href="roadmap.html#sPointSampling">Point Sampling (Core API / Houdini)</a></li>
+<li><a class="el" href="roadmap.html#sPointRasterization">Point Scalar and Vector Rasterization (Core API / Houdini)</a></li>
 <li><a class="el" href="roadmap.html#sPointAdvection">Point Sort / Point Advection (Core API / Houdini)</a></li>
 <li><a class="el" href="roadmap.html#sPointResample">Point Resample (Core API / Houdini)</a></li>
 <li><a class="el" href="roadmap.html#sPointMerge">Point Merge (Core API / Houdini)</a></li>
@@ -68,7 +69,7 @@ Geometry Instancing (Clarisse)</a></h3>
 <p>The scatterer in Clarisse provides the ability to instance geometry onto point clouds. This work is to provide the ability to instance geometry onto OpenVDB Points.</p>
 <h3><a class="anchor" id="sHoudiniPointVisualiser">
 OpenVDB Point Visualizer SOP (Houdini)</a></h3>
-<p>The OpenVDB Visualizer SOP is handy for visualizing the topology of the tree. This is particularly useful for OpenVDB Points where the voxel size no longer has quite the same meaning as for level sets and volume.</p>
+<p>The OpenVDB Visualizer SOP is handy for visualizing the topology of the tree. This is particularly useful for OpenVDB Points where the voxel size no longer has quite the same meaning as for level sets and volumes.</p>
 <h3><a class="anchor" id="sAutoVoxelSize">
 Target Points-Per-Voxel for Conversion (Core API / Houdini)</a></h3>
 <p>The voxel size has a subtly different meaning for OpenVDB Points as to using OpenVDB for level sets and volumes. This tool introduces a target points-per-voxel count that can be used to help users choose an appropriate voxel size. This feature will also be exposed as a default on the OpenVDB Points SOP.</p>
@@ -101,17 +102,20 @@ PointRayIntersector (Core API)</a></h3>
 <h3><a class="anchor" id="sPackedPrims">
 Packed Primitives (Houdini)</a></h3>
 <p>Packed primitives in Houdini are a highly efficient way of supporting delayed load of geometry data. This work will be extending the OpenVDB Points SOP to suport packed prims or packed fragments that will allow us to delay load the attribute data reducing the read time for large point caches and allowing the user to reduce the attribute load to the region of interest.</p>
-<h3><a class="anchor" id="sPointRasterization">
-Point Rasterization (Core API / Houdini)</a></h3>
-<p>Rasterizing points into a surface or a velocity grid are two very useful operations, particularly for FLIP simulations. Introducing this to the toolset will result in a faster way of rasterizing this data. We intend to introduce a SOP for Houdini as well.</p>
+<h3><a class="anchor" id="sPointSurfacing">
+Point Surfacing (Core API / Houdini)</a></h3>
+<p>Rasterizing points into a level set surface is a very useful operations, particularly for FLIP simulations. Introducing this to the toolset will result in a faster way of doing this. We intend to introduce a SOP for Houdini as well.</p>
 <h2><a class="anchor" id="sLongTerm">
 Long Term (6 months - 12 months)</a></h2>
 <h3><a class="anchor" id="sArraysOfArrays">
 Array-of-array attributes (Core API)</a></h3>
 <p>Storing array attributes (ie an array for an attribute of a point) is already supported in Houdini 14 for native Houdini points and a feature we would like to introduce to the library. This would also introduce the ability to natively store curve data.</p>
 <h3><a class="anchor" id="sPointSampling">
-(Core API / Houdini)</a></h3>
+Point Sampling (Core API / Houdini)</a></h3>
 <p>This task is to be able to sample volume data onto a point attribute.</p>
+<h3><a class="anchor" id="sPointRasterization">
+Point Scalar and Vector Rasterization (Core API / Houdini)</a></h3>
+<p>Rasterizing points into a scalar or vector grid are two very useful operations, particularly for FLIP simulations. Introducing this to the toolset will result in a faster way of rasterizing this data. We intend to introduce a SOP for Houdini as well.</p>
 <h3><a class="anchor" id="sPointAdvection">
 Point Sort / Point Advection (Core API / Houdini)</a></h3>
 <p>Sorting is a pre-requisite to being able to advect points. Due to the spatially organised nature of the points, moving them requires tracking their relative offsets and applying a subsequent sorting. The ability to advect points based on a VDB vector field is already provided inside OpenVDB for native Houdini points. The SOP interface would be similar to that of the OpenVDB version.</p>
@@ -122,7 +126,7 @@ Point Resample (Core API / Houdini)</a></h3>
 Point Merge (Core API / Houdini)</a></h3>
 <p>Merging multiple OpenVDB Points grids will result in a single OpenVDB Points grid that contains all the point sets co-located in one. </p>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 25 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

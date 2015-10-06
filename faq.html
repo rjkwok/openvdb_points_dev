@@ -75,7 +75,7 @@ What does the voxel size mean for OpenVDB Points?</a></h2>
 <p>This is an important aspect of the library to understand. For volumes and level sets, the voxel size is an intuitive way of controlling the tradeoff between the "detail" represented and the size of the data set. However, with OpenVDB Points, the voxel size controls the "detail" in the underlying acceleration structure, not explicitly in the point data itself. This means there is a tradeoff between the amount of memory used to store the underlying VDB topology and the multi-threaded performance due to the granularity of the data. In practice there is a relatively large range of voxel sizes in which the efficiency of the library for storage and traversal will be near-optimal. Outside of this range, either the performance will decrease or the memory will increase. An intuitive way of resolving this confusion is an area we are actively investigating.</p>
 <h2><a class="anchor" id="sPoints">
 Is OpenVDB Points primarily for point data?</a></h2>
-<p>Yes! However, the plan is to introduce array-of-array attributes that extends this library to be able to use point attributes to efficiently store curves. See the <a class="el" href="roadmap.html">Road Map</a> Road Map for a better idea of future plans for the library.</p>
+<p>Yes! However, the plan is to introduce array-of-array attributes that extends this library to be able to use point attributes to efficiently store curves. See the <a class="el" href="roadmap.html">Road Map</a> for a better idea of future plans for the library.</p>
 <h2><a class="anchor" id="sDifferentLeafNodes">
 Can I store different numbers and types of attributes per Leaf Node?</a></h2>
 <p>Yes! The library is explicitly designed to allow for this. The default usage is such that each <code>PointDataLeafNode</code> contains a shared <code>AttributeDescriptor</code> with the same attribute names and types, however each leaf can also store a unique <code>AttributeDescriptor</code> that isn't shared with other leaves. However, the caveat is that as the most common use case is for an identical <code>AttributeDescriptor</code> for all leaves, for performance reasons most tools are designed with this in mind, so new tools would need to be developed if this was restriction was not upheld.</p>
@@ -95,7 +95,7 @@ Is OpenVDB Points thread-safe?</a></h2>
 How can I contribute to OpenVDB Points?</a></h2>
 <p>If you have bug reports or ideas for improvements or new features, please contact us! If you want to contribute code, please see our <a href="http://www.openvdb.org/license/index.html" target="_blank">License page</a>. </p>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 25 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

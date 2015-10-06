@@ -167,7 +167,7 @@ Assemble a VDB Point Grid</a></h2>
     std::cout &lt;&lt; <span class="stringliteral">&quot;Testing random access:&quot;</span> &lt;&lt; std::endl;
 
     <span class="comment">// Retrieve a read-only attribute handle for position</span>
-    AttributeHandle&lt;openvdb::Vec3f&gt;* attributeHandle = leaf-&gt;attributeHandle&lt;openvdb::Vec3f&gt;(<span class="stringliteral">&quot;P&quot;</span>);
+    AttributeHandle&lt;openvdb::Vec3f&gt;::Ptr attributeHandle = leaf-&gt;attributeHandle&lt;openvdb::Vec3f&gt;(<span class="stringliteral">&quot;P&quot;</span>);
 
     <span class="comment">// Create a co-ordinate to perform the look-up and voxel position in index space</span>
     <span class="keyword">const</span> openvdb::Coord ijk(4, 0, 0);
@@ -198,7 +198,7 @@ Assemble a VDB Point Grid</a></h2>
 
     <span class="comment">// Now iterate over all points within all leaves</span>
     <span class="keywordflow">for</span> (PointDataTree::LeafCIter iter = grid-&gt;tree().cbeginLeaf(); iter; ++iter) {
-        AttributeHandle&lt;openvdb::Vec3f&gt;* attributeHandle = iter-&gt;attributeHandle&lt;openvdb::Vec3f&gt;(<span class="stringliteral">&quot;P&quot;</span>);
+        AttributeHandle&lt;openvdb::Vec3f&gt;::Ptr attributeHandle = iter-&gt;attributeHandle&lt;openvdb::Vec3f&gt;(<span class="stringliteral">&quot;P&quot;</span>);
 
         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; totalPoints; i++) {
             <span class="comment">/*point position = */</span> attributeHandle-&gt;get(i);
@@ -288,7 +288,7 @@ Point Conversion</a></h2>
     std::cout &lt;&lt; <span class="stringliteral">&quot;Attributes: &quot;</span> &lt;&lt; iter-&gt;attributeSet().descriptor().size() &lt;&lt; std::endl;
 }
 </pre></div> </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 25 Sep 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>
