@@ -28,7 +28,6 @@
 <h1>PointConversion.h File Reference</h1>
 <p>Convert existing points and attributes into VDB Point Data grids and attributes.  
 <a href="#_details">More...</a></p>
-<code>#include &lt;openvdb/openvdb.h&gt;</code><br/>
 <code>#include &lt;openvdb/math/Transform.h&gt;</code><br/>
 <code>#include &lt;openvdb/tools/PointIndexGrid.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="AttributeSet_8h_source.html">openvdb_points/tools/AttributeSet.h</a>&gt;</code><br/>
@@ -49,11 +48,11 @@
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal.html">openvdb::v3_1_0::tools::point_conversion_internal</a></td></tr>
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename PositionArrayT , typename PointIndexGridT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a839bb9c17c26f7727114567ead9217aa">createPointDataGrid</a> (const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Localises <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> with position into a <code>PointDataGrid</code> into two stages: allocation of the leaf attribute data and population of the positions.  <a href="#a839bb9c17c26f7727114567ead9217aa"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a42e43f5ba8a0992804608efc337c4e75">createPointDataGrid</a> (const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform, Metadata::Ptr positionDefaultValue=Metadata::Ptr())</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Localises <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> with position into a <code>PointDataGrid</code> into two stages: allocation of the leaf attribute data and population of the positions.  <a href="#a42e43f5ba8a0992804608efc337c4e75"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename ValueT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#ad96d74d3ca4a354ef49f115a6cdd160c">createPointDataGrid</a> (const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convenience method to create a <code>PointDataGrid</code> from a std::vector of point positions.  <a href="#ad96d74d3ca4a354ef49f115a6cdd160c"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a81bf86c1de84b21ec5a43775026c22f9">createPointDataGrid</a> (const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform, Metadata::Ptr positionDefaultValue=Metadata::Ptr())</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convenience method to create a <code>PointDataGrid</code> from a std::vector of point positions.  <a href="#a81bf86c1de84b21ec5a43775026c22f9"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT , typename PointIndexTreeT , typename PointArrayT &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a77eb403529730a7c910c96b7b60d11f0">populateAttribute</a> (PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, const openvdb::Name &amp;attributeName, const PointArrayT &amp;data)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stores point attribute data in an existing <code>PointDataGrid</code> attribute.  <a href="#a77eb403529730a7c910c96b7b60d11f0"></a><br/></td></tr>
@@ -62,7 +61,7 @@
 <p>Convert existing points and attributes into VDB Point Data grids and attributes. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Dan Bailey </dd></dl>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

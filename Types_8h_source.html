@@ -25,7 +25,7 @@
   </div>
 <h1>Types.h</h1><a href="Types_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
 <a name="l00002"></a>00002 <span class="comment">//</span>
-<a name="l00003"></a>00003 <span class="comment">// Copyright (c) 2015 Double Negative Visual Effects</span>
+<a name="l00003"></a>00003 <span class="comment">// Copyright (c) 2015-2016 Double Negative Visual Effects</span>
 <a name="l00004"></a>00004 <span class="comment">//</span>
 <a name="l00005"></a>00005 <span class="comment">// All rights reserved. This software is distributed under the</span>
 <a name="l00006"></a>00006 <span class="comment">// Mozilla Public License 2.0 ( http://www.mozilla.org/MPL/2.0/ )</span>
@@ -67,24 +67,27 @@
 <a name="l00043"></a>00043 <span class="comment">// add some extra typeNameAsString specializations</span>
 <a name="l00044"></a>00044 
 <a name="l00045"></a>00045 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a47acbb9b326109970db91ed568e12c5e">typeNameAsString&lt;half&gt;</a>()                   { <span class="keywordflow">return</span> <span class="stringliteral">&quot;half&quot;</span>; }
-<a name="l00046"></a>00046 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#abc582d35c5167758212c24ee7b1f13f9">typeNameAsString&lt;int16_t&gt;</a>()                { <span class="keywordflow">return</span> <span class="stringliteral">&quot;int16&quot;</span>; }
-<a name="l00047"></a>00047 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* typeNameAsString&lt;math::Vec3&lt;half&gt; &gt;()      { <span class="keywordflow">return</span> <span class="stringliteral">&quot;vec3h&quot;</span>; }
-<a name="l00048"></a>00048 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* typeNameAsString&lt;math::Vec3&lt;uint8_t&gt; &gt;()   { <span class="keywordflow">return</span> <span class="stringliteral">&quot;vec3u8&quot;</span>; }
-<a name="l00049"></a>00049 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* typeNameAsString&lt;math::Vec3&lt;uint16_t&gt; &gt;()  { <span class="keywordflow">return</span> <span class="stringliteral">&quot;vec3u16&quot;</span>; }
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 
+<a name="l00046"></a>00046 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#a88abf8b6e0f10b063e7aeb2dcc9e85c6">typeNameAsString&lt;uint8_t&gt;</a>()                { <span class="keywordflow">return</span> <span class="stringliteral">&quot;uint8&quot;</span>; }
+<a name="l00047"></a>00047 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#abc582d35c5167758212c24ee7b1f13f9">typeNameAsString&lt;int16_t&gt;</a>()                { <span class="keywordflow">return</span> <span class="stringliteral">&quot;int16&quot;</span>; }
+<a name="l00048"></a>00048 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceopenvdb_1_1v3__1__0.html#abfa4202af6c865c89ffb1c05142ca1c1">typeNameAsString&lt;uint16_t&gt;</a>()               { <span class="keywordflow">return</span> <span class="stringliteral">&quot;uint16&quot;</span>; }
+<a name="l00049"></a>00049 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* typeNameAsString&lt;math::Vec2&lt;half&gt; &gt;()      { <span class="keywordflow">return</span> <span class="stringliteral">&quot;vec2h&quot;</span>; }
+<a name="l00050"></a>00050 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* typeNameAsString&lt;math::Vec3&lt;half&gt; &gt;()      { <span class="keywordflow">return</span> <span class="stringliteral">&quot;vec3h&quot;</span>; }
+<a name="l00051"></a>00051 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* typeNameAsString&lt;math::Vec3&lt;uint8_t&gt; &gt;()   { <span class="keywordflow">return</span> <span class="stringliteral">&quot;vec3u8&quot;</span>; }
+<a name="l00052"></a>00052 <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* typeNameAsString&lt;math::Vec3&lt;uint16_t&gt; &gt;()  { <span class="keywordflow">return</span> <span class="stringliteral">&quot;vec3u16&quot;</span>; }
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 
-<a name="l00055"></a>00055 } <span class="comment">// namespace OPENVDB_VERSION_NAME</span>
-<a name="l00056"></a>00056 } <span class="comment">// namespace openvdb</span>
+<a name="l00056"></a>00056 
 <a name="l00057"></a>00057 
-<a name="l00058"></a>00058 <span class="preprocessor">#endif // OPENVDB_POINTS_TYPES_HAS_BEEN_INCLUDED</span>
-<a name="l00059"></a>00059 <span class="preprocessor"></span>
-<a name="l00060"></a>00060 <span class="comment">// Copyright (c) 2015 Double Negative Visual Effects</span>
-<a name="l00061"></a>00061 <span class="comment">// All rights reserved. This software is distributed under the</span>
-<a name="l00062"></a>00062 <span class="comment">// Mozilla Public License 2.0 ( http://www.mozilla.org/MPL/2.0/ )</span>
+<a name="l00058"></a>00058 } <span class="comment">// namespace OPENVDB_VERSION_NAME</span>
+<a name="l00059"></a>00059 } <span class="comment">// namespace openvdb</span>
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 <span class="preprocessor">#endif // OPENVDB_POINTS_TYPES_HAS_BEEN_INCLUDED</span>
+<a name="l00062"></a>00062 <span class="preprocessor"></span>
+<a name="l00063"></a>00063 <span class="comment">// Copyright (c) 2015-2016 Double Negative Visual Effects</span>
+<a name="l00064"></a>00064 <span class="comment">// All rights reserved. This software is distributed under the</span>
+<a name="l00065"></a>00065 <span class="comment">// Mozilla Public License 2.0 ( http://www.mozilla.org/MPL/2.0/ )</span>
 </pre></div></div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

@@ -41,6 +41,7 @@ Contents</a></h2>
 <span class="preprocessor">#include &lt;<a class="code" href="openvdb_8h.html">openvdb_points/openvdb.h</a>&gt;</span>
 <span class="preprocessor">#include &lt;<a class="code" href="PointDataGrid_8h.html" title="Attribute-owned data structure for points. Point attributes are stored in leaf nodes...">openvdb_points/tools/PointDataGrid.h</a>&gt;</span>
 <span class="preprocessor">#include &lt;<a class="code" href="PointConversion_8h.html" title="Convert existing points and attributes into VDB Point Data grids and attributes.">openvdb_points/tools/PointConversion.h</a>&gt;</span>
+<span class="preprocessor">#include &lt;<a class="code" href="PointCount_8h.html" title="Various point counting methods using a VDB Point Grid.">openvdb_points/tools/PointCount.h</a>&gt;</span>
 
 <span class="preprocessor">#include &lt;iostream&gt;</span>
 
@@ -74,9 +75,8 @@ Contents</a></h2>
     <span class="comment">// Output leaf nodes</span>
     std::cout &lt;&lt; <span class="stringliteral">&quot;Leaf Nodes: &quot;</span> &lt;&lt; pointDataGrid-&gt;tree().leafCount() &lt;&lt; std::endl;
 
-    <span class="comment">// Create an accessor and output point count</span>
-    PointDataAccessor&lt;PointDataTree&gt; accessor(pointDataGrid-&gt;tree());
-    std::cout &lt;&lt; <span class="stringliteral">&quot;Point Count: &quot;</span> &lt;&lt; accessor.totalPointCount() &lt;&lt; std::endl;
+    <span class="comment">// Output point count</span>
+    std::cout &lt;&lt; <span class="stringliteral">&quot;Point Count: &quot;</span> &lt;&lt; <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a39fca11561fd32e3d88462db7ae5a288" title="Total points in the PointDataTree.">pointCount</a>(pointDataGrid-&gt;tree()) &lt;&lt; std::endl;
 
     <span class="comment">// Create a VDB file object.</span>
     openvdb::io::File file(<span class="stringliteral">&quot;mygrids.vdb&quot;</span>);
@@ -106,6 +106,7 @@ Assemble a VDB Point Grid</a></h2>
 <div class="fragment"><pre class="fragment"><span class="preprocessor">#include &lt;openvdb/openvdb.h&gt;</span>
 <span class="preprocessor">#include &lt;<a class="code" href="openvdb_8h.html">openvdb_points/openvdb.h</a>&gt;</span>
 <span class="preprocessor">#include &lt;<a class="code" href="PointDataGrid_8h.html" title="Attribute-owned data structure for points. Point attributes are stored in leaf nodes...">openvdb_points/tools/PointDataGrid.h</a>&gt;</span>
+<span class="preprocessor">#include &lt;<a class="code" href="PointCount_8h.html" title="Various point counting methods using a VDB Point Grid.">openvdb_points/tools/PointCount.h</a>&gt;</span>
 
 <span class="preprocessor">#include &lt;iostream&gt;</span>
 
@@ -151,23 +152,22 @@ Assemble a VDB Point Grid</a></h2>
     }
 
     <span class="comment">// Retrieve a write-able attribute handle for position</span>
-    AttributeWriteHandle&lt;openvdb::Vec3f&gt;* attributeWriteHandle = leaf-&gt;attributeWriteHandle&lt;openvdb::Vec3f&gt;(<span class="stringliteral">&quot;P&quot;</span>);
+    AttributeWriteHandle&lt;openvdb::Vec3f&gt;::Ptr attributeWriteHandle =
+        AttributeWriteHandle&lt;openvdb::Vec3f&gt;::create(leaf-&gt;attributeArray(<span class="stringliteral">&quot;P&quot;</span>));
 
     <span class="comment">// Set the point positions to be at the center of each voxel (range is -0.5 -&gt; 0.5)</span>
     <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; totalPoints; i++) {
         attributeWriteHandle-&gt;set(i, openvdb::Vec3f(0.0, 0.0, 0.0));
     }
 
-    <span class="comment">// Create an accessor which has some useful utilities for retrieving point data</span>
-    PointDataAccessor&lt;PointDataTree&gt; accessor(grid-&gt;tree());
-
     <span class="comment">// Output the total number of points stored in our Point Grid</span>
-    std::cout &lt;&lt; <span class="stringliteral">&quot;Point Count: &quot;</span> &lt;&lt; accessor.totalPointCount() &lt;&lt; std::endl;
+    std::cout &lt;&lt; <span class="stringliteral">&quot;Point Count: &quot;</span> &lt;&lt; <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a39fca11561fd32e3d88462db7ae5a288" title="Total points in the PointDataTree.">pointCount</a>(grid-&gt;tree()) &lt;&lt; std::endl;
 
     std::cout &lt;&lt; <span class="stringliteral">&quot;Testing random access:&quot;</span> &lt;&lt; std::endl;
 
     <span class="comment">// Retrieve a read-only attribute handle for position</span>
-    AttributeHandle&lt;openvdb::Vec3f&gt;::Ptr attributeHandle = leaf-&gt;attributeHandle&lt;openvdb::Vec3f&gt;(<span class="stringliteral">&quot;P&quot;</span>);
+    AttributeHandle&lt;openvdb::Vec3f&gt;::Ptr attributeHandle =
+        AttributeHandle&lt;openvdb::Vec3f&gt;::create(leaf-&gt;attributeArray(<span class="stringliteral">&quot;P&quot;</span>));
 
     <span class="comment">// Create a co-ordinate to perform the look-up and voxel position in index space</span>
     <span class="keyword">const</span> openvdb::Coord ijk(4, 0, 0);
@@ -176,13 +176,13 @@ Assemble a VDB Point Grid</a></h2>
     <span class="comment">// Retrieve the grid transform</span>
     <span class="keyword">const</span> openvdb::math::Transform&amp; transform = grid-&gt;transform();
 
-    <span class="comment">// Create a PointDataIndex for accessing the co-ordinate (4, 0, 0)</span>
-    PointDataAccessor&lt;PointDataTree&gt;::PointDataIndex index = accessor.get(ijk);
+    <span class="comment">// Create an IndexIter for accessing the co-ordinate (4, 0, 0)</span>
+    IndexIter indexIter = leaf-&gt;beginIndex(ijk);
 
     <span class="comment">// Iterate over all the points in the (4, 0, 0) voxel</span>
-    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = index.first; i &lt; index.second; i++) {
+    <span class="keywordflow">for</span> (; indexIter; ++indexIter) {
         <span class="comment">// Retrieve point position in voxel space</span>
-        <span class="keyword">const</span> openvdb::Vec3f&amp; pointVoxelSpace = attributeHandle-&gt;get(i);
+        <span class="keyword">const</span> openvdb::Vec3f&amp; pointVoxelSpace = attributeHandle-&gt;get(*indexIter);
 
         <span class="comment">// Compute point position in index space</span>
         <span class="keyword">const</span> openvdb::Vec3f pointIndexSpace = pointVoxelSpace + voxelIndexSpace;
@@ -191,14 +191,15 @@ Assemble a VDB Point Grid</a></h2>
         <span class="keyword">const</span> openvdb::Vec3f pointWorldSpace = transform.indexToWorld(pointIndexSpace);
 
         <span class="comment">// Output the world space point position</span>
-        std::cout &lt;&lt; <span class="stringliteral">&quot;Point Position[&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span> &lt;&lt; pointWorldSpace &lt;&lt; std::endl;
+        std::cout &lt;&lt; <span class="stringliteral">&quot;Point Position[&quot;</span> &lt;&lt; *indexIter &lt;&lt; <span class="stringliteral">&quot;]: &quot;</span> &lt;&lt; pointWorldSpace &lt;&lt; std::endl;
     }
 
     std::cout &lt;&lt; <span class="stringliteral">&quot;Testing sequential access:&quot;</span> &lt;&lt; std::endl;
 
     <span class="comment">// Now iterate over all points within all leaves</span>
     <span class="keywordflow">for</span> (PointDataTree::LeafCIter iter = grid-&gt;tree().cbeginLeaf(); iter; ++iter) {
-        AttributeHandle&lt;openvdb::Vec3f&gt;::Ptr attributeHandle = iter-&gt;attributeHandle&lt;openvdb::Vec3f&gt;(<span class="stringliteral">&quot;P&quot;</span>);
+        AttributeHandle&lt;openvdb::Vec3f&gt;::Ptr attributeHandle =
+            AttributeHandle&lt;openvdb::Vec3f&gt;::create(iter-&gt;attributeArray(<span class="stringliteral">&quot;P&quot;</span>));
 
         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; totalPoints; i++) {
             <span class="comment">/*point position = */</span> attributeHandle-&gt;get(i);
@@ -219,7 +220,7 @@ Point Conversion</a></h2>
 <div class="fragment"><pre class="fragment"><span class="preprocessor">#include &lt;openvdb/openvdb.h&gt;</span>
 <span class="preprocessor">#include &lt;<a class="code" href="openvdb_8h.html">openvdb_points/openvdb.h</a>&gt;</span>
 <span class="preprocessor">#include &lt;<a class="code" href="PointDataGrid_8h.html" title="Attribute-owned data structure for points. Point attributes are stored in leaf nodes...">openvdb_points/tools/PointDataGrid.h</a>&gt;</span>
-<span class="preprocessor">#include &lt;<a class="code" href="PointAttribute_8h.html" title="Add attributes to a VDB Point Grid.">openvdb_points/tools/PointAttribute.h</a>&gt;</span>
+<span class="preprocessor">#include &lt;<a class="code" href="PointAttribute_8h.html" title="Point attribute manipulation in a VDB Point Grid.">openvdb_points/tools/PointAttribute.h</a>&gt;</span>
 <span class="preprocessor">#include &lt;<a class="code" href="PointConversion_8h.html" title="Convert existing points and attributes into VDB Point Data grids and attributes.">openvdb_points/tools/PointConversion.h</a>&gt;</span>
 
 <span class="preprocessor">#include &lt;iostream&gt;</span>
@@ -270,7 +271,7 @@ Point Conversion</a></h2>
     <span class="comment">// Add a new pscale attribute</span>
     AttributeSet::Util::NameAndType pscaleAttribute(<span class="stringliteral">&quot;pscale&quot;</span>, TypedAttributeArray&lt;float&gt;::attributeType());
 
-    <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6c159add727760312df3eb6d5bb60789" title="Appends a new attribute to the VDB tree.">appendAttribute</a>(pointDataGrid-&gt;tree(), pscaleAttribute);
+    <a class="code" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af5d605b7d5a3812a9ef7ef41783d769c" title="Appends a new attribute to the VDB tree.">appendAttribute</a>(pointDataGrid-&gt;tree(), pscaleAttribute);
 
     <span class="comment">// Create some point pscale values</span>
     std::vector&lt;float&gt; pscales;
@@ -288,7 +289,7 @@ Point Conversion</a></h2>
     std::cout &lt;&lt; <span class="stringliteral">&quot;Attributes: &quot;</span> &lt;&lt; iter-&gt;attributeSet().descriptor().size() &lt;&lt; std::endl;
 }
 </pre></div> </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

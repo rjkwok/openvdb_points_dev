@@ -41,7 +41,7 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">An immutable object that stores name, type and <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html" title="Ordered collection of uniquely-named attribute arrays.">AttributeSet</a> position for a constant collection of attribute arrays.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html">Util</a></td></tr>
 <tr><td colspan="2"><h2>Public Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#adf764cbdea00d65edcd07bb9953ad2b7a10c975a0295f37a44e3d73c532c76f12">INVALID_POS</a> =  boost::integer_traits&lt;size_t&gt;::const_max
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a06fc87d81c62e9abb8790b6e5713c55ba10c975a0295f37a44e3d73c532c76f12">INVALID_POS</a> =  boost::integer_traits&lt;size_t&gt;::const_max
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef boost::shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a3e8fbaec7a0172150382fa69b839b3ea">Ptr</a></td></tr>
@@ -61,6 +61,8 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a pointer to this attribute set's descriptor, which might be shared with other sets.  <a href="#addf24d244ff30a253f4a22a9a4552910"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aac782da1f912bceb5d8ad00c8dc892ac">size</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the number of attributes in this set.  <a href="#aac782da1f912bceb5d8ad00c8dc892ac"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a36260428aea7afffe4a7c73d99b720ab">size</a> (const uint16_t flag) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the number of attributes with this flag set.  <a href="#a36260428aea7afffe4a7c73d99b720ab"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#af5aca2ade65de662ce2bef5b16bf0152">memUsage</a> () const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the number of bytes of memory used by this attribute set.  <a href="#af5aca2ade65de662ce2bef5b16bf0152"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a8b062ecbfef73573d33bb11570a6f20d">find</a> (const std::string &amp;name) const </td></tr>
@@ -69,17 +71,22 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Replace the attribute array whose name is <em>name</em>.  <a href="#a0043bddc78870371084bd7deb503351b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a49d7c4fbbf0e1d7c62e6f527aeecf7f8">replace</a> (size_t pos, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a> &amp;)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Replace the attribute array stored at position <em>pos</em> in this container.  <a href="#a49d7c4fbbf0e1d7c62e6f527aeecf7f8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#aea04a30e74c8c4d5c990eddaada2ca0e">Util::GroupIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a6d7e9ba61aebd7c15a11107a4ab1fee6">groupIndex</a> (const Name &amp;groupName) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the group index from the name of the group.  <a href="#a6d7e9ba61aebd7c15a11107a4ab1fee6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#aea04a30e74c8c4d5c990eddaada2ca0e">Util::GroupIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a275c58ed2c1946b61d984c36d66d0244">groupIndex</a> (const size_t offset) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aa10f91a00cb29f5c3747d2553fd8ff4d">beginIndex</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create an iterator for iterating through point indices.  <a href="#aa10f91a00cb29f5c3747d2553fd8ff4d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a9502170df71d0fe7296f0555081a9dca">isShared</a> (size_t pos) const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return true if the attribute array stored at position <em>pos</em> is shared.  <a href="#a9502170df71d0fe7296f0555081a9dca"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#aa9ebf4573e0b22d8c6cad508f82d525b">makeUnique</a> (size_t pos)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">If the attribute array stored at position <em>pos</em> is shared, replace the array with a deep copy of itself that is not shared with anyone else.  <a href="#aa9ebf4573e0b22d8c6cad508f82d525b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a69c71d086afc2810440b402c0b230a2e">copyAttributeValues</a> (const Index n, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a> &amp;attributeSet, const Index source)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Copy attribute values for a target index <em>n</em> from another <em>attributeSet</em> for index <em>source</em>.  <a href="#a69c71d086afc2810440b402c0b230a2e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a87006391e03d9ea867b3949441f5aea6">appendAttribute</a> (const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">Util::NameAndType</a> &amp;attribute)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Append attribute <em>attribute</em> (simple method).  <a href="#a87006391e03d9ea867b3949441f5aea6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ac2b42f75fe3c4e02bb884537b03cc0bc">appendAttribute</a> (const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">Util::NameAndType</a> &amp;attribute, Metadata::Ptr defaultValue=Metadata::Ptr())</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Append attribute <em>attribute</em> (simple method).  <a href="#ac2b42f75fe3c4e02bb884537b03cc0bc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ab8a40bdbb839766f068b513206ae20af">appendAttribute</a> (const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">Util::NameAndType</a> &amp;attribute, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">DescriptorPtr</a> &amp;replacement)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ac20d86bc9e501995ca51c88e6e9e8f8d">dropAttributes</a> (const std::vector&lt; size_t &gt; &amp;pos)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a08e8b22dbd0f08ad38e5e154a8f79008">dropAttributes</a> (const std::vector&lt; size_t &gt; &amp;pos, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">DescriptorPtr</a> &amp;replacement)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a9f7e627f0a26f2c268bae9fac4999a91">reorderAttributes</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">DescriptorPtr</a> &amp;replacement)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a7651f1c8b253b7f8b99e5db739e4e397">renameAttributes</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">DescriptorPtr</a> &amp;replacement)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a8a43053947abc08a85ad9f53558ce19f">read</a> (std::istream &amp;)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Read the entire set from a stream.  <a href="#a8a43053947abc08a85ad9f53558ce19f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a117702c3c46e7e4c3d57266a83b1676b">write</a> (std::ostream &amp;) const </td></tr>
@@ -113,6 +120,10 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a reference to this attribute set's descriptor, which might be shared with other sets.  <a href="#a6699e5c2552279fd1a910f1fe9f55130"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ac1d42c8546b220a3f57456c53cdf4c5d">get</a> (size_t pos)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a reference to this attribute set's descriptor, which might be shared with other sets.  <a href="#ac1d42c8546b220a3f57456c53cdf4c5d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a4e6c9663620140a95f18927e8e19d8fa">groupOffset</a> (const Name &amp;groupName) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return the group offset from the name or index of the group A group attribute array is a single byte (8-bit), each bit of which can denote a group. The group offset is the position of the bit that denotes the requested group if all group attribute arrays in the set (and only attribute arrays marked as group) were to be laid out linearly according to their order in the set.  <a href="#a4e6c9663620140a95f18927e8e19d8fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#ac580bdabb5439678178b2748c0a30b86">groupOffset</a> (const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#aea04a30e74c8c4d5c990eddaada2ca0e">Util::GroupIndex</a> &amp;index) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a reference to this attribute set's descriptor, which might be shared with other sets.  <a href="#ac580bdabb5439678178b2748c0a30b86"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Ordered collection of uniquely-named attribute arrays. </p>
@@ -170,7 +181,7 @@
 </div>
 </div>
 <hr/><h2>Member Enumeration Documentation</h2>
-<a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::@1" ref="adf764cbdea00d65edcd07bb9953ad2b7" args="" -->
+<a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55b"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::@0" ref="a06fc87d81c62e9abb8790b6e5713c55b" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -181,7 +192,7 @@
 </div>
 <div class="memdoc">
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="adf764cbdea00d65edcd07bb9953ad2b7a10c975a0295f37a44e3d73c532c76f12"></a><!-- doxytag: member="INVALID_POS" ref="adf764cbdea00d65edcd07bb9953ad2b7a10c975a0295f37a44e3d73c532c76f12" args="" -->INVALID_POS</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55ba10c975a0295f37a44e3d73c532c76f12"></a><!-- doxytag: member="INVALID_POS" ref="a06fc87d81c62e9abb8790b6e5713c55ba10c975a0295f37a44e3d73c532c76f12" args="" -->INVALID_POS</em>&nbsp;</td><td>
 </td></tr>
 </table>
 </dd>
@@ -291,7 +302,7 @@
 
 </div>
 </div>
-<a class="anchor" id="a87006391e03d9ea867b3949441f5aea6"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::appendAttribute" ref="a87006391e03d9ea867b3949441f5aea6" args="(const Util::NameAndType &amp;attribute)" -->
+<a class="anchor" id="ac2b42f75fe3c4e02bb884537b03cc0bc"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::appendAttribute" ref="ac2b42f75fe3c4e02bb884537b03cc0bc" args="(const Util::NameAndType &amp;attribute, Metadata::Ptr defaultValue=Metadata::Ptr())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -299,39 +310,13 @@
           <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a> appendAttribute </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">Util::NameAndType</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>attribute</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Append attribute <em>attribute</em> (simple method). </p>
-
-</div>
-</div>
-<a class="anchor" id="a69c71d086afc2810440b402c0b230a2e"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::copyAttributeValues" ref="a69c71d086afc2810440b402c0b230a2e" args="(const Index n, const AttributeSet &amp;attributeSet, const Index source)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void copyAttributeValues </td>
-          <td>(</td>
-          <td class="paramtype">const Index&nbsp;</td>
-          <td class="paramname"> <em>n</em>, </td>
+          <td class="paramname"> <em>attribute</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>attributeSet</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Index&nbsp;</td>
-          <td class="paramname"> <em>source</em></td><td>&nbsp;</td>
+          <td class="paramtype">Metadata::Ptr&nbsp;</td>
+          <td class="paramname"> <em>defaultValue</em> = <code>Metadata::Ptr()</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -342,7 +327,26 @@
 </div>
 <div class="memdoc">
 
-<p>Copy attribute values for a target index <em>n</em> from another <em>attributeSet</em> for index <em>source</em>. </p>
+<p>Append attribute <em>attribute</em> (simple method). </p>
+
+</div>
+</div>
+<a class="anchor" id="aa10f91a00cb29f5c3747d2553fd8ff4d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::beginIndex" ref="aa10f91a00cb29f5c3747d2553fd8ff4d" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a> beginIndex </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Create an iterator for iterating through point indices. </p>
 
 </div>
 </div>
@@ -596,6 +600,86 @@
 
 </div>
 </div>
+<a class="anchor" id="a275c58ed2c1946b61d984c36d66d0244"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::groupIndex" ref="a275c58ed2c1946b61d984c36d66d0244" args="(const size_t offset) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#aea04a30e74c8c4d5c990eddaada2ca0e">Util::GroupIndex</a> groupIndex </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&nbsp;</td>
+          <td class="paramname"> <em>offset</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Return the group index from the offset of the group </p>
+<dl class="note"><dt><b>Note:</b></dt><dd>see offset description for <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a4e6c9663620140a95f18927e8e19d8fa" title="Return the group offset from the name or index of the group A group attribute array...">groupOffset()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6d7e9ba61aebd7c15a11107a4ab1fee6"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::groupIndex" ref="a6d7e9ba61aebd7c15a11107a4ab1fee6" args="(const Name &amp;groupName) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#aea04a30e74c8c4d5c990eddaada2ca0e">Util::GroupIndex</a> groupIndex </td>
+          <td>(</td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>groupName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the group index from the name of the group. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac580bdabb5439678178b2748c0a30b86"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::groupOffset" ref="ac580bdabb5439678178b2748c0a30b86" args="(const Util::GroupIndex &amp;index) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t groupOffset </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#aea04a30e74c8c4d5c990eddaada2ca0e">Util::GroupIndex</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>index</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return a reference to this attribute set's descriptor, which might be shared with other sets. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4e6c9663620140a95f18927e8e19d8fa"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::groupOffset" ref="a4e6c9663620140a95f18927e8e19d8fa" args="(const Name &amp;groupName) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t groupOffset </td>
+          <td>(</td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>groupName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the group offset from the name or index of the group A group attribute array is a single byte (8-bit), each bit of which can denote a group. The group offset is the position of the bit that denotes the requested group if all group attribute arrays in the set (and only attribute arrays marked as group) were to be laid out linearly according to their order in the set. </p>
+
+</div>
+</div>
 <a class="anchor" id="a9502170df71d0fe7296f0555081a9dca"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::isShared" ref="a9502170df71d0fe7296f0555081a9dca" args="(size_t pos) const " -->
 <div class="memitem">
 <div class="memproto">
@@ -752,6 +836,53 @@
 
 </div>
 </div>
+<a class="anchor" id="a7651f1c8b253b7f8b99e5db739e4e397"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::renameAttributes" ref="a7651f1c8b253b7f8b99e5db739e4e397" args="(const Descriptor &amp;expected, DescriptorPtr &amp;replacement)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renameAttributes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>expected</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">DescriptorPtr</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>replacement</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Re-name attributes in set to match a provided descriptor Replaces own descriptor with <em>replacement</em> </p>
+
+</div>
+</div>
+<a class="anchor" id="a9f7e627f0a26f2c268bae9fac4999a91"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::reorderAttributes" ref="a9f7e627f0a26f2c268bae9fac4999a91" args="(const DescriptorPtr &amp;replacement)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reorderAttributes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a52becd5d01c2d9d4bc6e42d79d0c0b75">DescriptorPtr</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>replacement</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Re order attribute set to match a provided descriptor Replaces own descriptor with <em>replacement</em> </p>
+
+</div>
+</div>
 <a class="anchor" id="a49d7c4fbbf0e1d7c62e6f527aeecf7f8"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::replace" ref="a49d7c4fbbf0e1d7c62e6f527aeecf7f8" args="(size_t pos, const AttributeArray::Ptr &amp;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -809,6 +940,26 @@
 
 <p>Replace the attribute array whose name is <em>name</em>. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The position of the updated attribute array or <code>INVALID_POS</code> if the given name does not exist or if the replacement failed because the new array type does not comply with the descriptor. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a36260428aea7afffe4a7c73d99b720ab"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeSet::size" ref="a36260428aea7afffe4a7c73d99b720ab" args="(const uint16_t flag) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t size </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&nbsp;</td>
+          <td class="paramname"> <em>flag</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the number of attributes with this flag set. </p>
 
 </div>
 </div>
@@ -895,7 +1046,7 @@
 <li><a class="el" href="AttributeSet_8h_source.html">AttributeSet.h</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

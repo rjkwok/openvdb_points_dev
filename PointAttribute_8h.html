@@ -26,16 +26,19 @@
 </div>
 <div class="contents">
 <h1>PointAttribute.h File Reference</h1>
-<p>Add attributes to a VDB Point Grid.  
+<p>Point attribute manipulation in a VDB Point Grid.  
 <a href="#_details">More...</a></p>
 <code>#include &lt;openvdb/openvdb.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="AttributeSet_8h_source.html">openvdb_points/tools/AttributeSet.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="AttributeGroup_8h_source.html">openvdb_points/tools/AttributeGroup.h</a>&gt;</code><br/>
 <code>#include &lt;<a class="el" href="PointDataGrid_8h_source.html">openvdb_points/tools/PointDataGrid.h</a>&gt;</code><br/>
 
 <p><a href="PointAttribute_8h_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1AppendAttributeOp.html">AppendAttributeOp&lt; PointDataTreeType &gt;</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1DropAttributesOp.html">DropAttributesOp&lt; PointDataTreeType &gt;</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1BloscCompressAttributesOp.html">BloscCompressAttributesOp&lt; PointDataTreeType &gt;</a></td></tr>
 <tr><td colspan="2"><h2>Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb.html">openvdb</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0.html">openvdb::v3_1_0</a></td></tr>
@@ -43,14 +46,35 @@
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal.html">openvdb::v3_1_0::tools::point_attribute_internal</a></td></tr>
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6c159add727760312df3eb6d5bb60789">appendAttribute</a> (PointDataTree &amp;tree, const AttributeSet::Util::NameAndType &amp;newAttribute)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Appends a new attribute to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6c159add727760312df3eb6d5bb60789"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af5d605b7d5a3812a9ef7ef41783d769c">appendAttribute</a> (PointDataTree &amp;tree, const AttributeSet::Util::NameAndType &amp;newAttribute, Metadata::Ptr defaultValue=Metadata::Ptr(), const bool hidden=false, const bool transient=false, const bool group=false)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Appends a new attribute to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#af5d605b7d5a3812a9ef7ef41783d769c"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#acc39d3e06615f1b1f12988391a438837">dropAttributes</a> (PointDataTree &amp;tree, const std::vector&lt; size_t &gt; &amp;indices)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drops attributes from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#acc39d3e06615f1b1f12988391a438837"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6d91e8f525daf24373b528c0d47463f8">dropAttributes</a> (PointDataTree &amp;tree, const std::vector&lt; Name &gt; &amp;names)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drops attributes from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6d91e8f525daf24373b528c0d47463f8"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3d95266ea85abe86beb9847550e8f83d">dropAttribute</a> (PointDataTree &amp;tree, const size_t &amp;index)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drop one attribute from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> (convenience method).  <a href="#a3d95266ea85abe86beb9847550e8f83d"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#ab2d5145d27c658154363cb0676dba0d8">dropAttribute</a> (PointDataTree &amp;tree, const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drop one attribute from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> (convenience method).  <a href="#ab2d5145d27c658154363cb0676dba0d8"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a032b0a25e0fe554b1487736beff1b409">renameAttributes</a> (PointDataTree &amp;tree, const std::vector&lt; Name &gt; &amp;oldNames, const std::vector&lt; Name &gt; &amp;newNames)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rename attributes in a VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a032b0a25e0fe554b1487736beff1b409"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a5bfd5d5df4f77611472904dc38b331db">renameAttribute</a> (PointDataTree &amp;tree, const Name &amp;oldName, const Name &amp;newName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rename an attribute in a VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a5bfd5d5df4f77611472904dc38b331db"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6ba7093e5fb93f0dc3a5eb9c393dcf60">bloscCompressAttribute</a> (PointDataTree &amp;tree, const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Apply Blosc compression to one attribute in the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6ba7093e5fb93f0dc3a5eb9c393dcf60"></a><br/></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>Add attributes to a VDB Point Grid. </p>
+<p>Point attribute manipulation in a VDB Point Grid. </p>
 <dl class="author"><dt><b>Author:</b></dt><dd>Dan Bailey </dd></dl>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

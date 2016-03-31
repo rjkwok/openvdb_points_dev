@@ -28,15 +28,16 @@
 <h1>AttributeArray.h File Reference</h1>
 <p>Attribute Array storage templated on type and compression codec.  
 <a href="#_details">More...</a></p>
-<code>#include &lt;openvdb/openvdb.h&gt;</code><br/>
 <code>#include &lt;<a class="el" href="Types_8h_source.html">openvdb_points/Types.h</a>&gt;</code><br/>
 <code>#include &lt;openvdb/math/QuantizedUnitVec.h&gt;</code><br/>
 <code>#include &lt;openvdb/util/Name.h&gt;</code><br/>
 <code>#include &lt;openvdb/util/logging.h&gt;</code><br/>
+<code>#include &lt;openvdb/io/io.h&gt;</code><br/>
+<code>#include &lt;openvdb/io/Compression.h&gt;</code><br/>
+<code>#include &lt;<a class="el" href="IndexIterator_8h_source.html">openvdb_points/tools/IndexIterator.h</a>&gt;</code><br/>
 <code>#include &lt;tbb/spin_mutex.h&gt;</code><br/>
 <code>#include &lt;tbb/atomic.h&gt;</code><br/>
 <code>#include &lt;boost/scoped_array.hpp&gt;</code><br/>
-<code>#include &lt;boost/integer_traits.hpp&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
 
 <p><a href="AttributeArray_8h_source.html">Go to the source code of this file.</a></p>
@@ -47,6 +48,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1UnitVecAttributeCodec.html">UnitVecAttributeCodec</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Base class for storing attribute data.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1FileInfo.html">FileInfo</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1AccessorBase.html">AccessorBase</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1Accessor.html">Accessor</a> base class for <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html" title="Base class for storing attribute data.">AttributeArray</a> storage where type is not available.  <a href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1AccessorBase.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1Accessor.html">Accessor&lt; T &gt;</a></td></tr>
@@ -59,6 +61,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb.html">openvdb</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0.html">openvdb::v3_1_0</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html">openvdb::v3_1_0::tools</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html">openvdb::v3_1_0::tools::attribute_compression</a></td></tr>
 <tr><td colspan="2"><h2>Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; Name, Name &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0.html#a3600fce7acc24c648a0f3516a62a9c41">NamePair</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef AttributeHandle&lt; float &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af486c571a88c79d59d3d0b813250c283">AttributeHandleROF</a></td></tr>
@@ -68,6 +71,20 @@
 <tr><td class="memItemLeft" align="right" valign="top">typedef AttributeWriteHandle<br class="typebreak"/>
 &lt; Vec3f &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a0e56cb511859ebca771ccaf4a2b8ce4d">AttributeHandleRWVec3f</a></td></tr>
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html#a0219d4d84666f665275afe2587e7dc4e">canCompress</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns true if compression is available.  <a href="#a0219d4d84666f665275afe2587e7dc4e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html#a5a60f251f03494c407bea52cc6694530">uncompressedSize</a> (const char *buffer)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves the uncompressed size of buffer when uncompressed.  <a href="#a5a60f251f03494c407bea52cc6694530"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html#aad510765fd23209390c2b7b235d9bf6a">compressedSize</a> (const char *buffer, const size_t typeSize, const int uncompressedBytes)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieves the compressed size of buffer when compressed.  <a href="#aad510765fd23209390c2b7b235d9bf6a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html#ae0e98dc4282992d44cb8bde4b2711113">compress</a> (char *buffer, const size_t typeSize, const int uncompressedBytes, int &amp;compressedBytes, const bool cleanup=false)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Compress and return the compressed buffer.  <a href="#ae0e98dc4282992d44cb8bde4b2711113"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html#a61ef05229f2df1eb69ab7c9225da98c9">compress</a> (const char *buffer, const size_t typeSize, const int uncompressedBytes, int &amp;compressedBytes)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Compress and return the compressed buffer.  <a href="#a61ef05229f2df1eb69ab7c9225da98c9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html#aa7b1cd3a24a0f754687d171e98fbf38e">decompress</a> (char *buffer, const int expectedBytes, const bool cleanup=false)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Decompress and return the uncompressed buffer.  <a href="#aa7b1cd3a24a0f754687d171e98fbf38e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html#a59bbe53fb29dea6ce5756fb9845a93e8">decompress</a> (const char *buffer, const int expectedBytes)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Decompress and return the uncompressed buffer.  <a href="#a59bbe53fb29dea6ce5756fb9845a93e8"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename IntegerT , typename FloatT &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">IntegerT&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#ad9c4f97975f150cc98792149422967c6">floatingPointToFixedPoint</a> (const FloatT s)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename FloatT , typename IntegerT &gt; </td></tr>
@@ -81,7 +98,7 @@
 <p>Attribute Array storage templated on type and compression codec. </p>
 <dl class="author"><dt><b>Authors:</b></dt><dd>Dan Bailey, Mihai Alden, Peter Cucka </dd></dl>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

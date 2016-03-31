@@ -43,7 +43,15 @@
 &lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a>&lt; T &gt; &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a1fdaf33b476570245988d5408ba30329">Ptr</a></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#ac383aab9ade7065766305251b5a4a059">AttributeWriteHandle</a> (<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;array)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a9706e6747a5480a8286a44bfdd4acf6f">expand</a> (bool fill=true)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">If this array is uniform, replace it with an array of length size().  <a href="#a9706e6747a5480a8286a44bfdd4acf6f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a5883ecc0c5ecdb7129b2dfbee64e4828">collapse</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Replace the existing array with a uniform value (zero if none provided).  <a href="#a5883ecc0c5ecdb7129b2dfbee64e4828"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#ab92df620e6f1ecab3feb55172152c191">collapse</a> (const T &amp;uniformValue)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#aeebf0c6711c49e12436612664f82e00d">fill</a> (const T &amp;value)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fill the existing array with the given value.  <a href="#aeebf0c6711c49e12436612664f82e00d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#afa1a0464e049c69ac506a42045a3d006">set</a> (Index n, const T &amp;value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a705e21d77478136e21caf58d24161639">isUniform</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">T&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a337c9f3641d05fc616904f8c64b221dd">get</a> (Index n) const </td></tr>
 <tr><td colspan="2"><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a1fdaf33b476570245988d5408ba30329">Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a2c22937f60a98d833efe22a0daaf9167">create</a> (<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;array)</td></tr>
@@ -51,10 +59,13 @@
 <tr><td colspan="2"><h2>Protected Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef T(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a15924b46eb68c80e329ca6614b518ac1">GetterPtr</a> )(const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *array, const Index n)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a085718967886a02de7bf1730122f0bd9">SetterPtr</a> )(<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *array, const Index n, const T &amp;value)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a100ced5278e7338a035b5195801fa668">ValuePtr</a> )(<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *array, const T &amp;value)</td></tr>
 <tr><td colspan="2"><h2>Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#ad6dd8af5b160b02a20396a94fdb30856">mArray</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a15924b46eb68c80e329ca6614b518ac1">GetterPtr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a3ee3b51a0cf17f0fae7a88f79d4a8014">mGetter</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a085718967886a02de7bf1730122f0bd9">SetterPtr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a313917b9c38a25d33f012e03cdf79c22">mSetter</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a100ced5278e7338a035b5195801fa668">ValuePtr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#ac104db5f1c92d1e750d3e680ada59909">mCollapser</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a100ced5278e7338a035b5195801fa668">ValuePtr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a800260fa48fc5cbab3c94065bee7731e">mFiller</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;typename T&gt;<br/>
@@ -103,6 +114,19 @@
 
 </div>
 </div>
+<a class="anchor" id="a100ced5278e7338a035b5195801fa668"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::ValuePtr" ref="a100ced5278e7338a035b5195801fa668" args=")(AttributeArray *array, const T &amp;value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a100ced5278e7338a035b5195801fa668">ValuePtr</a>)(<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> *array, const T &amp;value)<code> [protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac383aab9ade7065766305251b5a4a059"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::AttributeWriteHandle" ref="ac383aab9ade7065766305251b5a4a059" args="(AttributeArray &amp;array)" -->
 <div class="memitem">
@@ -123,6 +147,43 @@
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ab92df620e6f1ecab3feb55172152c191"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::collapse" ref="ab92df620e6f1ecab3feb55172152c191" args="(const T &amp;uniformValue)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void collapse </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&nbsp;</td>
+          <td class="paramname"> <em>uniformValue</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5883ecc0c5ecdb7129b2dfbee64e4828"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::collapse" ref="a5883ecc0c5ecdb7129b2dfbee64e4828" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void collapse </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Replace the existing array with a uniform value (zero if none provided). </p>
+
+</div>
+</div>
 <a class="anchor" id="a1a11e8b3092129b28c30cd7c1749b99c"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::create" ref="a1a11e8b3092129b28c30cd7c1749b99c" args="(const AttributeArray &amp;array, const bool preserveCompression=true)" -->
 <div class="memitem">
 <div class="memproto">
@@ -168,6 +229,53 @@
 
 </div>
 </div>
+<a class="anchor" id="a9706e6747a5480a8286a44bfdd4acf6f"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::expand" ref="a9706e6747a5480a8286a44bfdd4acf6f" args="(bool fill=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void expand </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>fill</em> = <code>true</code></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If this array is uniform, replace it with an array of length size(). </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fill</em>&nbsp;</td><td>if true, assign the uniform value to each element of the array. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aeebf0c6711c49e12436612664f82e00d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::fill" ref="aeebf0c6711c49e12436612664f82e00d" args="(const T &amp;value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fill </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&nbsp;</td>
+          <td class="paramname"> <em>value</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Fill the existing array with the given value. </p>
+<dl class="note"><dt><b>Note:</b></dt><dd>Identical to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a5883ecc0c5ecdb7129b2dfbee64e4828" title="Replace the existing array with a uniform value (zero if none provided).">collapse()</a> except a non-uniform array will not become uniform. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a337c9f3641d05fc616904f8c64b221dd"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::get" ref="a337c9f3641d05fc616904f8c64b221dd" args="(Index n) const " -->
 <div class="memitem">
 <div class="memproto">
@@ -177,6 +285,23 @@
           <td>(</td>
           <td class="paramtype">Index&nbsp;</td>
           <td class="paramname"> <em>n</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a705e21d77478136e21caf58d24161639"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::isUniform" ref="a705e21d77478136e21caf58d24161639" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isUniform </td>
+          <td>(</td>
+          <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td> const<code> [inline, inherited]</code></td>
         </tr>
@@ -227,6 +352,32 @@
 
 </div>
 </div>
+<a class="anchor" id="ac104db5f1c92d1e750d3e680ada59909"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::mCollapser" ref="ac104db5f1c92d1e750d3e680ada59909" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a100ced5278e7338a035b5195801fa668">ValuePtr</a> <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#ac104db5f1c92d1e750d3e680ada59909">mCollapser</a><code> [protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a800260fa48fc5cbab3c94065bee7731e"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::mFiller" ref="a800260fa48fc5cbab3c94065bee7731e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a100ced5278e7338a035b5195801fa668">ValuePtr</a> <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a800260fa48fc5cbab3c94065bee7731e">mFiller</a><code> [protected, inherited]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a3ee3b51a0cf17f0fae7a88f79d4a8014"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeWriteHandle::mGetter" ref="a3ee3b51a0cf17f0fae7a88f79d4a8014" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -257,7 +408,7 @@
 <li><a class="el" href="AttributeArray_8h_source.html">AttributeArray.h</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

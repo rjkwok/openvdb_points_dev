@@ -30,6 +30,7 @@
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&nbsp;Functions</span></a></li>
     </ul>
@@ -46,6 +47,7 @@
       <li><a href="functions_0x67.html#index_g"><span>g</span></a></li>
       <li><a href="functions_0x68.html#index_h"><span>h</span></a></li>
       <li><a href="functions_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_0x6a.html#index_j"><span>j</span></a></li>
       <li><a href="functions_0x6c.html#index_l"><span>l</span></a></li>
       <li><a href="functions_0x6d.html#index_m"><span>m</span></a></li>
       <li><a href="functions_0x6e.html#index_n"><span>n</span></a></li>
@@ -65,8 +67,10 @@
 Here is a list of all class members with links to the classes they belong to:
 
 <h3><a class="anchor" id="index_t">- t -</a></h3><ul>
-<li>totalPointCount()
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html#afaaa54bff27995903f73901ac1bf9ff1">PointDataAccessor&lt; TreeT &gt;</a>
+<li>test()
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html#a3dae0444f1af776a3ca20eed3e132c16">IndexIter</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html#a3dae0444f1af776a3ca20eed3e132c16">ValueIndexIter&lt; ValueIterT &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1FilterIndexIter.html#a3dae0444f1af776a3ca20eed3e132c16">FilterIndexIter&lt; IteratorT, FilterT &gt;</a>
 </li>
 <li>touchLeaf()
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a3583346ad104025531a3fa8afdcd89d3">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
@@ -75,10 +79,7 @@ Here is a list of all class members with links to the classes they belong to:
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#afd22f928b8e0db238bf0e60bac0b9d9c">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 </li>
 <li>TRANSIENT
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a06fc87d81c62e9abb8790b6e5713c55ba189628bd9c66ada3fb11593230091ad4">AttributeArray</a>
-</li>
-<li>tree()
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html#a86621db4d1f486e9590128ff8c87c5ed">PointDataAccessor&lt; TreeT &gt;</a>
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a3f3de3e0d751949b8d0b60ffb302944aa189628bd9c66ada3fb11593230091ad4">AttributeArray</a>
 </li>
 <li>tree::IteratorBase&lt; MaskDenseIterator, PointDataLeafNode &gt;
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1c9875e30637d70ccbd05f41cb1f9c27">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
@@ -89,28 +90,19 @@ Here is a list of all class members with links to the classes they belong to:
 <li>tree::IteratorBase&lt; MaskOnIterator, PointDataLeafNode &gt;
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ae9c20f55a76529e412eefbf020cbebd5">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 </li>
-<li>type
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal_1_1UniquePtr.html#a6e368a7fb23816e16795aa38b898cf2c">UniquePtr&lt; T &gt;</a>
-, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#a9859f14436184690d3e5ec37d989be5b">NameAndType</a>
+<li>type()
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#acb5330e5e1a7a69749e239506e856e59">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal_1_1UniquePtr.html#a6e368a7fb23816e16795aa38b898cf2c">UniquePtr&lt; T &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a48e247a545f56fd2abe6cd87ec4864ad">AttributeArray</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#acb5330e5e1a7a69749e239506e856e59">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a84eadffa60fb77303408d689fe76e8b0">Descriptor</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html#a9859f14436184690d3e5ec37d989be5b">NameAndType</a>
 </li>
 <li>TypedAttributeArray()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a8e9e2e5fbf0fbf4862131719958d68d3">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
-</li>
-<li>typedAttributeArray()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a9153295610cf64b5276dbc1605637c9a">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
-</li>
-<li>TypedAttributeArray()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a446d9fa4984404833dca9ddf229c7f90">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
-</li>
-<li>typedAttributeArray()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6f19336069a007450435fe926d9da669">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ae54b887f0b360d2a7edf1678e9acf9a3">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
 </li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

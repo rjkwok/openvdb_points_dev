@@ -46,6 +46,9 @@ Log2Dim &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr><td class="memItemLeft" align="right" valign="top">typedef tree::LeafNode&lt; T, <br class="typebreak"/>
 Log2Dim &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4a8b9dd08ea23f4e3d6b5ee7a8ad4b67">BaseLeaf</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef util::NodeMask&lt; Log2Dim &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a89539d1156e6ad8837ff948b2a2307ea">NodeMaskType</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ValueOn&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1266bc26608220282bcaad99c9964219">ValueOn</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ValueOff&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a2f93046fbb557896a03650d2bb92bccb">ValueOff</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ValueAll&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1a3035d659c23eeef5dfc6f292494092">ValueAll</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::template <br class="typebreak"/>
 ValueIter&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aa628d48b1fb44f64a69217a3c3f5f31b">MaskOnIterator</a>, <br class="typebreak"/>
 <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">PointDataLeafNode</a>, const <br class="typebreak"/>
@@ -91,6 +94,11 @@ DenseIter&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointData
 DenseIter&lt; const <br class="typebreak"/>
 <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">PointDataLeafNode</a>, const <br class="typebreak"/>
 <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a>, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4eaf633cc26bf43d0937eaea095427a9">ChildAll</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ac2f7781aeeef7e424707583c01097ee7">ChildAllCIter</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef openvdb::tools::IndexIter&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#abc94301695665dfefd6ba0c45eddf1bc">IndexIter</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">ValueIndexIter</a><br class="typebreak"/>
+&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7013a75d051ced6f4b808fb231d02ffd">ValueOnCIter</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aeabc7b211146f7fb55d02fdfdb43ecb6">IndexOnIter</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">ValueIndexIter</a><br class="typebreak"/>
+&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a0b3dd1aa77c7e413d0b7ea6fef6e37b9">ValueOffCIter</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a466be5f32518fb1811a73f3a8a21f4ba">IndexOffIter</a></td></tr>
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aa2136546411902ac28474a7d7bc41438">PointDataLeafNode</a> ()</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Default constructor.  <a href="#aa2136546411902ac28474a7d7bc41438"></a><br/></td></tr>
@@ -103,45 +111,58 @@ DenseIter&lt; const <br class="typebreak"/>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename OtherValueType &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#adb91f124f7d3256c4b894b7e24b7338c">PointDataLeafNode</a> (const tools::PointIndexLeafNode&lt; OtherValueType, Log2Dim &gt; &amp;other)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename ValueType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6b5031684530cafeb6c464c12ec530bf">PointDataLeafNode</a> (const tree::LeafNode&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a>, Log2Dim &gt; &amp;other, const T &amp;value, TopologyCopy)</td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#abd7d2c3a6d2b1fde5f10d1625ba0bf2d">PointDataLeafNode</a> (const tree::LeafNode&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a>, Log2Dim &gt; &amp;other, const T &amp;, TopologyCopy)</td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename ValueType &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ac621909d4ed78172882e0504892e2441">PointDataLeafNode</a> (const tree::LeafNode&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a>, Log2Dim &gt; &amp;other, const T &amp;, const T &amp;, TopologyCopy)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a45850f8f914376a3fd440315bd99077f">PointDataLeafNode</a> (PartialCreate, const Coord &amp;coords, const T &amp;value=zeroVal&lt; T &gt;(), bool active=false)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a5ac86e77f5b962d652f8a3ab93b57dee">attributeSet</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retrieve the attribute set.  <a href="#a5ac86e77f5b962d652f8a3ab93b57dee"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a5dd60761166110a03cba726ab7feeae1">initializeAttributes</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;descriptor, const size_t arrayLength)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a new attribute set. Any existing attributes will be cleared.  <a href="#a5dd60761166110a03cba726ab7feeae1"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aa243990c40a58b72a4541f8d8cf34921">clearAttributes</a> ()</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Free all attribute storage.  <a href="#aa243990c40a58b72a4541f8d8cf34921"></a><br/></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename TypedAttributeArrayType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4e898f2d3795c964720274921aecadc5">hasAttribute</a> (const size_t pos) const </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns whether an attribute exists. This method is faster than hasAttribute(const Name&amp;) as it avoids a map lookup.  <a href="#a4e898f2d3795c964720274921aecadc5"></a><br/></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename TypedAttributeArrayType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6c70f4d7b692fc2a5f47970231de9e1f">hasAttribute</a> (const Name &amp;attributeName) const </td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns whether an attribute exists.  <a href="#a6c70f4d7b692fc2a5f47970231de9e1f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#af5d6483211f704ae9bf431088c0c62d4">appendAttribute</a> (const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;attribute, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;replacement)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Append an attribute to the leaf.  <a href="#af5d6483211f704ae9bf431088c0c62d4"></a><br/></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename AttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a><br class="typebreak"/>
-&lt; AttributeType &gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a>&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a3d7c39b433c4139c7e79897806b766c2">attributeWriteHandle</a> (const size_t pos)</td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename AttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a><br class="typebreak"/>
-&lt; AttributeType &gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a>&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a0bceb080e87450c355cd8d2be188892b">attributeWriteHandle</a> (const Name &amp;attributeName)</td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename AttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>&lt; AttributeType &gt;<br class="typebreak"/>
-::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a>&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a60a8b7fd67bcc7f9ca0f0792d5a46321">attributeHandle</a> (const size_t pos) const </td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename AttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>&lt; AttributeType &gt;<br class="typebreak"/>
-::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a>&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#abbaf5f39e4bec345eacf5f7c4929593a">attributeHandle</a> (const Name &amp;attributeName) const </td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename TypedAttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">TypedAttributeType &amp;&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a9153295610cf64b5276dbc1605637c9a">typedAttributeArray</a> (const size_t pos)</td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename TypedAttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">TypedAttributeType &amp;&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a0f297d74daa2749fa454c1cbd49de630">typedAttributeArray</a> (const Name &amp;attributeName)</td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename TypedAttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">const TypedAttributeType &amp;&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#acec0849d4207e74dfc6dcf28bf7034ea">typedAttributeArray</a> (const size_t pos) const </td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename TypedAttributeType &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">const TypedAttributeType &amp;&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6f19336069a007450435fe926d9da669">typedAttributeArray</a> (const Name &amp;attributeName) const </td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ac8f35c4321feb6be342b75f516f9200b">ValueTypePair</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a5e522864fdccf7ba31dee65091ff6170">pointIndex</a> (const unsigned index) const </td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a629ce0e5cb961c4c2cd404da8f231d42">pointCount</a> (const unsigned n) const </td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a10c382dbceb435fbe3a5ab3d9ce41123">pointCount</a> (const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__masks.html#aaa501fb7c72e3808cb8d8570097bd9c0">point_masks::PointCountMask</a> mask=point_masks::Active) const </td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a9b3705d3d28f71ef90c8760db6ff7e43">deactivateEmptyVoxels</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a new attribute set. Existing attributes will be removed.  <a href="#a5dd60761166110a03cba726ab7feeae1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4531fbcd151242b289297f29a8c9841e">clearAttributes</a> (const bool updateValueMask=true)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clear the attribute set.  <a href="#a4531fbcd151242b289297f29a8c9841e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4e898f2d3795c964720274921aecadc5">hasAttribute</a> (const size_t pos) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns <code>true</code> if an attribute with this index exists.  <a href="#a4e898f2d3795c964720274921aecadc5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6c70f4d7b692fc2a5f47970231de9e1f">hasAttribute</a> (const Name &amp;attributeName) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns <code>true</code> if an attribute with this name exists.  <a href="#a6c70f4d7b692fc2a5f47970231de9e1f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7153597686d510b21b231a5459e82524">appendAttribute</a> (const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;attribute, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;replacement)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Append an attribute to the leaf.  <a href="#a7153597686d510b21b231a5459e82524"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a87dddc2798e018b5994ed578749aef08">dropAttributes</a> (const std::vector&lt; size_t &gt; &amp;pos, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;replacement)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drop list of attributes.  <a href="#a87dddc2798e018b5994ed578749aef08"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a97233fbe0a5d0b2eb785e962be5bec1f">reorderAttributes</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;replacement)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reorder attribute set.  <a href="#a97233fbe0a5d0b2eb785e962be5bec1f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a707a121e3ccedbdd46b0482ffb862970">renameAttributes</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;expected, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;replacement)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rename attributes in attribute set (order must remain the same).  <a href="#a707a121e3ccedbdd46b0482ffb862970"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a8f6958708d720c25463c0fc691362b99">swap</a> (<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a> *attributeSet)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Swap the underlying attribute set with the given <em>attributeSet</em>. This leaf will assume ownership of the given attribute set. The descriptors must match and the voxel offsets values will need updating if the point order is different.  <a href="#a8f6958708d720c25463c0fc691362b99"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a8feef8b903946e964ac3332f1a65ca8a">setOffsets</a> (const std::vector&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a> &gt; &amp;offsets, const bool updateValueMask=true)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets all of the voxel offset values on this leaf, from the given vector of <em>offsets</em>. If <em>updateValueMask</em> is true, then the active value mask will be updated so voxels with <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> are active and empty voxels are inactive.  <a href="#a8feef8b903946e964ac3332f1a65ca8a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a31e800e17e04eb97242df40b820e226d">validateOffsets</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Throws an error if the voxel values on this leaf are not monotonically increasing or within the bounds of the attribute arrays.  <a href="#a31e800e17e04eb97242df40b820e226d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4862f2770cf7e43578328ccd9f1b673d">attributeArray</a> (const size_t pos)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Read-write attribute array reference from index {.  <a href="#a4862f2770cf7e43578328ccd9f1b673d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a5d3d6564a0cd2580768e2f137312bdde">attributeArray</a> (const size_t pos) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a5eb1b5b18429bfdeb7497a0f84dd4240">constAttributeArray</a> (const size_t pos) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#add167d317fa497dbe8ef133a1755f68f">attributeArray</a> (const Name &amp;attributeName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Read-write attribute array reference from name {.  <a href="#add167d317fa497dbe8ef133a1755f68f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a14504249fbfef49d0999b52545ce35a4">attributeArray</a> (const Name &amp;attributeName) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aec5ec2698c1841b090ba70f210785cb1">constAttributeArray</a> (const Name &amp;attributeName) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupHandle.html">GroupHandle</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a91bd0e279aa11e254442149d2a27febd">groupHandle</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a61d8817ed614ab4e0b90d40b7aa2b467">AttributeSet::Descriptor::GroupIndex</a> &amp;index) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">}  <a href="#a91bd0e279aa11e254442149d2a27febd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupHandle.html">GroupHandle</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#af794990801cfbc3a556b758a889d2866">groupHandle</a> (const Name &amp;group) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Read-only group handle from group name.  <a href="#af794990801cfbc3a556b758a889d2866"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupWriteHandle.html">GroupWriteHandle</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a2eb180aa8c0e53b83e54480a4a730c16">groupWriteHandle</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a61d8817ed614ab4e0b90d40b7aa2b467">AttributeSet::Descriptor::GroupIndex</a> &amp;index)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Read-write group handle from group index.  <a href="#a2eb180aa8c0e53b83e54480a4a730c16"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupWriteHandle.html">GroupWriteHandle</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a12727ea48ba772400992144c03146428">groupWriteHandle</a> (const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Read-write group handle from group name.  <a href="#a12727ea48ba772400992144c03146428"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aeb7761026e139c8f780edf20cff6b433">pointCount</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Compute the total point count for the leaf.  <a href="#aeb7761026e139c8f780edf20cff6b433"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a725fea4848a967632f28f06848741692">onPointCount</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Compute the total active (on) point count for the leaf.  <a href="#a725fea4848a967632f28f06848741692"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1c454a811f5d88a6ff67e8195e7f5947">offPointCount</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Compute the total inactive (off) point count for the leaf.  <a href="#a1c454a811f5d88a6ff67e8195e7f5947"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a5c460f65247fddb0e13bf2a12b8911d9">updateValueMask</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activate voxels with non-zero <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>, deactivate voxels with zero <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>.  <a href="#a5c460f65247fddb0e13bf2a12b8911d9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a913b5cc4cfdeaf5bd27474e060f2df4d">setOffsetOn</a> (Index offset, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a> &amp;val)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a64f28428a2c721c25ae79d95a29b482e">setOffsetOnly</a> (Index offset, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a> &amp;val)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename OtherType , Index OtherLog2Dim&gt; </td></tr>
@@ -196,6 +217,13 @@ DenseIter&lt; const <br class="typebreak"/>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ad2be2e532f18c739ca1abe49bbab4a16">signedFloodFill</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a> &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a59b8e25d1d3fd49ece8c4a467a974617">signedFloodFill</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a> &amp;, const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a> &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#abcdb1512395327f8236a4f4a4d4ff648">negate</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a8f8637cde4cffab29b3368e24985c3b7">beginIndexAll</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Leaf index iterator.  <a href="#a8f8637cde4cffab29b3368e24985c3b7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">IndexOnIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6a5334d1ff654bd080d9f19111bafbef">beginIndexOn</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">IndexOffIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a8c1bc53f5b3c584e738ba7b0288fabc1">beginIndexOff</a> () const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a3c6de835b6a85b24fdd098434a088d5f">beginIndex</a> (const unsigned index) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Leaf index iterator from voxel.  <a href="#a3c6de835b6a85b24fdd098434a088d5f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7cd62e63c7a866d6a13e628a1df8e7d8">beginIndex</a> (const Coord &amp;ijk) const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7013a75d051ced6f4b808fb231d02ffd">ValueOnCIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ad554801c644ee82931281a11f801bf5c">cbeginValueOn</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7013a75d051ced6f4b808fb231d02ffd">ValueOnCIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a0f82a16370621f762a097f27122e51db">beginValueOn</a> () const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a8e732e0c1905aebf6096e0e488150744">ValueOnIter</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7b8568cb11eacfedf042fa1eda680a45">beginValueOn</a> ()</td></tr>
@@ -262,9 +290,6 @@ DenseIter&lt; const <br class="typebreak"/>
 <tr><td class="memTemplItemLeft" align="right" valign="top">const NodeT *&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a2fdcb680a73d0699c334b57ec841ea2f">probeConstNodeAndCache</a> (const Coord &amp;, AccessorT &amp;) const </td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Return a pointer to this node.  <a href="#a2fdcb680a73d0699c334b57ec841ea2f"></a><br/></td></tr>
 <tr><td colspan="2"><h2>Protected Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ValueOn&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1266bc26608220282bcaad99c9964219">ValueOn</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ValueOff&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a2f93046fbb557896a03650d2bb92bccb">ValueOff</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ValueAll&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1a3035d659c23eeef5dfc6f292494092">ValueAll</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ChildOn&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#adeee6036e73f9c170119734cd24fad39">ChildOn</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ChildOff&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a544e8c97a6ab7f2a22a5bb35a86b08f7">ChildOff</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef BaseLeaf::ChildAll&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4eaf633cc26bf43d0937eaea095427a9">ChildAll</a></td></tr>
@@ -438,6 +463,45 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
+<a class="anchor" id="abc94301695665dfefd6ba0c45eddf1bc"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::IndexIter" ref="abc94301695665dfefd6ba0c45eddf1bc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef openvdb::tools::IndexIter <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a466be5f32518fb1811a73f3a8a21f4ba"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::IndexOffIter" ref="a466be5f32518fb1811a73f3a8a21f4ba" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">ValueIndexIter</a>&lt;<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a0b3dd1aa77c7e413d0b7ea6fef6e37b9">ValueOffCIter</a>&gt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">IndexOffIter</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aeabc7b211146f7fb55d02fdfdb43ecb6"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::IndexOnIter" ref="aeabc7b211146f7fb55d02fdfdb43ecb6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">ValueIndexIter</a>&lt;<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7013a75d051ced6f4b808fb231d02ffd">ValueOnCIter</a>&gt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">IndexOnIter</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="abd366dc0a90563bd518961c9da0c3d38"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::LeafNodeType" ref="abd366dc0a90563bd518961c9da0c3d38" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -521,7 +585,7 @@ DenseIter&lt; const <br class="typebreak"/>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef BaseLeaf::ValueAll <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1a3035d659c23eeef5dfc6f292494092">ValueAll</a><code> [protected]</code></td>
+          <td class="memname">typedef BaseLeaf::ValueAll <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1a3035d659c23eeef5dfc6f292494092">ValueAll</a></td>
         </tr>
       </table>
 </div>
@@ -560,7 +624,7 @@ DenseIter&lt; const <br class="typebreak"/>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef BaseLeaf::ValueOff <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a2f93046fbb557896a03650d2bb92bccb">ValueOff</a><code> [protected]</code></td>
+          <td class="memname">typedef BaseLeaf::ValueOff <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a2f93046fbb557896a03650d2bb92bccb">ValueOff</a></td>
         </tr>
       </table>
 </div>
@@ -599,7 +663,7 @@ DenseIter&lt; const <br class="typebreak"/>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef BaseLeaf::ValueOn <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1266bc26608220282bcaad99c9964219">ValueOn</a><code> [protected]</code></td>
+          <td class="memname">typedef BaseLeaf::ValueOn <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a1266bc26608220282bcaad99c9964219">ValueOn</a></td>
         </tr>
       </table>
 </div>
@@ -809,7 +873,7 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="a6b5031684530cafeb6c464c12ec530bf"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::PointDataLeafNode" ref="a6b5031684530cafeb6c464c12ec530bf" args="(const tree::LeafNode&lt; ValueType, Log2Dim &gt; &amp;other, const T &amp;value, TopologyCopy)" -->
+<a class="anchor" id="abd7d2c3a6d2b1fde5f10d1625ba0bf2d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::PointDataLeafNode" ref="abd7d2c3a6d2b1fde5f10d1625ba0bf2d" args="(const tree::LeafNode&lt; ValueType, Log2Dim &gt; &amp;other, const T &amp;, TopologyCopy)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -823,7 +887,46 @@ DenseIter&lt; const <br class="typebreak"/>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const T &amp;&nbsp;</td>
-          <td class="paramname"> <em>value</em>, </td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TopologyCopy&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac621909d4ed78172882e0504892e2441"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::PointDataLeafNode" ref="ac621909d4ed78172882e0504892e2441" args="(const tree::LeafNode&lt; ValueType, Log2Dim &gt; &amp;other, const T &amp;, const T &amp;, TopologyCopy)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">PointDataLeafNode</a> </td>
+          <td>(</td>
+          <td class="paramtype">const tree::LeafNode&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a>, Log2Dim &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>other</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&nbsp;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -927,12 +1030,12 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="af5d6483211f704ae9bf431088c0c62d4"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::appendAttribute" ref="af5d6483211f704ae9bf431088c0c62d4" args="(const AttributeSet::Util::NameAndType &amp;attribute, const Descriptor &amp;expected, Descriptor::Ptr &amp;replacement)" -->
+<a class="anchor" id="a7153597686d510b21b231a5459e82524"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::appendAttribute" ref="a7153597686d510b21b231a5459e82524" args="(const AttributeSet::Util::NameAndType &amp;attribute, const Descriptor &amp;expected, Descriptor::Ptr &amp;replacement)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void appendAttribute </td>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray::Ptr</a> appendAttribute </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>attribute</em>, </td>
@@ -959,6 +1062,14 @@ DenseIter&lt; const <br class="typebreak"/>
 <div class="memdoc">
 
 <p>Append an attribute to the leaf. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>attribute</em>&nbsp;</td><td>Name and type of the attribute to append. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>expected</em>&nbsp;</td><td>Existing descriptor is expected to match this parameter. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>replacement</em>&nbsp;</td><td>New descriptor to replace the existing one. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -979,12 +1090,12 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="abbaf5f39e4bec345eacf5f7c4929593a"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeHandle" ref="abbaf5f39e4bec345eacf5f7c4929593a" args="(const Name &amp;attributeName) const " -->
+<a class="anchor" id="a14504249fbfef49d0999b52545ce35a4"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeArray" ref="a14504249fbfef49d0999b52545ce35a4" args="(const Name &amp;attributeName) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>&lt;AttributeType&gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a> attributeHandle </td>
+          <td class="memname">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp; attributeArray </td>
           <td>(</td>
           <td class="paramtype">const Name &amp;&nbsp;</td>
           <td class="paramname"> <em>attributeName</em></td>
@@ -997,12 +1108,33 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="a60a8b7fd67bcc7f9ca0f0792d5a46321"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeHandle" ref="a60a8b7fd67bcc7f9ca0f0792d5a46321" args="(const size_t pos) const " -->
+<a class="anchor" id="add167d317fa497dbe8ef133a1755f68f"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeArray" ref="add167d317fa497dbe8ef133a1755f68f" args="(const Name &amp;attributeName)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>&lt;AttributeType&gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a> attributeHandle </td>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp; attributeArray </td>
+          <td>(</td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>attributeName</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read-write attribute array reference from name {. </p>
+<p>} </p>
+
+</div>
+</div>
+<a class="anchor" id="a5d3d6564a0cd2580768e2f137312bdde"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeArray" ref="a5d3d6564a0cd2580768e2f137312bdde" args="(const size_t pos) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp; attributeArray </td>
           <td>(</td>
           <td class="paramtype">const size_t&nbsp;</td>
           <td class="paramname"> <em>pos</em></td>
@@ -1012,6 +1144,26 @@ DenseIter&lt; const <br class="typebreak"/>
       </table>
 </div>
 <div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4862f2770cf7e43578328ccd9f1b673d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeArray" ref="a4862f2770cf7e43578328ccd9f1b673d" args="(const size_t pos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp; attributeArray </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&nbsp;</td>
+          <td class="paramname"> <em>pos</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read-write attribute array reference from index {. </p>
 
 </div>
 </div>
@@ -1030,41 +1182,7 @@ DenseIter&lt; const <br class="typebreak"/>
 </div>
 <div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="a0bceb080e87450c355cd8d2be188892b"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeWriteHandle" ref="a0bceb080e87450c355cd8d2be188892b" args="(const Name &amp;attributeName)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a>&lt;AttributeType&gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a> attributeWriteHandle </td>
-          <td>(</td>
-          <td class="paramtype">const Name &amp;&nbsp;</td>
-          <td class="paramname"> <em>attributeName</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a3d7c39b433c4139c7e79897806b766c2"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::attributeWriteHandle" ref="a3d7c39b433c4139c7e79897806b766c2" args="(const size_t pos)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a>&lt;AttributeType&gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">Ptr</a> attributeWriteHandle </td>
-          <td>(</td>
-          <td class="paramtype">const size_t&nbsp;</td>
-          <td class="paramname"> <em>pos</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>Retrieve the attribute set. </p>
 
 </div>
 </div>
@@ -1159,6 +1277,97 @@ DenseIter&lt; const <br class="typebreak"/>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a5fc3502db883f651fe10935839f7545d">ChildOnCIter</a> beginChildOn </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7cd62e63c7a866d6a13e628a1df8e7d8"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::beginIndex" ref="a7cd62e63c7a866d6a13e628a1df8e7d8" args="(const Coord &amp;ijk) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a> beginIndex </td>
+          <td>(</td>
+          <td class="paramtype">const Coord &amp;&nbsp;</td>
+          <td class="paramname"> <em>ijk</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3c6de835b6a85b24fdd098434a088d5f"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::beginIndex" ref="a3c6de835b6a85b24fdd098434a088d5f" args="(const unsigned index) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a> beginIndex </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned&nbsp;</td>
+          <td class="paramname"> <em>index</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Leaf index iterator from voxel. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8f8637cde4cffab29b3368e24985c3b7"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::beginIndexAll" ref="a8f8637cde4cffab29b3368e24985c3b7" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a> beginIndexAll </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Leaf index iterator. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8c1bc53f5b3c584e738ba7b0288fabc1"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::beginIndexOff" ref="a8c1bc53f5b3c584e738ba7b0288fabc1" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">PointDataLeafNode</a>&lt; T, Log2Dim &gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">IndexOffIter</a> beginIndexOff </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6a5334d1ff654bd080d9f19111bafbef"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::beginIndexOn" ref="a6a5334d1ff654bd080d9f19111bafbef" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">PointDataLeafNode</a>&lt; T, Log2Dim &gt;::<a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">IndexOnIter</a> beginIndexOn </td>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
@@ -1476,14 +1685,15 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="aa243990c40a58b72a4541f8d8cf34921"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::clearAttributes" ref="aa243990c40a58b72a4541f8d8cf34921" args="()" -->
+<a class="anchor" id="a4531fbcd151242b289297f29a8c9841e"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::clearAttributes" ref="a4531fbcd151242b289297f29a8c9841e" args="(const bool updateValueMask=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void clearAttributes </td>
           <td>(</td>
-          <td class="paramname"></td>
+          <td class="paramtype">const bool&nbsp;</td>
+          <td class="paramname"> <em>updateValueMask</em> = <code>true</code></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -1491,7 +1701,7 @@ DenseIter&lt; const <br class="typebreak"/>
 </div>
 <div class="memdoc">
 
-<p>Free all attribute storage. </p>
+<p>Clear the attribute set. </p>
 
 </div>
 </div>
@@ -1522,20 +1732,82 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="a9b3705d3d28f71ef90c8760db6ff7e43"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::deactivateEmptyVoxels" ref="a9b3705d3d28f71ef90c8760db6ff7e43" args="()" -->
+<a class="anchor" id="aec5ec2698c1841b090ba70f210785cb1"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::constAttributeArray" ref="aec5ec2698c1841b090ba70f210785cb1" args="(const Name &amp;attributeName) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void deactivateEmptyVoxels </td>
+          <td class="memname">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp; constAttributeArray </td>
           <td>(</td>
-          <td class="paramname"></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>attributeName</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td> const<code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5eb1b5b18429bfdeb7497a0f84dd4240"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::constAttributeArray" ref="a5eb1b5b18429bfdeb7497a0f84dd4240" args="(const size_t pos) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html">AttributeArray</a> &amp; constAttributeArray </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&nbsp;</td>
+          <td class="paramname"> <em>pos</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a87dddc2798e018b5994ed578749aef08"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::dropAttributes" ref="a87dddc2798e018b5994ed578749aef08" args="(const std::vector&lt; size_t &gt; &amp;pos, const Descriptor &amp;expected, Descriptor::Ptr &amp;replacement)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropAttributes </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>expected</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>replacement</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drop list of attributes. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>vector of attribute indices to drop </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>expected</em>&nbsp;</td><td>Existing descriptor is expected to match this parameter. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>replacement</em>&nbsp;</td><td>New descriptor to replace the existing one. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1821,6 +2093,87 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
+<a class="anchor" id="af794990801cfbc3a556b758a889d2866"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::groupHandle" ref="af794990801cfbc3a556b758a889d2866" args="(const Name &amp;group) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupHandle.html">GroupHandle</a> groupHandle </td>
+          <td>(</td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>group</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read-only group handle from group name. </p>
+
+</div>
+</div>
+<a class="anchor" id="a91bd0e279aa11e254442149d2a27febd"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::groupHandle" ref="a91bd0e279aa11e254442149d2a27febd" args="(const AttributeSet::Descriptor::GroupIndex &amp;index) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupHandle.html">GroupHandle</a> groupHandle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a61d8817ed614ab4e0b90d40b7aa2b467">AttributeSet::Descriptor::GroupIndex</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>index</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>} </p>
+<p>Read-only group handle from group index </p>
+
+</div>
+</div>
+<a class="anchor" id="a12727ea48ba772400992144c03146428"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::groupWriteHandle" ref="a12727ea48ba772400992144c03146428" args="(const Name &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupWriteHandle.html">GroupWriteHandle</a> groupWriteHandle </td>
+          <td>(</td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read-write group handle from group name. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2eb180aa8c0e53b83e54480a4a730c16"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::groupWriteHandle" ref="a2eb180aa8c0e53b83e54480a4a730c16" args="(const AttributeSet::Descriptor::GroupIndex &amp;index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupWriteHandle.html">GroupWriteHandle</a> groupWriteHandle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a61d8817ed614ab4e0b90d40b7aa2b467">AttributeSet::Descriptor::GroupIndex</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>index</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read-write group handle from group index. </p>
+
+</div>
+</div>
 <a class="anchor" id="a6c70f4d7b692fc2a5f47970231de9e1f"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::hasAttribute" ref="a6c70f4d7b692fc2a5f47970231de9e1f" args="(const Name &amp;attributeName) const " -->
 <div class="memitem">
 <div class="memproto">
@@ -1837,7 +2190,7 @@ DenseIter&lt; const <br class="typebreak"/>
 </div>
 <div class="memdoc">
 
-<p>Returns whether an attribute exists. </p>
+<p>Returns <code>true</code> if an attribute with this name exists. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>attributeName</em>&nbsp;</td><td>Name of the attribute </td></tr>
@@ -1863,7 +2216,7 @@ DenseIter&lt; const <br class="typebreak"/>
 </div>
 <div class="memdoc">
 
-<p>Returns whether an attribute exists. This method is faster than hasAttribute(const Name&amp;) as it avoids a map lookup. </p>
+<p>Returns <code>true</code> if an attribute with this index exists. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>pos</em>&nbsp;</td><td>Index of the attribute </td></tr>
@@ -1918,7 +2271,7 @@ DenseIter&lt; const <br class="typebreak"/>
 </div>
 <div class="memdoc">
 
-<p>Create a new attribute set. Any existing attributes will be cleared. </p>
+<p>Create a new attribute set. Existing attributes will be removed. </p>
 
 </div>
 </div>
@@ -2070,6 +2423,44 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
+<a class="anchor" id="a1c454a811f5d88a6ff67e8195e7f5947"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::offPointCount" ref="a1c454a811f5d88a6ff67e8195e7f5947" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 offPointCount </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the total inactive (off) point count for the leaf. </p>
+
+</div>
+</div>
+<a class="anchor" id="a725fea4848a967632f28f06848741692"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::onPointCount" ref="a725fea4848a967632f28f06848741692" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 onPointCount </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the total active (on) point count for the leaf. </p>
+
+</div>
+</div>
 <a class="anchor" id="a6f9903a4fb21da3d86e2eb69b8837546"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::operator!=" ref="a6f9903a4fb21da3d86e2eb69b8837546" args="(const PointDataLeafNode &amp;other) const " -->
 <div class="memitem">
 <div class="memproto">
@@ -2107,15 +2498,14 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="a10c382dbceb435fbe3a5ab3d9ce41123"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::pointCount" ref="a10c382dbceb435fbe3a5ab3d9ce41123" args="(const point_masks::PointCountMask mask=point_masks::Active) const " -->
+<a class="anchor" id="aeb7761026e139c8f780edf20cff6b433"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::pointCount" ref="aeb7761026e139c8f780edf20cff6b433" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Index64 pointCount </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__masks.html#aaa501fb7c72e3808cb8d8570097bd9c0">point_masks::PointCountMask</a>&nbsp;</td>
-          <td class="paramname"> <em>mask</em> = <code>point_masks::Active</code></td>
+          <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td> const<code> [inline]</code></td>
         </tr>
@@ -2123,41 +2513,7 @@ DenseIter&lt; const <br class="typebreak"/>
 </div>
 <div class="memdoc">
 
-</div>
-</div>
-<a class="anchor" id="a629ce0e5cb961c4c2cd404da8f231d42"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::pointCount" ref="a629ce0e5cb961c4c2cd404da8f231d42" args="(const unsigned n) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Index64 pointCount </td>
-          <td>(</td>
-          <td class="paramtype">const unsigned&nbsp;</td>
-          <td class="paramname"> <em>n</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a5e522864fdccf7ba31dee65091ff6170"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::pointIndex" ref="a5e522864fdccf7ba31dee65091ff6170" args="(const unsigned index) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ac8f35c4321feb6be342b75f516f9200b">ValueTypePair</a> pointIndex </td>
-          <td>(</td>
-          <td class="paramtype">const unsigned&nbsp;</td>
-          <td class="paramname"> <em>index</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
+<p>Compute the total point count for the leaf. </p>
 
 </div>
 </div>
@@ -2453,6 +2809,68 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
+<a class="anchor" id="a707a121e3ccedbdd46b0482ffb862970"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::renameAttributes" ref="a707a121e3ccedbdd46b0482ffb862970" args="(const Descriptor &amp;expected, Descriptor::Ptr &amp;replacement)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renameAttributes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">Descriptor</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>expected</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>replacement</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Rename attributes in attribute set (order must remain the same). </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>expected</em>&nbsp;</td><td>Existing descriptor is expected to match this parameter. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>replacement</em>&nbsp;</td><td>New descriptor to replace the existing one. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a97233fbe0a5d0b2eb785e962be5bec1f"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::reorderAttributes" ref="a97233fbe0a5d0b2eb785e962be5bec1f" args="(const Descriptor::Ptr &amp;replacement)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reorderAttributes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor::Ptr</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>replacement</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reorder attribute set. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>replacement</em>&nbsp;</td><td>New descriptor to replace the existing one. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a2c47731038af98ea9445a6a40e47ba8c"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::resetBackground" ref="a2c47731038af98ea9445a6a40e47ba8c" args="(const ValueType &amp;, const ValueType &amp;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2618,6 +3036,35 @@ DenseIter&lt; const <br class="typebreak"/>
       </table>
 </div>
 <div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8feef8b903946e964ac3332f1a65ca8a"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::setOffsets" ref="a8feef8b903946e964ac3332f1a65ca8a" args="(const std::vector&lt; ValueType &gt; &amp;offsets, const bool updateValueMask=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setOffsets </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">ValueType</a> &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>offsets</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&nbsp;</td>
+          <td class="paramname"> <em>updateValueMask</em> = <code>true</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sets all of the voxel offset values on this leaf, from the given vector of <em>offsets</em>. If <em>updateValueMask</em> is true, then the active value mask will be updated so voxels with <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> are active and empty voxels are inactive. </p>
 
 </div>
 </div>
@@ -3027,6 +3474,26 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
+<a class="anchor" id="a8f6958708d720c25463c0fc691362b99"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::swap" ref="a8f6958708d720c25463c0fc691362b99" args="(AttributeSet *attributeSet)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void swap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a> *&nbsp;</td>
+          <td class="paramname"> <em>attributeSet</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Swap the underlying attribute set with the given <em>attributeSet</em>. This leaf will assume ownership of the given attribute set. The descriptors must match and the voxel offsets values will need updating if the point order is different. </p>
+
+</div>
+</div>
 <a class="anchor" id="a3583346ad104025531a3fa8afdcd89d3"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::touchLeaf" ref="a3583346ad104025531a3fa8afdcd89d3" args="(const Coord &amp;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -3076,51 +3543,14 @@ DenseIter&lt; const <br class="typebreak"/>
 
 </div>
 </div>
-<a class="anchor" id="a6f19336069a007450435fe926d9da669"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::typedAttributeArray" ref="a6f19336069a007450435fe926d9da669" args="(const Name &amp;attributeName) const " -->
+<a class="anchor" id="a5c460f65247fddb0e13bf2a12b8911d9"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::updateValueMask" ref="a5c460f65247fddb0e13bf2a12b8911d9" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const TypedAttributeType&amp; typedAttributeArray </td>
+          <td class="memname">void updateValueMask </td>
           <td>(</td>
-          <td class="paramtype">const Name &amp;&nbsp;</td>
-          <td class="paramname"> <em>attributeName</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="acec0849d4207e74dfc6dcf28bf7034ea"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::typedAttributeArray" ref="acec0849d4207e74dfc6dcf28bf7034ea" args="(const size_t pos) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const TypedAttributeType&amp; typedAttributeArray </td>
-          <td>(</td>
-          <td class="paramtype">const size_t&nbsp;</td>
-          <td class="paramname"> <em>pos</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a0f297d74daa2749fa454c1cbd49de630"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::typedAttributeArray" ref="a0f297d74daa2749fa454c1cbd49de630" args="(const Name &amp;attributeName)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TypedAttributeType&amp; typedAttributeArray </td>
-          <td>(</td>
-          <td class="paramtype">const Name &amp;&nbsp;</td>
-          <td class="paramname"> <em>attributeName</em></td>
+          <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -3128,23 +3558,26 @@ DenseIter&lt; const <br class="typebreak"/>
 </div>
 <div class="memdoc">
 
+<p>Activate voxels with non-zero <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>, deactivate voxels with zero <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>. </p>
+
 </div>
 </div>
-<a class="anchor" id="a9153295610cf64b5276dbc1605637c9a"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::typedAttributeArray" ref="a9153295610cf64b5276dbc1605637c9a" args="(const size_t pos)" -->
+<a class="anchor" id="a31e800e17e04eb97242df40b820e226d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataLeafNode::validateOffsets" ref="a31e800e17e04eb97242df40b820e226d" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TypedAttributeType&amp; typedAttributeArray </td>
+          <td class="memname">void validateOffsets </td>
           <td>(</td>
-          <td class="paramtype">const size_t&nbsp;</td>
-          <td class="paramname"> <em>pos</em></td>
+          <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td> const<code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Throws an error if the voxel values on this leaf are not monotonically increasing or within the bounds of the attribute arrays. </p>
 
 </div>
 </div>
@@ -3272,7 +3705,7 @@ DenseIter&lt; const <br class="typebreak"/>
 <li><a class="el" href="PointDataGrid_8h_source.html">PointDataGrid.h</a></li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

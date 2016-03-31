@@ -29,10 +29,12 @@
 <div class="contents">
 <h1>openvdb::v3_1_0::tools Namespace Reference</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1attribute__compression.html">attribute_compression</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal.html">point_attribute_internal</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal.html">point_conversion_internal</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__count__internal.html">point_count_internal</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__data__grid__internal.html">point_data_grid_internal</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__masks.html">point_masks</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal.html">point_group_internal</a></td></tr>
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1NullAttributeCodec.html">NullAttributeCodec</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1FixedPointAttributeCodec.html">FixedPointAttributeCodec</a></td></tr>
@@ -44,11 +46,25 @@
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Write-able version of <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupAttributeArray.html">GroupAttributeArray</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupHandle.html">GroupHandle</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupWriteHandle.html">GroupWriteHandle</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupFilter.html">GroupFilter</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Index filtering on group membership.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupFilter.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupFilterFromLeaf.html">GroupFilterFromLeaf</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html">AttributeSet</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ordered collection of uniquely-named attribute arrays.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A forward iterator over array indices.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">ValueIndexIter</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A forward iterator over array indices from a value iterator (such as ValueOnCIter).  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html#_details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1IndexIterTraits_3_01TreeT_00_01typename_01TreeT_1_1LeafNodeType_1_1ValueAllCIter_01_4.html">IndexIterTraits&lt; TreeT, typename TreeT::LeafNodeType::ValueAllCIter &gt;</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1IndexIterTraits_3_01TreeT_00_01typename_01TreeT_1_1LeafNodeType_1_1ValueOnCIter_01_4.html">IndexIterTraits&lt; TreeT, typename TreeT::LeafNodeType::ValueOnCIter &gt;</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1IndexIterTraits_3_01TreeT_00_01typename_01TreeT_1_1LeafNodeType_1_1ValueOffCIter_01_4.html">IndexIterTraits&lt; TreeT, typename TreeT::LeafNodeType::ValueOffCIter &gt;</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1FilterIndexIter.html">FilterIndexIter</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A forward iterator over array indices with filtering IteratorT can be either <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html" title="A forward iterator over array indices.">IndexIter</a> or <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html" title="A forward iterator over array indices from a value iterator (such as ValueOnCIter)...">ValueIndexIter</a> (or some custom index iterator) FilterT should be a struct or class with a valid() method than can be evaluated per index Here's a simple filter example that only accepts even indices:.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1FilterIndexIter.html#_details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeVector.html">PointAttributeVector</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Point-partitioner compatible STL vector attribute wrapper for convenience.  <a href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeVector.html#_details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html">PointDataAccessor</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">PointDataLeafNode</a></td></tr>
 <tr><td colspan="2"><h2>Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>&lt; float &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af486c571a88c79d59d3d0b813250c283">AttributeHandleROF</a></td></tr>
@@ -57,6 +73,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html">AttributeHandle</a>&lt; Vec3f &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a7e710c80aeff7cb324d17968721f7cc2">AttributeHandleROVec3f</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html">AttributeWriteHandle</a><br class="typebreak"/>
 &lt; Vec3f &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a0e56cb511859ebca771ccaf4a2b8ce4d">AttributeHandleRWVec3f</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef uint8_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2882df1ba1f7fa869986cd6faaaa624f">GroupType</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef tree::Tree<br class="typebreak"/>
 &lt; tree::RootNode<br class="typebreak"/>
 &lt; tree::InternalNode<br class="typebreak"/>
@@ -75,18 +92,94 @@
 <tr><td class="memTemplItemLeft" align="right" valign="top">IntegerVectorT&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a1b75c9c397b3c33655959d8649015da1">floatingPointToFixedPoint</a> (const math::Vec3&lt; FloatT &gt; &amp;v)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename FloatVectorT , typename IntegerT &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">FloatVectorT&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a79bf5cb194384168fc754a778421e42e">fixedPointToFloatingPoint</a> (const math::Vec3&lt; IntegerT &gt; &amp;v)</td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename IterT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af96a30b8ed10180abae43c57cd1bef46">iterCount</a> (const IterT &amp;iter)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Count up the number of times the iterator can iterate.  <a href="#af96a30b8ed10180abae43c57cd1bef46"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a1a060bf4585752348121ee4565e85034">iterCount</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1IndexIter.html">IndexIter</a> &amp;iter)</td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a8393641e3b51a94c997cb518371ec933">iterCount</a> (const <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1ValueIndexIter.html">ValueIndexIter</a>&lt; T &gt; &amp;iter)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6c159add727760312df3eb6d5bb60789">appendAttribute</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;newAttribute)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Appends a new attribute to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6c159add727760312df3eb6d5bb60789"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af5d605b7d5a3812a9ef7ef41783d769c">appendAttribute</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util_1_1NameAndType.html">AttributeSet::Util::NameAndType</a> &amp;newAttribute, Metadata::Ptr defaultValue=Metadata::Ptr(), const bool hidden=false, const bool transient=false, const bool group=false)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Appends a new attribute to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#af5d605b7d5a3812a9ef7ef41783d769c"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#acc39d3e06615f1b1f12988391a438837">dropAttributes</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const std::vector&lt; size_t &gt; &amp;indices)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drops attributes from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#acc39d3e06615f1b1f12988391a438837"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6d91e8f525daf24373b528c0d47463f8">dropAttributes</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const std::vector&lt; Name &gt; &amp;names)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drops attributes from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6d91e8f525daf24373b528c0d47463f8"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3d95266ea85abe86beb9847550e8f83d">dropAttribute</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const size_t &amp;index)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drop one attribute from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> (convenience method).  <a href="#a3d95266ea85abe86beb9847550e8f83d"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#ab2d5145d27c658154363cb0676dba0d8">dropAttribute</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drop one attribute from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> (convenience method).  <a href="#ab2d5145d27c658154363cb0676dba0d8"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a032b0a25e0fe554b1487736beff1b409">renameAttributes</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const std::vector&lt; Name &gt; &amp;oldNames, const std::vector&lt; Name &gt; &amp;newNames)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rename attributes in a VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a032b0a25e0fe554b1487736beff1b409"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a5bfd5d5df4f77611472904dc38b331db">renameAttribute</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const Name &amp;oldName, const Name &amp;newName)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Rename an attribute in a VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a5bfd5d5df4f77611472904dc38b331db"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6ba7093e5fb93f0dc3a5eb9c393dcf60">bloscCompressAttribute</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Apply Blosc compression to one attribute in the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6ba7093e5fb93f0dc3a5eb9c393dcf60"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename PositionArrayT , typename PointIndexGridT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a839bb9c17c26f7727114567ead9217aa">createPointDataGrid</a> (const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Localises <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> with position into a <code>PointDataGrid</code> into two stages: allocation of the leaf attribute data and population of the positions.  <a href="#a839bb9c17c26f7727114567ead9217aa"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a42e43f5ba8a0992804608efc337c4e75">createPointDataGrid</a> (const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform, Metadata::Ptr positionDefaultValue=Metadata::Ptr())</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Localises <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> with position into a <code>PointDataGrid</code> into two stages: allocation of the leaf attribute data and population of the positions.  <a href="#a42e43f5ba8a0992804608efc337c4e75"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename ValueT &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#ad96d74d3ca4a354ef49f115a6cdd160c">createPointDataGrid</a> (const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convenience method to create a <code>PointDataGrid</code> from a std::vector of point positions.  <a href="#ad96d74d3ca4a354ef49f115a6cdd160c"></a><br/></td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">PointDataGridT::Ptr&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a81bf86c1de84b21ec5a43775026c22f9">createPointDataGrid</a> (const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform, Metadata::Ptr positionDefaultValue=Metadata::Ptr())</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convenience method to create a <code>PointDataGrid</code> from a std::vector of point positions.  <a href="#a81bf86c1de84b21ec5a43775026c22f9"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT , typename PointIndexTreeT , typename PointArrayT &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a77eb403529730a7c910c96b7b60d11f0">populateAttribute</a> (PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, const openvdb::Name &amp;attributeName, const PointArrayT &amp;data)</td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stores point attribute data in an existing <code>PointDataGrid</code> attribute.  <a href="#a77eb403529730a7c910c96b7b60d11f0"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a39fca11561fd32e3d88462db7ae5a288">pointCount</a> (const PointDataTreeT &amp;tree)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the PointDataTree.  <a href="#a39fca11561fd32e3d88462db7ae5a288"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6e35bb87cea8e9b20e44f12743297dce">activePointCount</a> (const PointDataTreeT &amp;tree)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total active <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the PointDataTree.  <a href="#a6e35bb87cea8e9b20e44f12743297dce"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a386470d71b02b6e11a36768695edfbd7">inactivePointCount</a> (const PointDataTreeT &amp;tree)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total inactive <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the PointDataTree.  <a href="#a386470d71b02b6e11a36768695edfbd7"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a0aa263b4715b387e799736829a95a613">groupPointCount</a> (const PointDataTreeT &amp;tree, const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the group in the PointDataTree.  <a href="#a0aa263b4715b387e799736829a95a613"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a3bab2ef255b43a2637026706a8592c05">activeGroupPointCount</a> (const PointDataTreeT &amp;tree, const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total active <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the group in the PointDataTree.  <a href="#a3bab2ef255b43a2637026706a8592c05"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTreeT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Index64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a524c647b1057131e4aa6bf87cb62d43a">inactiveGroupPointCount</a> (const PointDataTreeT &amp;tree, const Name &amp;name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Total inactive <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the group in the PointDataTree.  <a href="#a524c647b1057131e4aa6bf87cb62d43a"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#af294ac509d15c874b5b5aa9228ea32c9">appendGroup</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const Name &amp;group)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Appends a new empty group to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#af294ac509d15c874b5b5aa9228ea32c9"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a6f831a1b6e3ba834ce8433e168011616">appendGroups</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const std::vector&lt; Name &gt; &amp;groups)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Appends new empty groups to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a6f831a1b6e3ba834ce8433e168011616"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a9507ab68ea26d694170c037d8ca6f2b4">dropGroup</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const Name &amp;group, const bool compact=true)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drops an existing group from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>.  <a href="#a9507ab68ea26d694170c037d8ca6f2b4"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#aa77f212487cdd98976f2cb42ffbee1eb">dropGroups</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const std::vector&lt; Name &gt; &amp;groups)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drops existing groups from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>, the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> is compacted after dropping.  <a href="#aa77f212487cdd98976f2cb42ffbee1eb"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#aed0e6e0ad57f2f8b0080f55951824435">dropGroups</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Drops all existing groups from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>, the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> is compacted after dropping.  <a href="#aed0e6e0ad57f2f8b0080f55951824435"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#afcee5112ac222e64630a51975bd96e49">compactGroups</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Compacts existing groups of a VDB Tree to use less memory if possible.  <a href="#afcee5112ac222e64630a51975bd96e49"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataTree , typename PointIndexTree &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a52ea24cdff2335254e1275d57a8ddb3b">setGroup</a> (<a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">PointDataTree</a> &amp;tree, const PointIndexTree &amp;indexTree, const std::vector&lt; bool &gt; &amp;membership, const Name &amp;group, const bool remove=false)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets group membership from a PointIndexTree-ordered vector.  <a href="#a52ea24cdff2335254e1275d57a8ddb3b"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#aabdf1016f971197c6b2f3ea373c84f1d">loadPoints</a> (PointDataGridT &amp;grid)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads all leaf node voxel data in the given grid.  <a href="#aabdf1016f971197c6b2f3ea373c84f1d"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT , typename MaskGridT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a01fd3411eadd8fc27bea52fe5173253d">loadPoints</a> (PointDataGridT &amp;grid, const MaskGridT &amp;mask)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Loads all leaf node voxel data in the given grid that overlap with mask grid leaf nodes.  <a href="#a01fd3411eadd8fc27bea52fe5173253d"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename PointDataGridT &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#ab827ba239b37567c98ed3c4238ae12fd">loadPoints</a> (PointDataGridT &amp;grid, const BBoxd &amp;bbox)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load the leaf node voxel data in the given grid that overlap with a world-space bounding box.  <a href="#ab827ba239b37567c98ed3c4238ae12fd"></a><br/></td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="af486c571a88c79d59d3d0b813250c283"></a><!-- doxytag: member="openvdb::v3_1_0::tools::AttributeHandleROF" ref="af486c571a88c79d59d3d0b813250c283" args="" -->
@@ -141,6 +234,19 @@
 
 </div>
 </div>
+<a class="anchor" id="a2882df1ba1f7fa869986cd6faaaa624f"></a><!-- doxytag: member="openvdb::v3_1_0::tools::GroupType" ref="a2882df1ba1f7fa869986cd6faaaa624f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2882df1ba1f7fa869986cd6faaaa624f">GroupType</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a70b7bd483936a2492586913c7307a82b"></a><!-- doxytag: member="openvdb::v3_1_0::tools::PointDataGrid" ref="a70b7bd483936a2492586913c7307a82b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -172,7 +278,69 @@
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a6c159add727760312df3eb6d5bb60789"></a><!-- doxytag: member="openvdb::v3_1_0::tools::appendAttribute" ref="a6c159add727760312df3eb6d5bb60789" args="(PointDataTree &amp;tree, const AttributeSet::Util::NameAndType &amp;newAttribute)" -->
+<a class="anchor" id="a3bab2ef255b43a2637026706a8592c05"></a><!-- doxytag: member="openvdb::v3_1_0::tools::activeGroupPointCount" ref="a3bab2ef255b43a2637026706a8592c05" args="(const PointDataTreeT &amp;tree, const Name &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 activeGroupPointCount </td>
+          <td>(</td>
+          <td class="paramtype">const PointDataTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Total active <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the group in the PointDataTree. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>PointDataTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>group name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6e35bb87cea8e9b20e44f12743297dce"></a><!-- doxytag: member="openvdb::v3_1_0::tools::activePointCount" ref="a6e35bb87cea8e9b20e44f12743297dce" args="(const PointDataTreeT &amp;tree)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 activePointCount </td>
+          <td>(</td>
+          <td class="paramtype">const PointDataTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Total active <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the PointDataTree. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>PointDataTree. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af5d605b7d5a3812a9ef7ef41783d769c"></a><!-- doxytag: member="openvdb::v3_1_0::tools::appendAttribute" ref="af5d605b7d5a3812a9ef7ef41783d769c" args="(PointDataTree &amp;tree, const AttributeSet::Util::NameAndType &amp;newAttribute, Metadata::Ptr defaultValue=Metadata::Ptr(), const bool hidden=false, const bool transient=false, const bool group=false)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -186,7 +354,31 @@
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const AttributeSet::Util::NameAndType &amp;&nbsp;</td>
-          <td class="paramname"> <em>newAttribute</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>newAttribute</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Metadata::Ptr&nbsp;</td>
+          <td class="paramname"> <em>defaultValue</em> = <code>Metadata::Ptr()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&nbsp;</td>
+          <td class="paramname"> <em>hidden</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&nbsp;</td>
+          <td class="paramname"> <em>transient</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&nbsp;</td>
+          <td class="paramname"> <em>group</em> = <code>false</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -202,13 +394,151 @@
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be appended to. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>newAttribute</em>&nbsp;</td><td>name and type for the new attribute. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>defaultValue</em>&nbsp;</td><td>metadata default attribute value </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hidden</em>&nbsp;</td><td>mark attribute as hidden </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>transient</em>&nbsp;</td><td>mark attribute as transient </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>group</em>&nbsp;</td><td>mark attribute as group </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="ad96d74d3ca4a354ef49f115a6cdd160c"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="ad96d74d3ca4a354ef49f115a6cdd160c" args="(const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)" -->
+<a class="anchor" id="af294ac509d15c874b5b5aa9228ea32c9"></a><!-- doxytag: member="openvdb::v3_1_0::tools::appendGroup" ref="af294ac509d15c874b5b5aa9228ea32c9" args="(PointDataTree &amp;tree, const Name &amp;group)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void appendGroup </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>group</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Appends a new empty group to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be appended to. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>group</em>&nbsp;</td><td>name of the new group. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6f831a1b6e3ba834ce8433e168011616"></a><!-- doxytag: member="openvdb::v3_1_0::tools::appendGroups" ref="a6f831a1b6e3ba834ce8433e168011616" args="(PointDataTree &amp;tree, const std::vector&lt; Name &gt; &amp;groups)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void appendGroups </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Name &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>groups</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Appends new empty groups to the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be appended to. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>groups</em>&nbsp;</td><td>names of the new groups. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6ba7093e5fb93f0dc3a5eb9c393dcf60"></a><!-- doxytag: member="openvdb::v3_1_0::tools::bloscCompressAttribute" ref="a6ba7093e5fb93f0dc3a5eb9c393dcf60" args="(PointDataTree &amp;tree, const Name &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bloscCompressAttribute </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Apply Blosc compression to one attribute in the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>name of the attribute to compress. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="afcee5112ac222e64630a51975bd96e49"></a><!-- doxytag: member="openvdb::v3_1_0::tools::compactGroups" ref="afcee5112ac222e64630a51975bd96e49" args="(PointDataTree &amp;tree)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void compactGroups </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compacts existing groups of a VDB Tree to use less memory if possible. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be compacted. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a81bf86c1de84b21ec5a43775026c22f9"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="a81bf86c1de84b21ec5a43775026c22f9" args="(const std::vector&lt; ValueT &gt; &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform, Metadata::Ptr positionDefaultValue=Metadata::Ptr())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -228,7 +558,13 @@
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const math::Transform &amp;&nbsp;</td>
-          <td class="paramname"> <em>xform</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>xform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Metadata::Ptr&nbsp;</td>
+          <td class="paramname"> <em>positionDefaultValue</em> = <code>Metadata::Ptr()</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -244,7 +580,8 @@
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>positions</em>&nbsp;</td><td>list of world space point positions. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>positionType</em>&nbsp;</td><td>the type of the position (includes compression info). </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>xform</em>&nbsp;</td><td>world to index space transform.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>xform</em>&nbsp;</td><td>world to index space transform. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>positionDefaultValue</em>&nbsp;</td><td>metadata default position value</td></tr>
   </table>
   </dd>
 </dl>
@@ -252,7 +589,7 @@
 
 </div>
 </div>
-<a class="anchor" id="a839bb9c17c26f7727114567ead9217aa"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="a839bb9c17c26f7727114567ead9217aa" args="(const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform)" -->
+<a class="anchor" id="a42e43f5ba8a0992804608efc337c4e75"></a><!-- doxytag: member="openvdb::v3_1_0::tools::createPointDataGrid" ref="a42e43f5ba8a0992804608efc337c4e75" args="(const PointIndexGridT &amp;pointIndexGrid, const PositionArrayT &amp;positions, const openvdb::NamePair &amp;positionType, const math::Transform &amp;xform, Metadata::Ptr positionDefaultValue=Metadata::Ptr())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -278,7 +615,13 @@
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const math::Transform &amp;&nbsp;</td>
-          <td class="paramname"> <em>xform</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>xform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Metadata::Ptr&nbsp;</td>
+          <td class="paramname"> <em>positionDefaultValue</em> = <code>Metadata::Ptr()</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -295,7 +638,8 @@
     <tr><td valign="top"></td><td valign="top"><em>pointIndexGrid</em>&nbsp;</td><td>a PointIndexGrid into the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a>. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>positions</em>&nbsp;</td><td>list of world space point positions. </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>positionType</em>&nbsp;</td><td>the type of the position (includes compression info). </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>xform</em>&nbsp;</td><td>world to index space transform.</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>xform</em>&nbsp;</td><td>world to index space transform. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>positionDefaultValue</em>&nbsp;</td><td>metadata default position value</td></tr>
   </table>
   </dd>
 </dl>
@@ -304,6 +648,255 @@
 The position data is populated separately to perform world space to voxel space conversion and apply quantisation.</dd>
 <dd>
 A <code>PointIndexGrid</code> to the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> must be supplied to perform this operation. Typically this is built implicitly by the PointDataGrid constructor. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab2d5145d27c658154363cb0676dba0d8"></a><!-- doxytag: member="openvdb::v3_1_0::tools::dropAttribute" ref="ab2d5145d27c658154363cb0676dba0d8" args="(PointDataTree &amp;tree, const Name &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropAttribute </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drop one attribute from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> (convenience method). </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be dropped from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>name of the attribute to drop. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3d95266ea85abe86beb9847550e8f83d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::dropAttribute" ref="a3d95266ea85abe86beb9847550e8f83d" args="(PointDataTree &amp;tree, const size_t &amp;index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropAttribute </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t &amp;&nbsp;</td>
+          <td class="paramname"> <em>index</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drop one attribute from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> (convenience method). </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be dropped from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>index</em>&nbsp;</td><td>index of the attribute to drop. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6d91e8f525daf24373b528c0d47463f8"></a><!-- doxytag: member="openvdb::v3_1_0::tools::dropAttributes" ref="a6d91e8f525daf24373b528c0d47463f8" args="(PointDataTree &amp;tree, const std::vector&lt; Name &gt; &amp;names)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropAttributes </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Name &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>names</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drops attributes from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be dropped from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>names</em>&nbsp;</td><td>names of the attributes to drop. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acc39d3e06615f1b1f12988391a438837"></a><!-- doxytag: member="openvdb::v3_1_0::tools::dropAttributes" ref="acc39d3e06615f1b1f12988391a438837" args="(PointDataTree &amp;tree, const std::vector&lt; size_t &gt; &amp;indices)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropAttributes </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>indices</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drops attributes from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be dropped from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indices</em>&nbsp;</td><td>indices of the attributes to drop. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9507ab68ea26d694170c037d8ca6f2b4"></a><!-- doxytag: member="openvdb::v3_1_0::tools::dropGroup" ref="a9507ab68ea26d694170c037d8ca6f2b4" args="(PointDataTree &amp;tree, const Name &amp;group, const bool compact=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropGroup </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&nbsp;</td>
+          <td class="paramname"> <em>compact</em> = <code>true</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drops an existing group from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be dropped from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>group</em>&nbsp;</td><td>name of the group. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>compact</em>&nbsp;</td><td>compact attributes if possible to reduce memory - if dropping more than one group, compacting once at the end will be faster </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aed0e6e0ad57f2f8b0080f55951824435"></a><!-- doxytag: member="openvdb::v3_1_0::tools::dropGroups" ref="aed0e6e0ad57f2f8b0080f55951824435" args="(PointDataTree &amp;tree)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropGroups </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drops all existing groups from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>, the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> is compacted after dropping. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be dropped from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa77f212487cdd98976f2cb42ffbee1eb"></a><!-- doxytag: member="openvdb::v3_1_0::tools::dropGroups" ref="aa77f212487cdd98976f2cb42ffbee1eb" args="(PointDataTree &amp;tree, const std::vector&lt; Name &gt; &amp;groups)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropGroups </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Name &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>groups</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Drops existing groups from the VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>, the <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a> is compacted after dropping. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree to be dropped from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>groups</em>&nbsp;</td><td>names of the groups. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -379,6 +972,293 @@ A <code>PointIndexGrid</code> to the <a class="el" href="namespaceopenvdb_1_1v3_
 
 </div>
 </div>
+<a class="anchor" id="a0aa263b4715b387e799736829a95a613"></a><!-- doxytag: member="openvdb::v3_1_0::tools::groupPointCount" ref="a0aa263b4715b387e799736829a95a613" args="(const PointDataTreeT &amp;tree, const Name &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 groupPointCount </td>
+          <td>(</td>
+          <td class="paramtype">const PointDataTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Total <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the group in the PointDataTree. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>PointDataTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>group name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a524c647b1057131e4aa6bf87cb62d43a"></a><!-- doxytag: member="openvdb::v3_1_0::tools::inactiveGroupPointCount" ref="a524c647b1057131e4aa6bf87cb62d43a" args="(const PointDataTreeT &amp;tree, const Name &amp;name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 inactiveGroupPointCount </td>
+          <td>(</td>
+          <td class="paramtype">const PointDataTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Total inactive <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the group in the PointDataTree. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>PointDataTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>group name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a386470d71b02b6e11a36768695edfbd7"></a><!-- doxytag: member="openvdb::v3_1_0::tools::inactivePointCount" ref="a386470d71b02b6e11a36768695edfbd7" args="(const PointDataTreeT &amp;tree)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 inactivePointCount </td>
+          <td>(</td>
+          <td class="paramtype">const PointDataTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Total inactive <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the PointDataTree. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>PointDataTree. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8393641e3b51a94c997cb518371ec933"></a><!-- doxytag: member="openvdb::v3_1_0::tools::iterCount" ref="a8393641e3b51a94c997cb518371ec933" args="(const ValueIndexIter&lt; T &gt; &amp;iter)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 openvdb::v3_1_0::tools::iterCount </td>
+          <td>(</td>
+          <td class="paramtype">const ValueIndexIter&lt; T &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>iter</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1a060bf4585752348121ee4565e85034"></a><!-- doxytag: member="openvdb::v3_1_0::tools::iterCount" ref="a1a060bf4585752348121ee4565e85034" args="(const IndexIter &amp;iter)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 openvdb::v3_1_0::tools::iterCount </td>
+          <td>(</td>
+          <td class="paramtype">const IndexIter &amp;&nbsp;</td>
+          <td class="paramname"> <em>iter</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af96a30b8ed10180abae43c57cd1bef46"></a><!-- doxytag: member="openvdb::v3_1_0::tools::iterCount" ref="af96a30b8ed10180abae43c57cd1bef46" args="(const IterT &amp;iter)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 iterCount </td>
+          <td>(</td>
+          <td class="paramtype">const IterT &amp;&nbsp;</td>
+          <td class="paramname"> <em>iter</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Count up the number of times the iterator can iterate. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>iter</em>&nbsp;</td><td>the iterator.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>counting by iteration only performed where a dynamic filter is in use, </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab827ba239b37567c98ed3c4238ae12fd"></a><!-- doxytag: member="openvdb::v3_1_0::tools::loadPoints" ref="ab827ba239b37567c98ed3c4238ae12fd" args="(PointDataGridT &amp;grid, const BBoxd &amp;bbox)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loadPoints </td>
+          <td>(</td>
+          <td class="paramtype">PointDataGridT &amp;&nbsp;</td>
+          <td class="paramname"> <em>grid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const BBoxd &amp;&nbsp;</td>
+          <td class="paramname"> <em>bbox</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Load the leaf node voxel data in the given grid that overlap with a world-space bounding box. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>grid</em>&nbsp;</td><td>the Grid to be loaded. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bbox</em>&nbsp;</td><td>the bbox to denote region of <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> to load</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>Does not clip to the bounding box, leaf nodes with any overlap will be loaded. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a01fd3411eadd8fc27bea52fe5173253d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::loadPoints" ref="a01fd3411eadd8fc27bea52fe5173253d" args="(PointDataGridT &amp;grid, const MaskGridT &amp;mask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loadPoints </td>
+          <td>(</td>
+          <td class="paramtype">PointDataGridT &amp;&nbsp;</td>
+          <td class="paramname"> <em>grid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const MaskGridT &amp;&nbsp;</td>
+          <td class="paramname"> <em>mask</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Loads all leaf node voxel data in the given grid that overlap with mask grid leaf nodes. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>grid</em>&nbsp;</td><td>the Grid to be loaded. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mask</em>&nbsp;</td><td>the mask to denote region of <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> to load </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aabdf1016f971197c6b2f3ea373c84f1d"></a><!-- doxytag: member="openvdb::v3_1_0::tools::loadPoints" ref="aabdf1016f971197c6b2f3ea373c84f1d" args="(PointDataGridT &amp;grid)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loadPoints </td>
+          <td>(</td>
+          <td class="paramtype">PointDataGridT &amp;&nbsp;</td>
+          <td class="paramname"> <em>grid</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Loads all leaf node voxel data in the given grid. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>grid</em>&nbsp;</td><td>the Grid to be loaded. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>This method wraps readNonresidentBuffers(). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a39fca11561fd32e3d88462db7ae5a288"></a><!-- doxytag: member="openvdb::v3_1_0::tools::pointCount" ref="a39fca11561fd32e3d88462db7ae5a288" args="(const PointDataTreeT &amp;tree)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Index64 pointCount </td>
+          <td>(</td>
+          <td class="paramtype">const PointDataTreeT &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Total <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> in the PointDataTree. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>PointDataTree. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a77eb403529730a7c910c96b7b60d11f0"></a><!-- doxytag: member="openvdb::v3_1_0::tools::populateAttribute" ref="a77eb403529730a7c910c96b7b60d11f0" args="(PointDataTreeT &amp;tree, const PointIndexTreeT &amp;pointIndexTree, const openvdb::Name &amp;attributeName, const PointArrayT &amp;data)" -->
 <div class="memitem">
 <div class="memproto">
@@ -430,8 +1310,155 @@ A <code>PointIndexGrid</code> to the <a class="el" href="namespaceopenvdb_1_1v3_
 
 </div>
 </div>
+<a class="anchor" id="a5bfd5d5df4f77611472904dc38b331db"></a><!-- doxytag: member="openvdb::v3_1_0::tools::renameAttribute" ref="a5bfd5d5df4f77611472904dc38b331db" args="(PointDataTree &amp;tree, const Name &amp;oldName, const Name &amp;newName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renameAttribute </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>oldName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>newName</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<div class="memdoc">
+
+<p>Rename an attribute in a VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>oldName</em>&nbsp;</td><td>the old attribute name to rename from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>newName</em>&nbsp;</td><td>the new attribute name to rename to.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>newName must not already exist and must not be a group attribute. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a032b0a25e0fe554b1487736beff1b409"></a><!-- doxytag: member="openvdb::v3_1_0::tools::renameAttributes" ref="a032b0a25e0fe554b1487736beff1b409" args="(PointDataTree &amp;tree, const std::vector&lt; Name &gt; &amp;oldNames, const std::vector&lt; Name &gt; &amp;newNames)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void renameAttributes </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Name &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>oldNames</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; Name &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>newNames</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Rename attributes in a VDB <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a>. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>oldNames</em>&nbsp;</td><td>a list of old attribute names to rename from. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>newNames</em>&nbsp;</td><td>a list of new attribute names to rename to.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="note"><dt><b>Note:</b></dt><dd>Number of oldNames must match the number of newNames.</dd>
+<dd>
+Duplicate names and renaming group attributes are not allowed. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a52ea24cdff2335254e1275d57a8ddb3b"></a><!-- doxytag: member="openvdb::v3_1_0::tools::setGroup" ref="a52ea24cdff2335254e1275d57a8ddb3b" args="(PointDataTree &amp;tree, const PointIndexTree &amp;indexTree, const std::vector&lt; bool &gt; &amp;membership, const Name &amp;group, const bool remove=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setGroup </td>
+          <td>(</td>
+          <td class="paramtype">PointDataTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>tree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PointIndexTree &amp;&nbsp;</td>
+          <td class="paramname"> <em>indexTree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; bool &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>membership</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Name &amp;&nbsp;</td>
+          <td class="paramname"> <em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&nbsp;</td>
+          <td class="paramname"> <em>remove</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sets group membership from a PointIndexTree-ordered vector. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tree.html">tree</a></em>&nbsp;</td><td>the PointDataTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>indexTree</em>&nbsp;</td><td>the PointIndexTree. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>membership</em>&nbsp;</td><td><code>true</code> if the point is in the group. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>group</em>&nbsp;</td><td>the name of the group. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>remove</em>&nbsp;</td><td>if <code>true</code> also perform removal of <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1points.html">points</a> from the group. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

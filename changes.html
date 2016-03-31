@@ -23,7 +23,90 @@
 <div class="contents">
 
 
-<h1><a class="anchor" id="changes">Release Notes </a></h1> <a name="v0_1_0_changes"></a> <dl class="user"><dt><b></b></dt><dd><b>Version 0.1.0</b> - October 1, 2015</dd></dl>
+<h1><a class="anchor" id="changes">Release Notes </a></h1> <a name="v0_2_0_changes"></a> <dl class="user"><dt><b></b></dt><dd><b>Version 0.2.0</b> - In Development</dd></dl>
+<dl class="user"><dt><b></b></dt><dd>Highlights:<ul>
+<li>Memory-efficient attribute groups and filtering using index iterators.</li>
+<li>Convenient and faster access to AttributeArrays using AttributeHandles.</li>
+<li>Improved compression and support for delayed loading optionally managed through a new Points Load SOP.</li>
+<li>Point conversion now handles default attribute values, Vec2s and groups from Houdini.</li>
+<li>Houdini viewport visualization improvements for more native integration.</li>
+<li>New Clarisse plug-in for OpenVDB Points that performs native ray-tracing or geometry scattering.</li>
+</ul>
+</dd></dl>
+<dl class="user"><dt><b></b></dt><dd>New features:<ul>
+<li>Added a method to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">openvdb::v3_1_0::tools::PointDataLeafNode</a> to drop attributes by index.</li>
+<li>Added the ability to reorder attributes.</li>
+<li>Added Metadata to the <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html">openvdb::v3_1_0::tools::AttributeSet::Descriptor</a> for storing global data.</li>
+<li>Added AttributeHandles to provide easy read and write access to attribute data without being required to know the Codec or storage type.</li>
+<li>Added an AttributeSet swap method for the <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">openvdb::v3_1_0::tools::PointDataLeafNode</a>.</li>
+<li>Added ability to explicitly set voxel offsets value on <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">openvdb::v3_1_0::tools::PointDataLeafNode</a>.</li>
+<li>Added a method to check if an AttributeArray has the specified value type.</li>
+<li>Added a fill method to AttributeArray that does not force the array to be uniform (unlike collapse).</li>
+<li>Added a unique name method to the Descriptor for a new attribute array.</li>
+<li>Appending an attribute to a <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">openvdb::v3_1_0::tools::PointDataLeafNode</a> now returns the created array.</li>
+<li>Added convenience methods to append, drop, count, rename and compress attributes in a <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">openvdb::v3_1_0::tools::PointDataTree</a>.</li>
+<li>Added the ability to specify hidden, transient or group when adding a new attribute.</li>
+<li>Added a GroupAttributeArray derived class for AttributeSet and Descriptor (a group being denoted by a single bit of an 8-bit attribute array).</li>
+<li>Added GroupHandles to provide easy read and write access to attribute groups and GroupFilters for attribute filtering.</li>
+<li>Introduced index iterators to provide consistent array, value and filtered iteration in the style of ValueOnCIter.</li>
+<li>Added ability to append, drop and compact groups in a <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">openvdb::v3_1_0::tools::PointDataTree</a>.</li>
+<li>Added an explicit const attribute array getter to <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">openvdb::v3_1_0::tools::PointDataLeafNode</a>.</li>
+<li>Added uniform value support in AttributeHandles.</li>
+<li>Introduced unsafe get/set/load methods for attribute data to avoid compression and in-core checks to improve performance of AttributeHandles.</li>
+<li>AttributeArray allocation now uses the private allocate method, previous allocate functionality now replaced by an expand method.</li>
+<li>Added support for attribute default values using Metadata in the Descriptor and extended the append and conversion methods.</li>
+</ul>
+</dd></dl>
+<dl class="user"><dt><b></b></dt><dd>Improvements:<ul>
+<li>Introduced continuous integration through Travis, code coverage through Codecov, notifications through Slack.</li>
+<li>Stricter compliance to compile-time warnings using various compilers.</li>
+<li>Introduced simple profiling tests to the unit tests as a reference.</li>
+<li>Overhaul of I/O to introduce efficient delayed-loading (note that this release is still Beta and not backwards-compatible).</li>
+<li>Blosc compression now uses size of data type for improved compression.</li>
+<li>Blosc compression enabled for all uncompressed attributes during I/O.</li>
+<li>Added new typedefs to be compatible with OpenVDB 3.2 changes.</li>
+</ul>
+</dd></dl>
+<dl class="user"><dt><b></b></dt><dd>Bug fixes:<ul>
+<li>New typeNameAsString specialization for uint16.</li>
+<li>Introduced the TopologyCopy constructor for <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">openvdb::v3_1_0::tools::PointDataLeafNode</a> to match those provided by OpenVDB Leaf nodes [Contributed by Rick Hankins].</li>
+<li>Added a missing Descriptor copy-constructor.</li>
+<li>Fixed a bug in Descriptor serialization to (correctly) prevent writing transient attribute metadata.</li>
+<li>Fixed a bug where an AttributeArray was copied on write despite being retrieved using a non-const getter.</li>
+<li>Fixed a rare floating-point bug during point position conversion.</li>
+</ul>
+</dd></dl>
+<dl class="user"><dt><b></b></dt><dd>API changes:<ul>
+<li>TypedAttributeArray::hasTypedAttribute&lt;T&gt;() method has been removed, this is now exclusively available in AttributeArray.</li>
+<li>Removed PointDataAccessor which has been replaced by the simpler, more convenient index iteration and explicit point counting methods.</li>
+</ul>
+</dd></dl>
+<dl class="user"><dt><b></b></dt><dd>Houdini:<ul>
+<li>Multi-thread the conversion from VDB Points back to Houdini points using OpenVDB Points SOP (previously only Houdini -&gt; VDB Points was threaded).</li>
+<li>Migrate GR Primitive over to being a SOP-style DSO and remove libopenvdb_points_houdini.</li>
+<li>Fixed a race condition threading bug in OpenVDB Points SOP.</li>
+<li>Extended OpenVDB Points SOP to convert Houdini group information, Vec2 and attribute default values when going to and from VDB Points.</li>
+<li>GR Primitive now draws wireframe leaf bounding boxes for out-of-core leaf nodes (to avoid implicit loading when using the viewport).</li>
+<li>OpenVDB Points SOP no longer expands uniform values on conversion to Houdini points.</li>
+<li>Blosc compression toggle added to OpenVDB Points SOP for conversion from Houdini points.</li>
+<li>Switched to single-replace menu for OpenVDB Points SOP to allow more flexible attribute picking (based on artist feedback).</li>
+<li>New OpenVDB Points Load SOP that can explicitly load all leaf node data when using delayed-loading with optional limit by bounding-box or mask.</li>
+<li>Modified MMB node output to use locale digit separators.</li>
+<li>GR Primitive now uses native point shader for viewport visualization and correctly uses a light color for dark backgrounds.</li>
+<li>GR Primitive respects point size and line width preference values in viewport visualization.</li>
+<li>16-bit half vectors used in viewport visualization to lower GPU memory.</li>
+<li>Introduced point decorations in the Houdini viewport for velocity, normals, marker and position through GR Primitive.</li>
+<li>Introduced a point decoration in the Houdini viewport for point numbers based on an id attribute using GR Primitive.</li>
+<li>Allow native cache overflowing in viewport visualization for GR Primitive [Suggested by Mark Alexander].</li>
+</ul>
+</dd></dl>
+<dl class="user"><dt><b></b></dt><dd>Clarisse:<ul>
+<li>New Isotropix Clarisse ray-tracing module introduced to provide native VDB point ray-tracing and geometry instancing.</li>
+<li>Added support for Clarisse scatterer.</li>
+<li>Updated Clarisse plug-in to work with API changes in R3+ and R4+.</li>
+</ul>
+</dd></dl>
+ <a name="v0_1_0_changes"></a> <dl class="user"><dt><b></b></dt><dd><b>Version 0.1.0</b> - October 1, 2015</dd></dl>
 <dl class="user"><dt><b></b></dt><dd>Core API:<ul>
 <li>AttributeArray and AttributeSet classes for storing and managing attribute data.</li>
 <li>Extended tree::LeafNode to hold attribute data as new <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html">openvdb::v3_1_0::tools::PointDataLeafNode</a> and introduced <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a2e5f0934cd92615fa5d0eb794233f4ed">openvdb::v3_1_0::tools::PointDataTree</a> and <a class="el" href="namespaceopenvdb_1_1v3__1__0_1_1tools.html#a70b7bd483936a2492586913c7307a82b">openvdb::v3_1_0::tools::PointDataGrid</a> specialisations.</li>
@@ -38,7 +121,7 @@
 </ul>
 </dd></dl>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

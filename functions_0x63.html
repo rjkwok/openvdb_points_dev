@@ -30,6 +30,7 @@
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&nbsp;Functions</span></a></li>
     </ul>
@@ -46,6 +47,7 @@
       <li><a href="functions_0x67.html#index_g"><span>g</span></a></li>
       <li><a href="functions_0x68.html#index_h"><span>h</span></a></li>
       <li><a href="functions_0x69.html#index_i"><span>i</span></a></li>
+      <li><a href="functions_0x6a.html#index_j"><span>j</span></a></li>
       <li><a href="functions_0x6c.html#index_l"><span>l</span></a></li>
       <li><a href="functions_0x6d.html#index_m"><span>m</span></a></li>
       <li><a href="functions_0x6e.html#index_n"><span>n</span></a></li>
@@ -65,6 +67,14 @@
 Here is a list of all class members with links to the classes they belong to:
 
 <h3><a class="anchor" id="index_c">- c -</a></h3><ul>
+<li>canCompactGroups()
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1GroupInfo.html#a558fcce8855d873ee7eaa6fd410c6a53">GroupInfo</a>
+</li>
+<li>cast()
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a5fd2992fad26856060da14f8fdfc367a">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupAttributeArray.html#ab2bc3b64fe9cc15263bea20e6da90f9f">GroupAttributeArray</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#aa72baa3a8f236f5824149b75bf7487e9">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+</li>
 <li>cbeginChildAll()
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#ae5c7824607dbdc3c1165e0b0daea8bcd">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 </li>
@@ -129,7 +139,10 @@ Here is a list of all class members with links to the classes they belong to:
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6b8d5e8f4be9b1fbd87ce6cf6ae9751d">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 </li>
 <li>clearAttributes()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aa243990c40a58b72a4541f8d8cf34921">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4531fbcd151242b289297f29a8c9841e">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+</li>
+<li>clearGroups()
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a105de53c0d93a5bd524572e6e32033c0">Descriptor</a>
 </li>
 <li>clearRegistry()
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#acf71679f2c3fee401465b443a08a77c0">AttributeArray</a>
@@ -141,13 +154,16 @@ Here is a list of all class members with links to the classes they belong to:
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a3674033ccd5711bc2281d5dbe99aa259">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
 </li>
 <li>collapse()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a5883ecc0c5ecdb7129b2dfbee64e4828">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#abb8df20a6f13bd5f8bcb24e9f295f0c2">AttributeArray</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#acdabd11c147a9143fdc351d9bb644425">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#abb8df20a6f13bd5f8bcb24e9f295f0c2">AttributeArray</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a5883ecc0c5ecdb7129b2dfbee64e4828">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a5883ecc0c5ecdb7129b2dfbee64e4828">AttributeWriteHandle&lt; T &gt;</a>
 </li>
 <li>compress()
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a4f5b2edc026d484e67845304799be94b">AttributeArray</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ad132cf882b2af545e4b6d6b1b26c66e7">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+</li>
+<li>constAttributeArray()
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aec5ec2698c1841b090ba70f210785cb1">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 </li>
 <li>ConstIterator
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5074a03082540df3fa1a2bfa7157212d">Descriptor</a>
@@ -161,24 +177,25 @@ Here is a list of all class members with links to the classes they belong to:
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#aae3ddd2f1a1982fb31cad9a6dec6b095">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#ae4c87cb568273bbe3bbab1551326419b">AttributeArray</a>
 </li>
-<li>copyAttributeValues()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a69c71d086afc2810440b402c0b230a2e">AttributeSet</a>
+<li>CopyGroupOp()
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1CopyGroupOp.html#aec34729f885d5cb2de2ebf87158f25ca">CopyGroupOp&lt; PointDataTreeType &gt;</a>
 </li>
 <li>copyUncompressed()
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a86824966a38377bbd5f117312c6da08f">AttributeArray</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ad4feb7f18710a4a2bcd337e60f2f2310">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
 </li>
 <li>create()
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aeb0172f18b842d7e7819c511f5fadec0">Descriptor</a>
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad06d033b636d93036f7cbb2903b34a6f">Descriptor</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a26ea4063f50ca352ac955f2457549b94">AttributeArray</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad06d033b636d93036f7cbb2903b34a6f">Descriptor</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a2c22937f60a98d833efe22a0daaf9167">AttributeWriteHandle&lt; T &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aeb0172f18b842d7e7819c511f5fadec0">Descriptor</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#aef0220fa623fdafc6d4c41568d6a03fe">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a2c22937f60a98d833efe22a0daaf9167">AttributeWriteHandle&lt; T &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a705d4d99fca06f5ef7c67608a99d9503">Descriptor</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a1a11e8b3092129b28c30cd7c1749b99c">AttributeHandle&lt; T &gt;</a>
 </li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

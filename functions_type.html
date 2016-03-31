@@ -30,6 +30,7 @@
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li class="current"><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
       <li><a href="functions_eval.html"><span>Enumerator</span></a></li>
       <li><a href="functions_rela.html"><span>Related&nbsp;Functions</span></a></li>
     </ul>
@@ -66,6 +67,9 @@
 <h3><a class="anchor" id="index_b">- b -</a></h3><ul>
 <li>BaseLeaf
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a4a8b9dd08ea23f4e3d6b5ee7a8ad4b67">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+</li>
+<li>BoolArray
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1SetGroupFromIndexOp.html#a92e56169a5b5c32cb05811977923005e">SetGroupFromIndexOp&lt; PointDataTree, PointIndexTree, Remove &gt;</a>
 </li>
 </ul>
 
@@ -115,6 +119,7 @@
 <h3><a class="anchor" id="index_d">- d -</a></h3><ul>
 <li>Descriptor
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a40051e5e6e10fdc4b7db3224246e3e21">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1GroupInfo.html#a40051e5e6e10fdc4b7db3224246e3e21">GroupInfo</a>
 </li>
 <li>DescriptorConstPtr
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#adb57bf7bb2aa8454a38fe9059e7a5591">AttributeSet</a>
@@ -129,6 +134,10 @@
 <li>FactoryMethod
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#a7ed5de63dbe82081c75d97e563b318da">AttributeArray</a>
 </li>
+<li>Filter
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__count__internal_1_1PointCountOp.html#a033d8c7a89dedb79395e62bf0c663df6">PointCountOp&lt; PointDataTreeT, ValueIterT, FilterFromLeafT &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupFilterFromLeaf.html#a1806b597c4f2aa25dc30d85b3582f059">GroupFilterFromLeaf</a>
+</li>
 </ul>
 
 
@@ -137,15 +146,48 @@
 : <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1Accessor.html#a15924b46eb68c80e329ca6614b518ac1">Accessor&lt; T &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a15924b46eb68c80e329ca6614b518ac1">AttributeHandle&lt; T &gt;</a>
 </li>
+<li>GroupIndex
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1CopyGroupOp.html#a504b5611ca539b91c4ffc39deddd122c">CopyGroupOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a61d8817ed614ab4e0b90d40b7aa2b467">Descriptor</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#aea04a30e74c8c4d5c990eddaada2ca0e">Util</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1GroupHandle.html#aea04a30e74c8c4d5c990eddaada2ca0e">GroupHandle</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1SetGroupFromIndexOp.html#a504b5611ca539b91c4ffc39deddd122c">SetGroupFromIndexOp&lt; PointDataTree, PointIndexTree, Remove &gt;</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_i">- i -</a></h3><ul>
 <li>IndexArray
 : <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1InitialiseAttributesOp.html#a602a4bda48bfd2be0329392d2d28caba">InitialiseAttributesOp&lt; PointDataTreeType, PointIndexTreeType &gt;</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7bd5b3a884338d784438f7af54936453">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
-, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#a602a4bda48bfd2be0329392d2d28caba">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#a602a4bda48bfd2be0329392d2d28caba">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a7bd5b3a884338d784438f7af54936453">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1SetGroupFromIndexOp.html#a602a4bda48bfd2be0329392d2d28caba">SetGroupFromIndexOp&lt; PointDataTree, PointIndexTree, Remove &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#a602a4bda48bfd2be0329392d2d28caba">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
+</li>
+<li>IndexIter
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#abc94301695665dfefd6ba0c45eddf1bc">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+</li>
+<li>IndexIterator
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__count__internal_1_1PointCountOp.html#a59add0ec276a2239a0189356e045b59a">PointCountOp&lt; PointDataTreeT, ValueIterT, FilterFromLeafT &gt;</a>
+</li>
+<li>IndexIteratorFromLeafT
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__count__internal_1_1PointCountOp.html#a97a6dfc9a2095f5f91be3d8b616666eb">PointCountOp&lt; PointDataTreeT, ValueIterT, FilterFromLeafT &gt;</a>
+</li>
+<li>IndexOffIter
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a466be5f32518fb1811a73f3a8a21f4ba">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+</li>
+<li>IndexOnIter
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#aeabc7b211146f7fb55d02fdfdb43ecb6">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+</li>
+<li>Indices
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1DropAttributesOp.html#aba5b36e4189ed4ddc4a500ec8c61fafd">DropAttributesOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1BloscCompressAttributesOp.html#aba5b36e4189ed4ddc4a500ec8c61fafd">BloscCompressAttributesOp&lt; PointDataTreeType &gt;</a>
+</li>
+<li>Iterator
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1IndexIterTraits_3_01TreeT_00_01typename_01TreeT_1_1LeafNodeType_1_1ValueOnCIter_01_4.html#a59a23fbaf70f0736c468b539b83f649d">IndexIterTraits&lt; TreeT, typename TreeT::LeafNodeType::ValueOnCIter &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1IndexIterTraits_3_01TreeT_00_01typename_01TreeT_1_1LeafNodeType_1_1ValueOffCIter_01_4.html#a963b280059114b5830bd2f856e882a41">IndexIterTraits&lt; TreeT, typename TreeT::LeafNodeType::ValueOffCIter &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1IndexIterTraits_3_01TreeT_00_01typename_01TreeT_1_1LeafNodeType_1_1ValueAllCIter_01_4.html#a7f50a6262d35fcff029940c59f40c0ae">IndexIterTraits&lt; TreeT, typename TreeT::LeafNodeType::ValueAllCIter &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__count__internal_1_1PointCountOp.html#af9607b329a0cf96490a6758b446c1433">PointCountOp&lt; PointDataTreeT, ValueIterT, FilterFromLeafT &gt;</a>
 </li>
 </ul>
 
@@ -153,21 +195,27 @@
 <h3><a class="anchor" id="index_l">- l -</a></h3><ul>
 <li>LeafManagerT
 : <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1AppendAttributeOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">AppendAttributeOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1DropAttributesOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">DropAttributesOp&lt; PointDataTreeType &gt;</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1InitialiseAttributesOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">InitialiseAttributesOp&lt; PointDataTreeType, PointIndexTreeType &gt;</a>
-, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1CopyGroupOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">CopyGroupOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1SetGroupFromIndexOp.html#a91e8abc34644d2bb59d2dda5a8b13508">SetGroupFromIndexOp&lt; PointDataTree, PointIndexTree, Remove &gt;</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
-</li>
-<li>LeafNode
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html#af68e5c6ff5392120e840127ad0edec6f">PointDataAccessor&lt; TreeT &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1BloscCompressAttributesOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">BloscCompressAttributesOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#ae6aa703f4c3023c8b767c7171dbb5db8">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__count__internal_1_1PointCountOp.html#a2e1c36f12af975c3472870defded4258">PointCountOp&lt; PointDataTreeT, ValueIterT, FilterFromLeafT &gt;</a>
 </li>
 <li>LeafNodeType
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#abd366dc0a90563bd518961c9da0c3d38">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 </li>
 <li>LeafRangeT
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#a1b51a745b28c34d79687d32edd7d2c10">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
-, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#a1b51a745b28c34d79687d32edd7d2c10">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1CopyGroupOp.html#a1b51a745b28c34d79687d32edd7d2c10">CopyGroupOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1SetGroupFromIndexOp.html#a1b51a745b28c34d79687d32edd7d2c10">SetGroupFromIndexOp&lt; PointDataTree, PointIndexTree, Remove &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1DropAttributesOp.html#a1b51a745b28c34d79687d32edd7d2c10">DropAttributesOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1BloscCompressAttributesOp.html#a1b51a745b28c34d79687d32edd7d2c10">BloscCompressAttributesOp&lt; PointDataTreeType &gt;</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1InitialiseAttributesOp.html#a1b51a745b28c34d79687d32edd7d2c10">InitialiseAttributesOp&lt; PointDataTreeType, PointIndexTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#a1b51a745b28c34d79687d32edd7d2c10">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1AppendAttributeOp.html#a1b51a745b28c34d79687d32edd7d2c10">AppendAttributeOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#a1b51a745b28c34d79687d32edd7d2c10">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
 </li>
 </ul>
 
@@ -189,13 +237,15 @@
 <li>NameAndType
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aff76c18c95660660e06a507fca910e9c">Descriptor</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1AppendAttributeOp.html#a6dd5547818ea60773468d352010abbfa">AppendAttributeOp&lt; PointDataTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1CopyGroupOp.html#a6dd5547818ea60773468d352010abbfa">CopyGroupOp&lt; PointDataTreeType &gt;</a>
 </li>
 <li>NameAndTypeVec
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad31c9da6c176081e3f2fff4014599df0">Descriptor</a>
-, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#a598e4509c7d4827bbdcafdfeb492fa09">Util</a>
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#a598e4509c7d4827bbdcafdfeb492fa09">Util</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ad31c9da6c176081e3f2fff4014599df0">Descriptor</a>
 </li>
 <li>NameToPosMap
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#ac077ee371814ca12ff6458ba632201f3">Descriptor</a>
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Util.html#ac077ee371814ca12ff6458ba632201f3">Util</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#a5e0e7ff5de42633c17d5a194c7952137">Descriptor</a>
 </li>
 <li>NodeMaskType
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a89539d1156e6ad8837ff948b2a2307ea">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
@@ -204,28 +254,23 @@
 
 
 <h3><a class="anchor" id="index_p">- p -</a></h3><ul>
-<li>PointDataIndex
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html#aacc5d1725bc60f12e420ae123e4529de">PointDataAccessor&lt; TreeT &gt;</a>
-</li>
-<li>PointDataLeafNode
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__attribute__internal_1_1AppendAttributeOp.html#ad7d2077c395e99a90f502629032c001d">AppendAttributeOp&lt; PointDataTreeType &gt;</a>
-</li>
 <li>PointIndexLeafNode
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#a2817840722a2a8681312ebbcf68fa29f">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1InitialiseAttributesOp.html#a2817840722a2a8681312ebbcf68fa29f">InitialiseAttributesOp&lt; PointDataTreeType, PointIndexTreeType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#a2817840722a2a8681312ebbcf68fa29f">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__group__internal_1_1SetGroupFromIndexOp.html#a563485c4cf550be8a4a07a05a78da42e">SetGroupFromIndexOp&lt; PointDataTree, PointIndexTree, Remove &gt;</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#a2817840722a2a8681312ebbcf68fa29f">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
-, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1InitialiseAttributesOp.html#a2817840722a2a8681312ebbcf68fa29f">InitialiseAttributesOp&lt; PointDataTreeType, PointIndexTreeType &gt;</a>
 </li>
-<li>PointIndexT
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html#af46b3cdafe4cb283ca142305748994c2">PointDataAccessor&lt; TreeT &gt;</a>
+<li>PosType
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointAttributeVector.html#a935cba62bec9330b26d8b5db1447bacc">PointAttributeVector&lt; ValueType &gt;</a>
 </li>
 <li>Ptr
-: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab197dc5f93721f680028ce7a37ec9d9c">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a1f1626184430c91c91d735ac3c0b5b00">AttributeHandle&lt; T &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#ab197dc5f93721f680028ce7a37ec9d9c">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray.html#aad2080a2cd72076bd36bf77f9e3283a4">AttributeArray</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a1fdaf33b476570245988d5408ba30329">AttributeWriteHandle&lt; T &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet_1_1Descriptor.html#aadcebb0c90ba26fce415eba99fa3b48a">Descriptor</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a6757a82dd3da305143b506404d601a2b">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a1f1626184430c91c91d735ac3c0b5b00">AttributeHandle&lt; T &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeSet.html#a3e8fbaec7a0172150382fa69b839b3ea">AttributeSet</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeWriteHandle.html#a1fdaf33b476570245988d5408ba30329">AttributeWriteHandle&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -282,11 +327,14 @@
 <li>ValueOnIter
 : <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a8e732e0c1905aebf6096e0e488150744">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 </li>
+<li>ValuePtr
+: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1AttributeArray_1_1Accessor.html#a100ced5278e7338a035b5195801fa668">Accessor&lt; T &gt;</a>
+, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1AttributeHandle.html#a100ced5278e7338a035b5195801fa668">AttributeHandle&lt; T &gt;</a>
+</li>
 <li>ValueType
-: <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#a5fd8ef02127e67d40074e8a52981fe38">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
-, <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
+: <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1PointDataLeafNode.html#a215e2850ed819f54851fa725fdc8842c">PointDataLeafNode&lt; T, Log2Dim &gt;</a>
 , <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulateAttributeOp.html#ab1df2417fa9164af073eb251fd1e371d">PopulateAttributeOp&lt; PointDataTreeType, PointIndexTreeType, AttributeListType &gt;</a>
-, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1PointDataAccessor.html#a4e42b16f0b1f0cb9e95ef7201950956a">PointDataAccessor&lt; TreeT &gt;</a>
+, <a class="el" href="structopenvdb_1_1v3__1__0_1_1tools_1_1point__conversion__internal_1_1PopulatePositionAttributeOp.html#a5fd8ef02127e67d40074e8a52981fe38">PopulatePositionAttributeOp&lt; PointDataTreeType, PointIndexTreeType, PositionListType &gt;</a>
 , <a class="el" href="classopenvdb_1_1v3__1__0_1_1tools_1_1TypedAttributeArray.html#a2bf6f4ff7ad07785ab4a1a2764f3dd34">TypedAttributeArray&lt; ValueType_, Codec_ &gt;</a>
 </li>
 <li>ValueTypePair
@@ -294,7 +342,7 @@
 </li>
 </ul>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

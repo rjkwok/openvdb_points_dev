@@ -44,11 +44,10 @@ Contents</a></h2>
 <li><a class="el" href="overview.html#secSparsity">Voxel Values</a><ul>
 <li><a class="el" href="overview.html#secBackground">Background and Tile Values</a></li>
 <li><a class="el" href="overview.html#secActiveValues">Active Values</a></li>
-<li><a class="el" href="overview.html#secAccessor">PointDataAccessor</a></li>
+<li><a class="el" href="overview.html#secIndexIterators">Index Iterators</a></li>
 </ul>
 </li>
 <li><a class="el" href="overview.html#secSpaceAndTrans">Voxel Space, Index Space, World Space</a></li>
-<li><a class="el" href="overview.html#secIteration">Point Iteration</a></li>
 </ul>
 <h2><a class="anchor" id="secOverview">
 Introduction</a></h2>
@@ -57,7 +56,7 @@ Introduction</a></h2>
 Compression</a></h2>
 <p>A key motivation behind the library is to increase data compression and thus reduce the memory and disk space requirements of the point set.</p>
 <p>There are three types of compression used in this library to store point attribute data - (1) <b>value</b> <b>compression</b> where the codec is selected specifically based on the intent of the data, (2) <b>uniform</b> <b>value</b> <b>compression</b> where arrays of identical values can be collapsed down into a single value, (3) <b>stream</b> <b>compression</b> where the Blosc stream compressor can be used to pack and unpack streams of data using a fast, lossless compression codec.</p>
-<p>Uniform value and stream compression are offered in other applications, notably Houdini, but with the case of stream compression, predominatly used to reduce disk storage.</p>
+<p>Uniform value and stream compression are offered in other applications, notably Houdini, but with the case of stream compression, predominantly used to reduce disk storage.</p>
 <p>Value compression is a relatively underused style of compression for point data and is most evident in using quantization for point positions. The floating-point representation has been around for many years and has developed into an extremely good general solution to the problem of capturing different orders of magnitude with a fixed number of digits. However, point sets typically contain positional data that is fairly uniform and within a small relative range, so floating-point is not the ideal representation for this type of data.</p>
 <p>Instead, positional data can be retained in a quantized, fixed-point representation and can use OpenVDB for the spatial organisation for highly compact storage.</p>
 <p>In addition, other attributes such as velocity can benefit from value compression. For example, a unit vector scheme can compress a 3 x float vector (12 bytes) into just 2 bytes.</p>
@@ -77,11 +76,11 @@ TypedAttributeArray</a></h3>
 <h3><a class="anchor" id="secAttributeHandle">
 AttributeHandle</a></h3>
 <p>AttributeHandle and AttributeWriteHandle classes provide access to the array data without requiring knowledge of the codec. This is important as it allows users to add their own attribute compression schemes without requiring any modification to existing code.</p>
-<p>Another reason for using the AttributeHandle mechanism is to allow data to be packed and unpacked efficiently using stream compression. When compressed with a stream compression scheme, the AttributeHandle unpacks attribute data into a local (uncompressed) buffer on access and discards this temporary data once the AttributeHandle goes out of scope. This has the benefit of retaining the stream compression during access wihch lowers the peak memory substantially.</p>
+<p>Another reason for using the AttributeHandle mechanism is to allow data to be packed and unpacked efficiently using stream compression. When compressed with a stream compression scheme, the AttributeHandle unpacks attribute data into a local (uncompressed) buffer on access and discards this temporary data once the AttributeHandle goes out of scope. This has the benefit of retaining the stream compression during access which lowers the peak memory substantially. In addition, out-of-core and compression checks are not used once the handle is created improving performance.</p>
 <p>Note that this feature is not available for AttributeWriteHandles as thread safety cannot otherwise be guaranteed.</p>
 <h3><a class="anchor" id="secAttributePerformance">
 TypedAttributeArray vs AttributeHandle</a></h3>
-<p>AttributeHandles offer a number of benefits over TypedAttributeArray, but they do have one downside in that they introduce an extra indirect dereference cost. In practice, this is almost negligible for most applications, but for the highest performance use case, it may prove worthwhile giving up the flexibility of the AttributeHandle for the raw performance of the TypedAttributeArray.</p>
+<p>One key benefit of AttributeHandles is that they ensure the data being accessed has been uncompressed and is in-core on creation of the handle to avoid the need to perform these checks when the data is being accessed and modified for extra performance. Performance of AttributeHandles have been compared against TypedAttributeArrays and std::vectors and have been shown to be faster in practice. Profile tests have been provided amongst the unit tests that can be used to verify this.</p>
 <h3><a class="anchor" id="secAttributeSet">
 AttributeSet and AttributeDescriptor</a></h3>
 <p>The AttributeSet stores a collection of attribute arrays along with an AttributeDescriptor that tracks the type of each of the attribute arrays.</p>
@@ -108,18 +107,15 @@ Background and Tile Values</a></h3>
 <h3><a class="anchor" id="secActiveValues">
 Active Values</a></h3>
 <p>Any voxel or tile can be classified as either <b>active</b> or <b>inactive</b>. The interpretation of this state is application-specific, however there are some conventions, such as using the active state to denote the narrow band in a levelset. For points, the most logical use of the active state is to mark a voxel as active if it contains points and inactive otherwise. This allows iteration over the points in a LeafNode to be accelerated to only iterate over voxels that contain points.</p>
-<h3><a class="anchor" id="secAccessor">
-PointDataAccessor</a></h3>
-<p>Common operations provided on a PointDataTree include being able to deduce the start and end attribute offsets from an <img class="formulaInl" alt="$(i,j,k)$" src="form_0.png"/> coordinate and to be able to work out the number of points per voxel. The PointDataAccessor provides a convenient way of performing these kind of tasks amongst others.</p>
+<h3><a class="anchor" id="secIndexIterators">
+Index Iterators</a></h3>
+<p>There are three styles of index iterators - <b>IndexIter</b>, <b>ValueIndexIter</b>, <b>FilterIndexIter</b>. <b>IndexIter</b> is a basic start-to-end iterator. <b>ValueIndexIter</b> is an iterator that uses an underlying ValueOnIter/ValueOffIter/ValueAllIter to provide voxel filtering. The most common use case for this style is in performing gather-style rasterization where retrieving the points in all neighboring voxels is required. <b>FilterIndexIter</b> is an iterator that uses a custom filtering mechanism in addition to being based on an IndexIter or ValueIndexIter. The most common use case for this style is in filtering over indices that are a member of an attribute group.</p>
+<p>There are also fast implementations to sum up the number times an iterator would need to step to reach termination.</p>
 <h2><a class="anchor" id="secSpaceAndTrans">
 Voxel Space, Index Space, World Space</a></h2>
-<p>Points are stored in <b>voxel</b> <b>space</b>, meaning all point positions lie between (-0.5, -0.5, -0.5) and (0.5, 0.5, 0.5) with the center of the voxel being (0.0, 0.0, 0.0). The position of the point can be extracted in <b>index</b> <b>space</b> by adding the voxel space position to the ijk value of the voxel. The position of the point can be extracted in <b>world</b> <b>space</b> by using the grid transform to do an indexToWorld conversion.</p>
-<h2><a class="anchor" id="secIteration">
-Point Iteration</a></h2>
-<p>There are two methods for iterating over points, (1) <b>iterating</b> <b>sequentially</b> over the linear point attribute arrays or (2) <b>iterating</b> <b>over</b> <b>voxels</b> and then over the points within each voxel. The second method is useful for iteration patterns such as in performing gather-style rasterization where retrieving the points in all neighboring voxels is required.</p>
-<p>It is recommended to rely on the fast, efficient leaf and value accessors provided within OpenVDB for iteration over the OpenVDB Tree and the PointDataAccessor for the convenience methods in iterating over the points within the voxel or leaf. </p>
+<p>Points are stored in <b>voxel</b> <b>space</b>, meaning all point positions lie between (-0.5, -0.5, -0.5) and (0.5, 0.5, 0.5) with the center of the voxel being (0.0, 0.0, 0.0). The position of the point can be extracted in <b>index</b> <b>space</b> by adding the voxel space position to the ijk value of the voxel. The position of the point can be extracted in <b>world</b> <b>space</b> by using the grid transform to do an indexToWorld conversion. </p>
 </div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on 6 Oct 2015 for OpenVDBPoints by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on 30 Mar 2016 for OpenVDBPoints by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>
