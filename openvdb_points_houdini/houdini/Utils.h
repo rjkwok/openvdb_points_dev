@@ -59,16 +59,18 @@ typedef boost::shared_ptr<OffsetList> OffsetListPtr;
 
 /// @brief  Converts a VDB Points grid into Houdini points and appends to a Houdini Detail
 ///
-/// @param  detail          GU_Detail to append the converted points and attributes to
-/// @param  grid            grid containing the points that will be converted
-/// @param  includeGroups   a vector of VDB Points groups to be included (default is all)
-/// @param  excludeGroups   a vector of VDB Points groups to be excluded (default is none)
+/// @param  detail              GU_Detail to append the converted points and attributes to
+/// @param  grid                grid containing the points that will be converted
+/// @param  includeGroups       a vector of VDB Points groups to be included (default is all)
+/// @param  excludeGroups       a vector of VDB Points groups to be excluded (default is none)
+/// @param  includeAttributes   a set of VDB Points attributes to be included (default is all)
 
 void
 convertPointDataGridToHoudini(GU_Detail& detail,
                               const openvdb::tools::PointDataGrid& grid,
                               const std::vector<std::string>& includeGroups,
-                              const std::vector<std::string>& excludeGroups);
+                              const std::vector<std::string>& excludeGroups,
+                              const std::set<std::string>& includeAttributes = std::set<std::string>());
 
 namespace {
 
@@ -327,12 +329,12 @@ private:
 
 ///////////////////////////////////////
 
-
 void
 convertPointDataGridToHoudini(GU_Detail& detail,
                               const openvdb::tools::PointDataGrid& grid,
                               const std::vector<std::string>& includeGroups,
-                              const std::vector<std::string>& excludeGroups)
+                              const std::vector<std::string>& excludeGroups,
+                              const std::set<std::string>& includeAttributes)
 {
 
     const openvdb::tools::PointDataTree& tree = grid.tree();
@@ -368,6 +370,9 @@ convertPointDataGridToHoudini(GU_Detail& detail,
 
         // position handled explicitly
         if (name == "P")    continue;
+
+        // filter attributes
+        if (includeAttributes.size() > 0 && !includeAttributes.count(name))   continue;
 
         // don't convert group attributes
         if (descriptor.hasGroup(name))  continue;
