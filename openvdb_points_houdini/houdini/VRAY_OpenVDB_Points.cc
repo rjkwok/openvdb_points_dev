@@ -174,6 +174,19 @@ getBoundingBox(const std::vector<typename PointDataGridT::Ptr>& gridPtrs)
     return worldBounds;
 }
 
+void
+parsePointAttributes(std::set<Name>& specifiedAttributes, const std::set<Name>& allAttributes, const Name& attributeMaskStr)
+{
+    std::stringstream tokenStream(attributeMaskStr);
+
+    for (Name token; tokenStream >> token;)
+    {
+        if (token[0] == '^')    specifiedAttributes.erase(token.substr(1, token.length()-1));
+        else if (token == "*")  specifiedAttributes.insert(allAttributes.begin(), allAttributes.end());
+        else                    specifiedAttributes.insert(token);
+    }
+}
+
 } // namespace
 
 static VRAY_ProceduralArg   theArgs[] = {
