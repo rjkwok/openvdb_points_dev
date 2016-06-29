@@ -72,6 +72,7 @@ private:
     UT_BoundingBox                              mBox;
     UT_String                                   mFilename;
     UT_String                                   mGroupStr;
+    UT_String                                   mAttrStr;
     std::vector<tools::PointDataGrid::Ptr>      mGridPtrs;
 
 }; // class VRAY_OpenVDB_Points
@@ -192,6 +193,7 @@ parsePointAttributes(std::set<Name>& specifiedAttributes, const std::set<Name>& 
 static VRAY_ProceduralArg   theArgs[] = {
     VRAY_ProceduralArg("file", "string", ""),
     VRAY_ProceduralArg("groupmask", "string", ""),
+    VRAY_ProceduralArg("attrmask", "string", ""),
     VRAY_ProceduralArg()
 };
 
@@ -228,6 +230,7 @@ VRAY_OpenVDB_Points::initialize(const UT_BoundingBox *)
 {
 
     import("file", mFilename);
+    import("attrmask", mAttrStr);
     import("groupmask", mGroupStr);
 
     // save the grids so that we only read the file once
@@ -272,7 +275,9 @@ VRAY_OpenVDB_Points::getBoundingBox(UT_BoundingBox &box)
 void
 VRAY_OpenVDB_Points::render()
 {
-    typedef std::vector<tools::PointDataGrid::Ptr>::const_iterator PointDataGridPtrVecCIter;
+    typedef std::vector<tools::PointDataGrid::Ptr>::const_iterator  PointDataGridPtrVecCIter;
+    typedef openvdb::tools::AttributeSet                            AttributeSet;
+    typedef AttributeSet::Descriptor                                Descriptor;
 
     /// Allocate geometry and extract the GU_Detail
     VRAY_ProceduralGeo  geo = createGeometry();
@@ -284,7 +289,8 @@ VRAY_OpenVDB_Points::render()
     std::vector<Name> excludeGroups;
     tools::parsePointGroups(includeGroups, excludeGroups, mGroupStr.toStdString());
 
-    // if any of the grids are going to add a pscale, set the default here
+    // get a list of all attributes in the file
+    std::set<Name> defaultAttributeNames;
     for (PointDataGridPtrVecCIter   iter = mGridPtrs.begin(),
                                     endIter = mGridPtrs.end(); iter != endIter; ++iter) {
 
@@ -293,17 +299,31 @@ VRAY_OpenVDB_Points::render()
         tools::PointDataTree::LeafCIter leafIter = grid->tree().cbeginLeaf();
         if (!leafIter) continue;
 
-        if (leafIter->hasAttribute("pscale")) {
-            gdp->addTuple(GA_STORE_REAL32, GA_ATTRIB_POINT, "pscale", 1, GA_Defaults(DEFAULT_PSCALE));
-            break;
+        const AttributeSet& attributeSet = leafIter->attributeSet();
+        const Descriptor& descriptor = attributeSet.descriptor();
+        const Descriptor::NameToPosMap& nameToPosMap = descriptor.map();
+
+        for (Descriptor::ConstIterator  nameIter = nameToPosMap.begin(),
+                                        nameIterEnd = nameToPosMap.end(); nameIter != nameIterEnd; ++nameIter) {
+
+            defaultAttributeNames.insert(nameIter->first);
         }
+    }
+
+    // apply the mask over the attribute list
+    std::set<Name> attributeNames;
+    parsePointAttributes(attributeNames, defaultAttributeNames, mAttrStr.toStdString());
+
+    // if any of the grids are going to add a pscale, set the default here
+    if (attributeNames.count("pscale")) {
+        gdp->addTuple(GA_STORE_REAL32, GA_ATTRIB_POINT, "pscale", 1, GA_Defaults(DEFAULT_PSCALE));
     }
 
     for (PointDataGridPtrVecCIter   iter = mGridPtrs.begin(),
                                     endIter = mGridPtrs.end(); iter != endIter; ++iter) {
 
         const tools::PointDataGrid::Ptr grid = *iter;
-        hvdbp::convertPointDataGridToHoudini(*gdp, *grid, includeGroups, excludeGroups);
+        hvdbp::convertPointDataGridToHoudini(*gdp, *grid, includeGroups, excludeGroups, attributeNames);
     }
 
     // Create a geometry object in mantra
