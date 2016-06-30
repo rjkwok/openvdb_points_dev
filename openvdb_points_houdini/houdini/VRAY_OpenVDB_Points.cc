@@ -77,6 +77,9 @@ private:
     std::vector<tools::PointDataGrid::Ptr>      mGridPtrs;
     float                                       mPreBlur;
     float                                       mPostBlur;
+    bool                                        mSpeedToColor;
+    float                                       mMaxSpeed;
+    UT_Ramp                                     mFunctionRamp;
 
 }; // class VRAY_OpenVDB_Points
 
@@ -198,6 +201,98 @@ struct GenerateBBoxOp {
 
 }; // GenerateBBoxOp
 
+//////////////////////////////////////
+
+
+template <typename PointDataTreeType, typename Vec3T>
+struct CreateColorFromVelocityOp {
+
+    typedef typename PointDataTreeType::LeafNodeType                LeafNode;
+    typedef typename LeafNode::IndexOnIter                          IndexOnIter;
+    typedef typename tree::LeafManager<PointDataTreeType>           LeafManagerT;
+    typedef typename LeafManagerT::LeafRange                        LeafRangeT;
+
+    CreateColorFromVelocityOp(  const size_t colorIndex,
+                                const size_t velocityIndex,
+                                const UT_Ramp& ramp,
+                                const float maxSpeed,
+                                const std::vector<Name>& includeGroups,
+                                const std::vector<Name>& excludeGroups,
+                                const bool collapseVelocityAfter)
+        : mColorIndex(colorIndex)
+        , mVelocityIndex(velocityIndex)
+        , mRamp(ramp)
+        , mMaxSpeed(maxSpeed)
+        , mUseGroups(!includeGroups.empty() || !excludeGroups.empty())
+        , mIncludeGroups(includeGroups)
+        , mExcludeGroups(excludeGroups)
+        , mCollapseVelocityAfter(collapseVelocityAfter) { }
+
+    Vec3f getColorFromRamp(const Vec3T& velocity) const{
+
+        float proportionalSpeed = velocity.length()/(mMaxSpeed);
+        if (proportionalSpeed > 1.0f) proportionalSpeed = 1.0f;
+
+        float rampVal[4];
+        mRamp.rampLookup(proportionalSpeed, rampVal);
+        return Vec3f(rampVal[0], rampVal[1], rampVal[2]);
+    }
+
+    void operator()(LeafRangeT& range) const{
+
+        for (typename LeafRangeT::Iterator leaf=range.begin(); leaf; ++leaf) {
+
+            tools::AttributeWriteHandle<Vec3f>::Ptr colorHandle =
+                tools::AttributeWriteHandle<Vec3f>::create(leaf->attributeArray(mColorIndex));
+
+            typename tools::AttributeWriteHandle<Vec3T>::Ptr velocityHandle =
+                tools::AttributeWriteHandle<Vec3T>::create(leaf->attributeArray(mVelocityIndex));
+
+            const bool uniform = velocityHandle->isUniform();
+            const Vec3f uniformColor = getColorFromRamp(velocityHandle->get(0));
+
+            if (mUseGroups) {
+
+                tools::MultiGroupFilter::Data data(mIncludeGroups, mExcludeGroups);
+                const tools::MultiGroupFilter filter = tools::MultiGroupFilter::create(*leaf, data);
+                tools::FilterIndexIter<IndexOnIter, tools::MultiGroupFilter> filterIndexIter(leaf->beginIndexOn(), filter);
+
+                for (; filterIndexIter; ++filterIndexIter) {
+
+                    Vec3f color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(Index64(*filterIndexIter)));
+                    colorHandle->set(*filterIndexIter, color);
+                }
+            }
+            else {
+
+                IndexOnIter iter = leaf->beginIndexOn();
+
+                for (; iter; ++iter) {
+
+                    Vec3f color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(Index64(*iter)));
+                    colorHandle->set(*iter, color);
+                }
+            }
+
+            if (mCollapseVelocityAfter)     velocityHandle->collapse(Vec3T(0));
+        }
+    }
+
+    //////////////////////////////////////////////
+
+    const size_t                            mColorIndex;
+    const size_t                            mVelocityIndex;
+    const UT_Ramp&                          mRamp;
+    const float                             mMaxSpeed;
+    const bool                              mUseGroups;
+    const std::vector<Name>&                mIncludeGroups;
+    const std::vector<Name>&                mExcludeGroups;
+    const bool                              mCollapseVelocityAfter;
+};
+
+////////////////////////////////////////////
+
+
 namespace {
 
 template <typename PointDataGridT>
@@ -239,6 +334,9 @@ static VRAY_ProceduralArg   theArgs[] = {
     VRAY_ProceduralArg("file", "string", ""),
     VRAY_ProceduralArg("groupmask", "string", ""),
     VRAY_ProceduralArg("attrmask", "string", ""),
+    VRAY_ProceduralArg("speedtocolor", "int", "0"),
+    VRAY_ProceduralArg("maxspeed", "real", "1.0"),
+    VRAY_ProceduralArg("ramp", "string", ""),
     VRAY_ProceduralArg()
 };
 
@@ -289,6 +387,29 @@ VRAY_OpenVDB_Points::initialize(const UT_BoundingBox *)
     mPreBlur = velocityBlur ? -shutter[0]/fps : 0;
     mPostBlur = velocityBlur ? shutter[1]/fps : 0;
 
+    int speedToColorInt = 0;
+    import("speedtocolor", &speedToColorInt, 1);
+    mSpeedToColor = bool(speedToColorInt);
+
+    // if speed-to-color is enabled we need to build a ramp object
+    if (mSpeedToColor) {
+
+        import("maxspeed", &mMaxSpeed, 1);
+
+        UT_String rampStr;
+        import("ramp", rampStr);
+
+        std::stringstream rampStream(rampStr.toStdString());
+        std::istream_iterator<float> begin(rampStream);
+        std::istream_iterator<float> end;
+        std::vector<float> rampVals(begin, end);
+
+        for (size_t n = 4, N = rampVals.size(); n < N; n += 5) {
+            mFunctionRamp.addNode(rampVals[n-4], UT_FRGBA(rampVals[n-3], rampVals[n-2], rampVals[n-1], 1.0f),
+                static_cast<UT_SPLINE_BASIS>(rampVals[n]));
+        }
+    }
+
     // save the grids so that we only read the file once
     try
     {
@@ -336,9 +457,12 @@ VRAY_OpenVDB_Points::getBoundingBox(UT_BoundingBox &box)
 void
 VRAY_OpenVDB_Points::render()
 {
-    typedef std::vector<tools::PointDataGrid::Ptr>::const_iterator  PointDataGridPtrVecCIter;
-    typedef openvdb::tools::AttributeSet                            AttributeSet;
-    typedef AttributeSet::Descriptor                                Descriptor;
+    typedef tools::PointDataGrid::TreeType                  PointDataTree;
+    typedef tools::PointDataGrid::Ptr                       PointDataGridPtr;
+    typedef std::vector<PointDataGridPtr>::iterator         PointDataGridPtrVecIter;
+    typedef std::vector<PointDataGridPtr>::const_iterator   PointDataGridPtrVecCIter;
+    typedef tools::AttributeSet                             AttributeSet;
+    typedef AttributeSet::Descriptor                        Descriptor;
 
     /// Allocate geometry and extract the GU_Detail
     VRAY_ProceduralGeo  geo = createGeometry();
@@ -394,10 +518,52 @@ VRAY_OpenVDB_Points::render()
         gdp->addTuple(GA_STORE_REAL32, GA_ATTRIB_POINT, "pscale", 1, GA_Defaults(DEFAULT_PSCALE));
     }
 
+    // map speed to color if requested
+    if (mSpeedToColor) {
+        for (PointDataGridPtrVecIter    iter = mGridPtrs.begin(),
+                                        endIter = mGridPtrs.end(); iter != endIter; ++iter) {
+
+            PointDataGridPtr grid = *iter;
+
+            PointDataTree& tree = grid->tree();
+
+            PointDataTree::LeafIter leafIter = tree.beginLeaf();
+            if (!leafIter) continue;
+
+            if (leafIter->hasAttribute("Cd"))   dropAttribute(tree, "Cd");
+
+            const AttributeSet::Util::NameAndType colorNameAndType("Cd", NamePair("vec3s", "null_vec3s"));
+            appendAttribute(tree, colorNameAndType);
+            size_t colorIndex = leafIter->attributeSet().find("Cd");
+
+            size_t velocityIndex = leafIter->attributeSet().find("v");
+            if (velocityIndex != AttributeSet::INVALID_POS) {
+
+                const NamePair type = leafIter->attributeSet().descriptor().type(velocityIndex);
+
+                tree::LeafManager<PointDataTree> leafManager(tree);
+
+                bool collapseVelocityAfter =
+                    !validAttributes.empty() && !std::binary_search(validAttributes.begin(), validAttributes.end(), "v");
+
+                if (type.first == "vec3s") {
+                    CreateColorFromVelocityOp<PointDataTree, Vec3f> createColor(colorIndex, velocityIndex, mFunctionRamp,
+                        mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
+                    tbb::parallel_for(leafManager.leafRange(), createColor);
+                }
+                else if (type.first == "vec3h") {
+                    CreateColorFromVelocityOp<PointDataTree, Vec3H> createColor(colorIndex, velocityIndex, mFunctionRamp,
+                        mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
+                    tbb::parallel_for(leafManager.leafRange(), createColor);
+                }
+            }
+        }
+    }
+
     for (PointDataGridPtrVecCIter   iter = mGridPtrs.begin(),
                                     endIter = mGridPtrs.end(); iter != endIter; ++iter) {
 
-        const tools::PointDataGrid::Ptr grid = *iter;
+        const PointDataGridPtr grid = *iter;
         hvdbp::convertPointDataGridToHoudini(*gdp, *grid, validAttributes, mIncludeGroups, mExcludeGroups);
     }
 
