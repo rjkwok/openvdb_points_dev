@@ -281,10 +281,13 @@ VRAY_OpenVDB_Points::render()
     std::vector<Name> excludeAttributes;
     tools::AttributeSet::Descriptor::parseNames(includeAttributes, excludeAttributes, mAttrStr.toStdString());
 
-    // if no attributes were *explicitly* included then include all attributes
-    // only actually add all attribute names if names were excluded, otherwise an empty vector can be used to imply all
+    // if nothing was explicitly included or excluded: "all attributes" is implied with an empty vector
+    // if nothing was explicitly included but something was explicitly excluded: add all attributes but then remove the excluded
+    // if something was explicitly included: add only explicitly included attributes and then removed any excluded
+
     if (includeAttributes.empty() && !excludeAttributes.empty()) {
 
+        // add all attributes
         for (PointDataGridPtrVecCIter   iter = mGridPtrs.begin(),
                                         endIter = mGridPtrs.end(); iter != endIter; ++iter) {
 
@@ -305,8 +308,7 @@ VRAY_OpenVDB_Points::render()
         }
     }
 
-    // remove any duplicates
-    // ex. two 'pscale' tokens in includeAttributes will still be overriden by one 'pscale' token in excludeAttributes
+    // sort, and then remove any duplicates
     std::sort(includeAttributes.begin(), includeAttributes.end());
     std::sort(excludeAttributes.begin(), excludeAttributes.end());
     includeAttributes.erase(std::unique(includeAttributes.begin(), includeAttributes.end()), includeAttributes.end());

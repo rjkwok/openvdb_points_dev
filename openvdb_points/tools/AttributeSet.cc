@@ -626,7 +626,7 @@ AttributeSet::Descriptor::find(const std::string& name) const
 size_t
 AttributeSet::Descriptor::rename(const std::string& fromName, const std::string& toName)
 {
-    if (!validName(toName))  throw RuntimeError("Name contains invalid characters - " + toName);
+    if (!validName(toName))  throw RuntimeError("Attribute name contains invalid characters - " + toName);
 
     size_t pos = INVALID_POS;
 
@@ -767,7 +767,7 @@ AttributeSet::Descriptor::pruneUnusedDefaultValues()
 size_t
 AttributeSet::Descriptor::insert(const std::string& name, const NamePair& typeName)
 {
-    if (!validName(name))  throw RuntimeError("Name contains invalid characters - " + name);
+    if (!validName(name))  throw RuntimeError("Attribute name contains invalid characters - " + name);
 
     size_t pos = INVALID_POS;
     NameToPosMap::iterator it = mNameMap.find(name);
@@ -894,7 +894,7 @@ AttributeSet::Descriptor::hasGroup(const Name& group) const
 void
 AttributeSet::Descriptor::setGroup(const Name& group, const size_t offset)
 {
-    if (!validName(group))  throw RuntimeError("Name contains invalid characters - " + group);
+    if (!validName(group))  throw RuntimeError("Group name contains invalid characters - " + group);
 
     mGroupMap[group] = offset;
 }
@@ -1009,7 +1009,7 @@ AttributeSet::Descriptor::read(std::istream& is)
 
     for(Index64 n = 0; n < arraylength; ++n) {
         nameAndOffset.first = readString(is);
-        if (!validName(nameAndOffset.first))  throw RuntimeError("Name contains invalid characters - " + nameAndOffset.first);
+        if (!validName(nameAndOffset.first))  throw IoError("Attribute name contains invalid characters - " + nameAndOffset.first);
         is.read(reinterpret_cast<char*>(&nameAndOffset.second), sizeof(Index64));
         mNameMap.insert(nameAndOffset);
     }
@@ -1019,7 +1019,7 @@ AttributeSet::Descriptor::read(std::istream& is)
 
     for(Index64 n = 0; n < grouplength; ++n) {
         nameAndOffset.first = readString(is);
-        if (!validName(nameAndOffset.first))  throw RuntimeError("Name contains invalid characters - " + nameAndOffset.first);
+        if (!validName(nameAndOffset.first))  throw IoError("Group name contains invalid characters - " + nameAndOffset.first);
         is.read(reinterpret_cast<char*>(&nameAndOffset.second), sizeof(Index64));
         mGroupMap.insert(nameAndOffset);
     }

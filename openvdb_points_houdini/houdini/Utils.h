@@ -394,6 +394,8 @@ convertPointDataGridToHoudini(GU_Detail& detail,
             const GA_Defaults defaults = gaDefaultsFromDescriptor(descriptor, name);
 
             attributeRef = detail.addTuple(storage, GA_ATTRIB_POINT, name.c_str(), width, defaults);
+
+            // '|' and ':' characters are valid in OpenVDB Points names but will make Houdini Attribute names invalid
             if (attributeRef.isInvalid()){
                 OPENVDB_THROW(openvdb::RuntimeError, "Unable to create Houdini Points Attribute with name '" + name + "'");
             }

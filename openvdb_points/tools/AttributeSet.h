@@ -363,6 +363,7 @@ public:
     /// Return true if the name is valid
     static bool validName(const Name& name);
 
+    /// Extract each name from nameStr into includeNames, or into excludeNames if name prefixed with caret
     static void parseNames( std::vector<std::string>& includeNames,
                             std::vector<std::string>& excludeNames,
                             const std::string& nameStr);

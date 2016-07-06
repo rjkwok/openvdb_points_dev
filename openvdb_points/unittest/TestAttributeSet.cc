@@ -336,28 +336,36 @@ TestAttributeSet::testAttributeSetDescriptor()
         CPPUNIT_ASSERT_THROW(Descriptor::create(names.vec), openvdb::RuntimeError);
         CPPUNIT_ASSERT_THROW(descr->duplicateAppend(names.vec), openvdb::RuntimeError);
 
-        std::ostringstream ostr(std::ios_base::binary);
+        const openvdb::Index64 offset(0);
+        const openvdb::Index64 zeroLength(0);
+        const openvdb::Index64 oneLength(1);
 
-        // write an invalid attribute
-        const openvdb::Index64 arrayLength(1);
-        ostr.write(reinterpret_cast<const char*>(&arrayLength), sizeof(openvdb::Index64));
-        openvdb::writeString(ostr, invalidAttr.type.first);
-        openvdb::writeString(ostr, invalidAttr.type.second);
-        openvdb::writeString(ostr, invalidAttr.name);
-        const openvdb::Index64 attrOffset(0);
-        ostr.write(reinterpret_cast<const char*>(&attrOffset), sizeof(openvdb::Index64));
+        // write a stream with an invalid attribute
+        std::ostringstream attrOstr(std::ios_base::binary);
 
-        // write an invalid group
-        const openvdb::Index64 groupLength(1);
-        ostr.write(reinterpret_cast<const char*>(&groupLength), sizeof(openvdb::Index64));
-        openvdb::writeString(ostr, "group1!");
-        const openvdb::Index64 groupOffset(1);
-        ostr.write(reinterpret_cast<const char*>(&groupOffset), sizeof(openvdb::Index64));
+        attrOstr.write(reinterpret_cast<const char*>(&oneLength), sizeof(openvdb::Index64));
+        openvdb::writeString(attrOstr, invalidAttr.type.first);
+        openvdb::writeString(attrOstr, invalidAttr.type.second);
+        openvdb::writeString(attrOstr, invalidAttr.name);
+        attrOstr.write(reinterpret_cast<const char*>(&offset), sizeof(openvdb::Index64));
 
-        // read it back
+        attrOstr.write(reinterpret_cast<const char*>(&zeroLength), sizeof(openvdb::Index64));
+
+        // write a stream with an invalid group
+        std::ostringstream groupOstr(std::ios_base::binary);
+
+        groupOstr.write(reinterpret_cast<const char*>(&zeroLength), sizeof(openvdb::Index64));
+
+        groupOstr.write(reinterpret_cast<const char*>(&oneLength), sizeof(openvdb::Index64));
+        openvdb::writeString(groupOstr, "group1!");
+        groupOstr.write(reinterpret_cast<const char*>(&offset), sizeof(openvdb::Index64));
+
+        // read the streams back
         Descriptor inputDescr;
-        std::istringstream istr(ostr.str(), std::ios_base::binary);
-        CPPUNIT_ASSERT_THROW(inputDescr.read(istr), openvdb::RuntimeError);
+        std::istringstream attrIstr(attrOstr.str(), std::ios_base::binary);
+        CPPUNIT_ASSERT_THROW(inputDescr.read(attrIstr), openvdb::IoError);
+        std::istringstream groupIstr(groupOstr.str(), std::ios_base::binary);
+        CPPUNIT_ASSERT_THROW(inputDescr.read(groupIstr), openvdb::IoError);
     }
 
     { // Test empty string parse
