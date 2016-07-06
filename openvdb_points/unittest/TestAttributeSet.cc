@@ -196,20 +196,6 @@ TestAttributeSet::testAttributeSetDescriptor()
 
     typedef openvdb::tools::AttributeSet::Descriptor Descriptor;
 
-    { // Test name validity
-
-        CPPUNIT_ASSERT(Descriptor::validName("test1"));
-        CPPUNIT_ASSERT(Descriptor::validName("abc_def"));
-        CPPUNIT_ASSERT(Descriptor::validName("abc|def"));
-        CPPUNIT_ASSERT(Descriptor::validName("abc:def"));
-
-        CPPUNIT_ASSERT(!Descriptor::validName(""));
-        CPPUNIT_ASSERT(!Descriptor::validName("test1!"));
-        CPPUNIT_ASSERT(!Descriptor::validName("abc=def"));
-        CPPUNIT_ASSERT(!Descriptor::validName("abc def"));
-        CPPUNIT_ASSERT(!Descriptor::validName("abc*def"));
-    }
-
     Descriptor::Inserter names;
     names.add("density", AttributeS::attributeType());
     names.add("id", AttributeI::attributeType());
@@ -302,46 +288,6 @@ TestAttributeSet::testAttributeSetDescriptor()
         CPPUNIT_ASSERT(descr1->hasSameAttributes(*descr4));
     }
 
-    { // Test enforcement of valid names
-
-        Descriptor::Ptr descr = Descriptor::create(Descriptor::Inserter().add("test1", AttributeS::attributeType()).vec);
-
-        Descriptor::Inserter names;
-        names.add("test1!", AttributeS::attributeType());
-        CPPUNIT_ASSERT_THROW(Descriptor::create(names.vec), openvdb::RuntimeError);
-        CPPUNIT_ASSERT_THROW(descr->duplicateAppend(names.vec), openvdb::RuntimeError);
-
-        CPPUNIT_ASSERT_THROW(descr->rename("test1", "test1!"), openvdb::RuntimeError);
-
-        Descriptor::NameAndType testAttr("test1!", AttributeS::attributeType());
-        CPPUNIT_ASSERT_THROW(descr->duplicateAppend(testAttr), openvdb::RuntimeError);
-
-        size_t groupOffset = 1;
-        CPPUNIT_ASSERT_THROW(descr->setGroup("group1!", groupOffset), openvdb::RuntimeError);
-
-        std::ostringstream ostr(std::ios_base::binary);
-        const openvdb::Index64 zeroIndex(0);
-        const openvdb::Index64 oneIndex(1);
-        const openvdb::Index64 twoIndex(2);
-
-        ostr.write(reinterpret_cast<const char*>(&oneIndex), sizeof(openvdb::Index64));
-
-        openvdb::writeString(ostr, "vec3s");
-        openvdb::writeString(ostr, "null_vec3s");
-        openvdb::writeString(ostr, "test1!");
-        ostr.write(reinterpret_cast<const char*>(&zeroIndex), sizeof(openvdb::Index64));
-
-        ostr.write(reinterpret_cast<const char*>(&oneIndex), sizeof(openvdb::Index64));
-        openvdb::writeString(ostr, "group1!");
-        ostr.write(reinterpret_cast<const char*>(&twoIndex), sizeof(openvdb::Index64));
-
-        descr->getMetadata().writeMeta(ostr);
-
-        Descriptor inputDescr;
-        std::istringstream istr(ostr.str(), std::ios_base::binary);
-        CPPUNIT_ASSERT_THROW(inputDescr.read(istr), openvdb::RuntimeError);
-    }
-
     { // Test uniqueName
         Descriptor::Inserter names;
         Descriptor::Ptr emptyDescr = Descriptor::create(names.vec);
@@ -363,6 +309,56 @@ TestAttributeSet::testAttributeSetDescriptor()
         CPPUNIT_ASSERT_EQUAL(uniqueName2, openvdb::Name("test2"));
     }
 
+    { // Test name validity
+
+        CPPUNIT_ASSERT(Descriptor::validName("test1"));
+        CPPUNIT_ASSERT(Descriptor::validName("abc_def"));
+        CPPUNIT_ASSERT(Descriptor::validName("abc|def"));
+        CPPUNIT_ASSERT(Descriptor::validName("abc:def"));
+
+        CPPUNIT_ASSERT(!Descriptor::validName(""));
+        CPPUNIT_ASSERT(!Descriptor::validName("test1!"));
+        CPPUNIT_ASSERT(!Descriptor::validName("abc=def"));
+        CPPUNIT_ASSERT(!Descriptor::validName("abc def"));
+        CPPUNIT_ASSERT(!Descriptor::validName("abc*def"));
+    }
+
+    { // Test enforcement of valid names
+        Descriptor::Ptr descr = Descriptor::create(Descriptor::Inserter().add("test1", AttributeS::attributeType()).vec);
+        CPPUNIT_ASSERT_THROW(descr->rename("test1", "test1!"), openvdb::RuntimeError);
+        CPPUNIT_ASSERT_THROW(descr->setGroup("group1!", 1), openvdb::RuntimeError);
+
+        Descriptor::NameAndType invalidAttr("test1!", AttributeS::attributeType());
+        CPPUNIT_ASSERT_THROW(descr->duplicateAppend(invalidAttr), openvdb::RuntimeError);
+
+        Descriptor::Inserter names;
+        names.add(invalidAttr);
+        CPPUNIT_ASSERT_THROW(Descriptor::create(names.vec), openvdb::RuntimeError);
+        CPPUNIT_ASSERT_THROW(descr->duplicateAppend(names.vec), openvdb::RuntimeError);
+
+        std::ostringstream ostr(std::ios_base::binary);
+
+        // write an invalid attribute
+        const openvdb::Index64 arrayLength(1);
+        ostr.write(reinterpret_cast<const char*>(&arrayLength), sizeof(openvdb::Index64));
+        openvdb::writeString(ostr, invalidAttr.type.first);
+        openvdb::writeString(ostr, invalidAttr.type.second);
+        openvdb::writeString(ostr, invalidAttr.name);
+        const openvdb::Index64 attrOffset(0);
+        ostr.write(reinterpret_cast<const char*>(&attrOffset), sizeof(openvdb::Index64));
+
+        // write an invalid group
+        const openvdb::Index64 groupLength(1);
+        ostr.write(reinterpret_cast<const char*>(&groupLength), sizeof(openvdb::Index64));
+        openvdb::writeString(ostr, "group1!");
+        const openvdb::Index64 groupOffset(1);
+        ostr.write(reinterpret_cast<const char*>(&groupOffset), sizeof(openvdb::Index64));
+
+        // read it back
+        Descriptor inputDescr;
+        std::istringstream istr(ostr.str(), std::ios_base::binary);
+        CPPUNIT_ASSERT_THROW(inputDescr.read(istr), openvdb::RuntimeError);
+    }
 
     { // Test empty string parse
         std::vector<std::string> includeNames;
