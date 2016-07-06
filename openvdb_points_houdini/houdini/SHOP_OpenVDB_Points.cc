@@ -129,11 +129,11 @@ newShopOperator(OP_OperatorTable *table)
 
     parms.add(hutil::ParmFactory(PRM_STRING, "groupmask", "Group Mask")
         .setDefault("")
-        .setHelpText("Specify VDB Points Groups to use."));
+        .setHelpText("Specify VDB Points Groups to use. (Default is all groups)"));
 
     parms.add(hutil::ParmFactory(PRM_STRING, "attrmask", "Attribute Mask")
         .setDefault("")
-        .setHelpText("Specify VDB Points Attributes to use."));
+        .setHelpText("Specify VDB Points Attributes to use. (Default is all attributes)"));
 
     //////////
     // Register this operator.

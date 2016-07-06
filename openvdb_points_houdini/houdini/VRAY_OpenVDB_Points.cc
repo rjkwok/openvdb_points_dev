@@ -217,8 +217,8 @@ VRAY_OpenVDB_Points::initialize(const UT_BoundingBox *)
 {
 
     import("file", mFilename);
-    import("attrmask", mAttrStr);
     import("groupmask", mGroupStr);
+    import("attrmask", mAttrStr);
 
     // save the grids so that we only read the file once
     try
@@ -276,33 +276,50 @@ VRAY_OpenVDB_Points::render()
     std::vector<Name> excludeGroups;
     tools::AttributeSet::Descriptor::parseNames(includeGroups, excludeGroups, mGroupStr.toStdString());
 
-    // get a list of all attributes in the file
-    std::set<Name> defaultAttributeNames;
-    for (PointDataGridPtrVecCIter   iter = mGridPtrs.begin(),
-                                    endIter = mGridPtrs.end(); iter != endIter; ++iter) {
+    // extract which attributes to include and exclude
+    std::vector<Name> includeAttributes;
+    std::vector<Name> excludeAttributes;
+    tools::AttributeSet::Descriptor::parseNames(includeAttributes, excludeAttributes, mAttrStr.toStdString());
 
-        const tools::PointDataGrid::Ptr grid = *iter;
+    // if no attributes were *explicitly* included then include all attributes
+    // only actually add all attribute names if names were excluded, otherwise an empty vector can be used to imply all
+    if (includeAttributes.empty() && !excludeAttributes.empty()) {
 
-        tools::PointDataTree::LeafCIter leafIter = grid->tree().cbeginLeaf();
-        if (!leafIter) continue;
+        for (PointDataGridPtrVecCIter   iter = mGridPtrs.begin(),
+                                        endIter = mGridPtrs.end(); iter != endIter; ++iter) {
 
-        const AttributeSet& attributeSet = leafIter->attributeSet();
-        const Descriptor& descriptor = attributeSet.descriptor();
-        const Descriptor::NameToPosMap& nameToPosMap = descriptor.map();
+            const tools::PointDataGrid::Ptr grid = *iter;
 
-        for (Descriptor::ConstIterator  nameIter = nameToPosMap.begin(),
-                                        nameIterEnd = nameToPosMap.end(); nameIter != nameIterEnd; ++nameIter) {
+            tools::PointDataTree::LeafCIter leafIter = grid->tree().cbeginLeaf();
+            if (!leafIter) continue;
 
-            defaultAttributeNames.insert(nameIter->first);
+            const AttributeSet& attributeSet = leafIter->attributeSet();
+            const Descriptor& descriptor = attributeSet.descriptor();
+            const Descriptor::NameToPosMap& nameToPosMap = descriptor.map();
+
+            for (Descriptor::ConstIterator  nameIter = nameToPosMap.begin(),
+                                            nameIterEnd = nameToPosMap.end(); nameIter != nameIterEnd; ++nameIter) {
+
+                includeAttributes.push_back(nameIter->first);
+            }
         }
     }
 
-    // apply the mask over the attribute list
-    std::set<Name> attributeNames;
-    parsePointAttributes(attributeNames, defaultAttributeNames, mAttrStr.toStdString());
+    // remove any duplicates
+    // ex. two 'pscale' tokens in includeAttributes will still be overriden by one 'pscale' token in excludeAttributes
+    std::sort(includeAttributes.begin(), includeAttributes.end());
+    std::sort(excludeAttributes.begin(), excludeAttributes.end());
+    includeAttributes.erase(std::unique(includeAttributes.begin(), includeAttributes.end()), includeAttributes.end());
+    excludeAttributes.erase(std::unique(excludeAttributes.begin(), excludeAttributes.end()), excludeAttributes.end());
+
+    // make a vector (validAttributes) of all elements that are in includeAttributes but are NOT in excludeAttributes
+    std::vector<Name> validAttributes(includeAttributes.size());
+    std::vector<Name>::iterator pastEndIter = std::set_difference(includeAttributes.begin(), includeAttributes.end(),
+        excludeAttributes.begin(), excludeAttributes.end(), validAttributes.begin());
+    validAttributes.resize(pastEndIter - validAttributes.begin());
 
     // if any of the grids are going to add a pscale, set the default here
-    if (attributeNames.count("pscale")) {
+    if (std::binary_search(validAttributes.begin(), validAttributes.end(), "pscale")) {
         gdp->addTuple(GA_STORE_REAL32, GA_ATTRIB_POINT, "pscale", 1, GA_Defaults(DEFAULT_PSCALE));
     }
 
@@ -310,7 +327,7 @@ VRAY_OpenVDB_Points::render()
                                     endIter = mGridPtrs.end(); iter != endIter; ++iter) {
 
         const tools::PointDataGrid::Ptr grid = *iter;
-        hvdbp::convertPointDataGridToHoudini(*gdp, *grid, includeGroups, excludeGroups, attributeNames);
+        hvdbp::convertPointDataGridToHoudini(*gdp, *grid, validAttributes, includeGroups, excludeGroups);
     }
 
     // Create a geometry object in mantra

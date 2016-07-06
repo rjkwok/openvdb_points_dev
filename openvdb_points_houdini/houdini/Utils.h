@@ -61,16 +61,16 @@ typedef boost::shared_ptr<OffsetList> OffsetListPtr;
 ///
 /// @param  detail              GU_Detail to append the converted points and attributes to
 /// @param  grid                grid containing the points that will be converted
-/// @param  includeGroups       a vector of VDB Points groups to be included (default is all)
-/// @param  excludeGroups       a vector of VDB Points groups to be excluded (default is none)
-/// @param  includeAttributes   a set of VDB Points attributes to be included (default is all)
+/// @param  attributes          a vector of VDB Points attributes to be included (empty vector defaults to all)
+/// @param  includeGroups       a vector of VDB Points groups to be included (empty vector defaults to all)
+/// @param  excludeGroups       a vector of VDB Points groups to be excluded (empty vector defaults to none)
 
 void
 convertPointDataGridToHoudini(GU_Detail& detail,
                               const openvdb::tools::PointDataGrid& grid,
-                              const std::vector<std::string>& includeGroups,
-                              const std::vector<std::string>& excludeGroups,
-                              const std::set<std::string>& includeAttributes = std::set<std::string>());
+                              const std::vector<std::string>& attributes = std::vector<std::string>(),
+                              const std::vector<std::string>& includeGroups = std::vector<std::string>(),
+                              const std::vector<std::string>& excludeGroups = std::vector<std::string>());
 
 namespace {
 
@@ -332,10 +332,14 @@ private:
 void
 convertPointDataGridToHoudini(GU_Detail& detail,
                               const openvdb::tools::PointDataGrid& grid,
+                              const std::vector<std::string>& attributes,
                               const std::vector<std::string>& includeGroups,
-                              const std::vector<std::string>& excludeGroups,
-                              const std::set<std::string>& includeAttributes)
+                              const std::vector<std::string>& excludeGroups)
 {
+
+    // sort for binary search
+    std::vector<std::string> sortedAttributes(attributes);
+    std::sort(sortedAttributes.begin(), sortedAttributes.end());
 
     const openvdb::tools::PointDataTree& tree = grid.tree();
 
@@ -372,7 +376,7 @@ convertPointDataGridToHoudini(GU_Detail& detail,
         if (name == "P")    continue;
 
         // filter attributes
-        if (includeAttributes.size() > 0 && !includeAttributes.count(name))   continue;
+        if (!sortedAttributes.empty() && !std::binary_search(sortedAttributes.begin(), sortedAttributes.end(), name))   continue;
 
         // don't convert group attributes
         if (descriptor.hasGroup(name))  continue;
