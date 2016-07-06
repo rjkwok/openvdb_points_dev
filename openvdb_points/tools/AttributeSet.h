@@ -360,15 +360,12 @@ public:
     /// Return a unique name for an attribute array based on given name
     const Name uniqueName(const Name& name) const;
 
-    /// Return true if the group name is valid
-    static bool validGroupName(const Name& name)
-    {
-        struct Internal {
-            static bool isNotAlnumUnderscore(int c) { return !(isalnum(c) || (c == '_')); }
-        };
-        if (name.empty())   return false;
-        return find_if(name.begin(), name.end(), Internal::isNotAlnumUnderscore) == name.end();
-    }
+    /// Return true if the name is valid
+    static bool validName(const Name& name);
+
+    static void parseNames( std::vector<std::string>& includeNames,
+                            std::vector<std::string>& excludeNames,
+                            const std::string& nameStr);
 
     /// Serialize this descriptor to the given stream.
     void write(std::ostream&) const;

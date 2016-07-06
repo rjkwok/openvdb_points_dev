@@ -829,7 +829,7 @@ SOP_OpenVDB_Points::cookMySop(OP_Context& context)
 
             std::vector<std::string> includeGroups;
             std::vector<std::string> excludeGroups;
-            openvdb::tools::parsePointGroups(includeGroups, excludeGroups, pointsGroup);
+            openvdb::tools::AttributeSet::Descriptor::parseNames(includeGroups, excludeGroups, pointsGroup);
 
             // Mesh each VDB primitive independently
             for (hvdb::VdbPrimCIterator vdbIt(ptGeo, group); vdbIt; ++vdbIt) {

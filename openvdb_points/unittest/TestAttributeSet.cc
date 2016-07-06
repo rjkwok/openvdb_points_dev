@@ -160,6 +160,26 @@ attributeSetMatchesDescriptor(  const openvdb::tools::AttributeSet& attrSet,
     return true;
 }
 
+bool testStringVector(std::vector<std::string>& input)
+{
+    return input.size() == 0;
+}
+
+bool testStringVector(std::vector<std::string>& input, const std::string& name1)
+{
+    if (input.size() != 1)  return false;
+    if (input[0] != name1)  return false;
+    return true;
+}
+
+bool testStringVector(std::vector<std::string>& input, const std::string& name1, const std::string& name2)
+{
+    if (input.size() != 2)  return false;
+    if (input[0] != name1)  return false;
+    if (input[1] != name2)  return false;
+    return true;
+}
+
 } //unnamed  namespace
 
 
@@ -170,11 +190,25 @@ void
 TestAttributeSet::testAttributeSetDescriptor()
 {
     // Define and register some common attribute types
-    typedef openvdb::tools::TypedAttributeArray<float>  AttributeS;
-    typedef openvdb::tools::TypedAttributeArray<double> AttributeD;
+    typedef openvdb::tools::TypedAttributeArray<float>      AttributeS;
+    typedef openvdb::tools::TypedAttributeArray<double>     AttributeD;
     typedef openvdb::tools::TypedAttributeArray<int32_t>    AttributeI;
 
     typedef openvdb::tools::AttributeSet::Descriptor Descriptor;
+
+    { // Test name validity
+
+        CPPUNIT_ASSERT(Descriptor::validName("test1"));
+        CPPUNIT_ASSERT(Descriptor::validName("abc_def"));
+        CPPUNIT_ASSERT(Descriptor::validName("abc|def"));
+        CPPUNIT_ASSERT(Descriptor::validName("abc:def"));
+
+        CPPUNIT_ASSERT(!Descriptor::validName(""));
+        CPPUNIT_ASSERT(!Descriptor::validName("test1!"));
+        CPPUNIT_ASSERT(!Descriptor::validName("abc=def"));
+        CPPUNIT_ASSERT(!Descriptor::validName("abc def"));
+        CPPUNIT_ASSERT(!Descriptor::validName("abc*def"));
+    }
 
     Descriptor::Inserter names;
     names.add("density", AttributeS::attributeType());
@@ -268,6 +302,46 @@ TestAttributeSet::testAttributeSetDescriptor()
         CPPUNIT_ASSERT(descr1->hasSameAttributes(*descr4));
     }
 
+    { // Test enforcement of valid names
+
+        Descriptor::Ptr descr = Descriptor::create(Descriptor::Inserter().add("test1", AttributeS::attributeType()).vec);
+
+        Descriptor::Inserter names;
+        names.add("test1!", AttributeS::attributeType());
+        CPPUNIT_ASSERT_THROW(Descriptor::create(names.vec), openvdb::RuntimeError);
+        CPPUNIT_ASSERT_THROW(descr->duplicateAppend(names.vec), openvdb::RuntimeError);
+
+        CPPUNIT_ASSERT_THROW(descr->rename("test1", "test1!"), openvdb::RuntimeError);
+
+        Descriptor::NameAndType testAttr("test1!", AttributeS::attributeType());
+        CPPUNIT_ASSERT_THROW(descr->duplicateAppend(testAttr), openvdb::RuntimeError);
+
+        size_t groupOffset = 1;
+        CPPUNIT_ASSERT_THROW(descr->setGroup("group1!", groupOffset), openvdb::RuntimeError);
+
+        std::ostringstream ostr(std::ios_base::binary);
+        const openvdb::Index64 zeroIndex(0);
+        const openvdb::Index64 oneIndex(1);
+        const openvdb::Index64 twoIndex(2);
+
+        ostr.write(reinterpret_cast<const char*>(&oneIndex), sizeof(openvdb::Index64));
+
+        openvdb::writeString(ostr, "vec3s");
+        openvdb::writeString(ostr, "null_vec3s");
+        openvdb::writeString(ostr, "test1!");
+        ostr.write(reinterpret_cast<const char*>(&zeroIndex), sizeof(openvdb::Index64));
+
+        ostr.write(reinterpret_cast<const char*>(&oneIndex), sizeof(openvdb::Index64));
+        openvdb::writeString(ostr, "group1!");
+        ostr.write(reinterpret_cast<const char*>(&twoIndex), sizeof(openvdb::Index64));
+
+        descr->getMetadata().writeMeta(ostr);
+
+        Descriptor inputDescr;
+        std::istringstream istr(ostr.str(), std::ios_base::binary);
+        CPPUNIT_ASSERT_THROW(inputDescr.read(istr), openvdb::RuntimeError);
+    }
+
     { // Test uniqueName
         Descriptor::Inserter names;
         Descriptor::Ptr emptyDescr = Descriptor::create(names.vec);
@@ -289,26 +363,83 @@ TestAttributeSet::testAttributeSetDescriptor()
         CPPUNIT_ASSERT_EQUAL(uniqueName2, openvdb::Name("test2"));
     }
 
-    { // Test group name validity
-        CPPUNIT_ASSERT(!Descriptor::validGroupName(""));
-        CPPUNIT_ASSERT(Descriptor::validGroupName("test1"));
-        CPPUNIT_ASSERT(!Descriptor::validGroupName("test1!"));
-        CPPUNIT_ASSERT(Descriptor::validGroupName("abc_def"));
-        CPPUNIT_ASSERT(!Descriptor::validGroupName("abc=def"));
+
+    { // Test empty string parse
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "");
+        CPPUNIT_ASSERT(testStringVector(includeNames));
+        CPPUNIT_ASSERT(testStringVector(excludeNames));
+    }
+
+    { // Test single token parse
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "group1");
+        CPPUNIT_ASSERT(testStringVector(includeNames, "group1"));
+        CPPUNIT_ASSERT(testStringVector(excludeNames));
+    }
+
+    { // Test parse with two include tokens
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "group1 group2");
+        CPPUNIT_ASSERT(testStringVector(includeNames, "group1", "group2"));
+        CPPUNIT_ASSERT(testStringVector(excludeNames));
+    }
+
+    { // Test parse with one include and one exclude token
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "group1 ^group2");
+        CPPUNIT_ASSERT(testStringVector(includeNames, "group1"));
+        CPPUNIT_ASSERT(testStringVector(excludeNames, "group2"));
+    }
+
+    { // Test parse one include and one exclude backwards
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "^group1 group2");
+        CPPUNIT_ASSERT(testStringVector(includeNames, "group2"));
+        CPPUNIT_ASSERT(testStringVector(excludeNames, "group1"));
+    }
+
+    { // Test parse with two exclude tokens
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "^group1 ^group2");
+        CPPUNIT_ASSERT(testStringVector(includeNames));
+        CPPUNIT_ASSERT(testStringVector(excludeNames, "group1", "group2"));
+    }
+
+    { // Test parse multiple includes and excludes at the same time
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "group1 ^group2 ^group3 group4");
+        CPPUNIT_ASSERT(testStringVector(includeNames, "group1", "group4"));
+        CPPUNIT_ASSERT(testStringVector(excludeNames, "group2", "group3"));
+    }
+
+    { // Test parse misplaced negate character failure
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        CPPUNIT_ASSERT_THROW(Descriptor::parseNames(includeNames, excludeNames, "group1 ^ group2"), openvdb::RuntimeError);
+    }
+
+    { // Test parse (*) character failure
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        CPPUNIT_ASSERT_THROW(Descriptor::parseNames(includeNames, excludeNames, "*"), openvdb::RuntimeError);
+    }
+
+    { // Test parse invalid character failure
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        CPPUNIT_ASSERT_THROW(Descriptor::parseNames(includeNames, excludeNames, "group$1"), openvdb::RuntimeError);
     }
 
     { //  Test hasGroup(), setGroup(), dropGroup(), clearGroups()
         Descriptor descr;
-
-        // ensure all methods throw if an empty or invalid key is used
-
-        CPPUNIT_ASSERT_THROW(descr.hasGroup(""), openvdb::KeyError);
-        CPPUNIT_ASSERT_THROW(descr.setGroup("", 0), openvdb::KeyError);
-        CPPUNIT_ASSERT_THROW(descr.dropGroup(""), openvdb::KeyError);
-
-        CPPUNIT_ASSERT_THROW(descr.hasGroup("abc-"), openvdb::KeyError);
-        CPPUNIT_ASSERT_THROW(descr.setGroup("abc-", 0), openvdb::KeyError);
-        CPPUNIT_ASSERT_THROW(descr.dropGroup("abc-"), openvdb::KeyError);
 
         CPPUNIT_ASSERT(!descr.hasGroup("test1"));
 
@@ -828,6 +959,7 @@ TestAttributeSet::testAttributeSetGroups()
         CPPUNIT_ASSERT_THROW(attrSet.groupIndex(24), LookupError);
     }
 }
+
 
 // Copyright (c) 2015-2016 Double Negative Visual Effects
 // All rights reserved. This software is distributed under the

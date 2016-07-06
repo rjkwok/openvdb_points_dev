@@ -175,19 +175,6 @@ getBoundingBox(const std::vector<typename PointDataGridT::Ptr>& gridPtrs)
     return worldBounds;
 }
 
-void
-parsePointAttributes(std::set<Name>& specifiedAttributes, const std::set<Name>& allAttributes, const Name& attributeMaskStr)
-{
-    std::stringstream tokenStream(attributeMaskStr);
-
-    for (Name token; tokenStream >> token;)
-    {
-        if (token[0] == '^')    specifiedAttributes.erase(token.substr(1, token.length()-1));
-        else if (token == "*")  specifiedAttributes.insert(allAttributes.begin(), allAttributes.end());
-        else                    specifiedAttributes.insert(token);
-    }
-}
-
 } // namespace
 
 static VRAY_ProceduralArg   theArgs[] = {
@@ -287,7 +274,7 @@ VRAY_OpenVDB_Points::render()
     // extract which groups to include and exclude
     std::vector<Name> includeGroups;
     std::vector<Name> excludeGroups;
-    tools::parsePointGroups(includeGroups, excludeGroups, mGroupStr.toStdString());
+    tools::AttributeSet::Descriptor::parseNames(includeGroups, excludeGroups, mGroupStr.toStdString());
 
     // get a list of all attributes in the file
     std::set<Name> defaultAttributeNames;

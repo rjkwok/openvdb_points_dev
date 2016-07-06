@@ -383,11 +383,16 @@ convertPointDataGridToHoudini(GU_Detail& detail,
         if (attributeRef.isInvalid()) {
 
             const GA_Storage storage = gaStorageFromAttrString(type);
+
+            if (storage == GA_STORE_INVALID)    continue;
+
             const unsigned width = widthFromAttrString(type);
             const GA_Defaults defaults = gaDefaultsFromDescriptor(descriptor, name);
 
             attributeRef = detail.addTuple(storage, GA_ATTRIB_POINT, name.c_str(), width, defaults);
-            if (attributeRef.isInvalid()) continue;
+            if (attributeRef.isInvalid()){
+                OPENVDB_THROW(openvdb::RuntimeError, "Unable to create Houdini Points Attribute with name '" + name + "'");
+            }
         }
 
         const unsigned index = it->second;
