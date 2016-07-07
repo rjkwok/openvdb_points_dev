@@ -392,10 +392,18 @@ TestAttributeSet::testAttributeSetDescriptor()
         CPPUNIT_ASSERT(testStringVector(excludeNames));
     }
 
-    { // Test parse with one include and one exclude token
+    { // Test parse with one include and one ^ exclude token
         std::vector<std::string> includeNames;
         std::vector<std::string> excludeNames;
         Descriptor::parseNames(includeNames, excludeNames, "group1 ^group2");
+        CPPUNIT_ASSERT(testStringVector(includeNames, "group1"));
+        CPPUNIT_ASSERT(testStringVector(excludeNames, "group2"));
+    }
+
+    { // Test parse with one include and one ! exclude token
+        std::vector<std::string> includeNames;
+        std::vector<std::string> excludeNames;
+        Descriptor::parseNames(includeNames, excludeNames, "group1 !group2");
         CPPUNIT_ASSERT(testStringVector(includeNames, "group1"));
         CPPUNIT_ASSERT(testStringVector(excludeNames, "group2"));
     }
@@ -430,10 +438,12 @@ TestAttributeSet::testAttributeSetDescriptor()
         CPPUNIT_ASSERT_THROW(Descriptor::parseNames(includeNames, excludeNames, "group1 ^ group2"), openvdb::RuntimeError);
     }
 
-    { // Test parse (*) character failure
+    { // Test parse (*) character
         std::vector<std::string> includeNames;
         std::vector<std::string> excludeNames;
-        CPPUNIT_ASSERT_THROW(Descriptor::parseNames(includeNames, excludeNames, "*"), openvdb::RuntimeError);
+        Descriptor::parseNames(includeNames, excludeNames, "*");
+        CPPUNIT_ASSERT(testStringVector(includeNames));
+        CPPUNIT_ASSERT(testStringVector(excludeNames));
     }
 
     { // Test parse invalid character failure

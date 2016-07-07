@@ -930,7 +930,7 @@ AttributeSet::Descriptor::validName(const Name& name)
         static bool isNotValidChar(int c) { return !(isalnum(c) || (c == '_') || (c == '|') || (c == ':')); }
     };
     if (name.empty())   return false;
-    return find_if(name.begin(), name.end(), Internal::isNotValidChar) == name.end();
+    return std::find_if(name.begin(), name.end(), Internal::isNotValidChar) == name.end();
 }
 
 void
@@ -938,25 +938,30 @@ AttributeSet::Descriptor::parseNames(   std::vector<std::string>& includeNames,
                                         std::vector<std::string>& excludeNames,
                                         const std::string& nameStr)
 {
+    bool includeAll = false;
+
     std::stringstream tokenStream(nameStr);
 
     Name token;
     while (tokenStream >> token) {
 
-        bool negate = boost::starts_with(token, "^");
+        bool negate = boost::starts_with(token, "^") || boost::starts_with(token, "!");
 
         if (negate) {
             if (token.length() < 2) throw RuntimeError("Negate character (^) must prefix a name.");
             token = token.substr(1, token.length()-1);
+            if (!validName(token))  throw RuntimeError("Name contains invalid characters - " + token);
+            excludeNames.push_back(token);
         }
-
-        if (token == "*") {
-            throw RuntimeError("The (*) character is not supported. All names are allowed by default.");
+        else if (!includeAll) {
+            if (token == "*") {
+                includeAll = true;
+                includeNames.clear();
+                continue;
+            }
+            if (!validName(token))  throw RuntimeError("Name contains invalid characters - " + token);
+            includeNames.push_back(token);
         }
-        if (!validName(token))  throw RuntimeError("Name contains invalid characters - " + token);
-
-        if (negate) excludeNames.push_back(token);
-        else        includeNames.push_back(token);
     }
 }
 

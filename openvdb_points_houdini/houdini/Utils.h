@@ -397,7 +397,9 @@ convertPointDataGridToHoudini(GU_Detail& detail,
 
             // '|' and ':' characters are valid in OpenVDB Points names but will make Houdini Attribute names invalid
             if (attributeRef.isInvalid()){
-                OPENVDB_THROW(openvdb::RuntimeError, "Unable to create Houdini Points Attribute with name '" + name + "'");
+                OPENVDB_THROW(  openvdb::RuntimeError,
+                                "Unable to create Houdini Points Attribute with name '" + name +
+                                "'. '|' and ':' characters are not supported by Houdini.");
             }
         }
 
