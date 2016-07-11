@@ -114,13 +114,15 @@ struct GenerateBBoxOp {
 
             const tools::AttributeSet::Descriptor& descriptor = leafIter->attributeSet().descriptor();
 
-            std::string pscaleType = "";
             size_t pscaleIndex = descriptor.find("pscale");
-            if (pscaleIndex != tools::AttributeSet::INVALID_POS)    pscaleType = descriptor.type(pscaleIndex).first;
+            if (pscaleIndex != tools::AttributeSet::INVALID_POS) {
 
-            // support float and half pscale only
-            if (pscaleType == "float")  expandBBox<float>(*leafIter, pscaleIndex);
-            else                        expandBBox<half>(*leafIter, pscaleIndex);
+                std::string pscaleType = descriptor.type(pscaleIndex).first;
+
+                if (pscaleType == typeNameAsString<float>())        expandBBox<float>(*leafIter, pscaleIndex);
+                else if (pscaleType == typeNameAsString<half>())    expandBBox<half>(*leafIter, pscaleIndex);
+                else                                                throw TypeError("Unsupported pscale type - " + pscaleType);
+            }
         }
     }
 
@@ -230,8 +232,9 @@ struct CreateColorFromVelocityOp {
 
     Vec3f getColorFromRamp(const Vec3T& velocity) const{
 
-        float proportionalSpeed = velocity.length()/(mMaxSpeed);
-        if (proportionalSpeed > 1.0f) proportionalSpeed = 1.0f;
+        float proportionalSpeed = (mMaxSpeed == 0.0f ? 0.0f : velocity.length()/mMaxSpeed);
+
+        if (proportionalSpeed > 1.0f)   proportionalSpeed = 1.0f;
 
         float rampVal[4];
         mRamp.rampLookup(proportionalSpeed, rampVal);
@@ -532,7 +535,7 @@ VRAY_OpenVDB_Points::render()
 
             if (leafIter->hasAttribute("Cd"))   dropAttribute(tree, "Cd");
 
-            const AttributeSet::Util::NameAndType colorNameAndType("Cd", NamePair("vec3s", "null_vec3s"));
+            const AttributeSet::Util::NameAndType colorNameAndType("Cd", tools::TypedAttributeArray<Vec3f>::attributeType());
             appendAttribute(tree, colorNameAndType);
             size_t colorIndex = leafIter->attributeSet().find("Cd");
 
