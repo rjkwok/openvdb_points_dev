@@ -171,7 +171,7 @@ newShopOperator(OP_OperatorTable *table)
 
     parms.add(hutil::ParmFactory(PRM_TOGGLE, "speedtocolor", "Map Speed To Color")
     .setDefault(PRMzeroDefaults)
-    .setHelpText("Overrides any 'Cd' point attribute with a functionally-determined color dependent on the 'v' point attribute."));
+    .setHelpText("Replaces the 'Cd' point attribute with colors mapped from the 'v' point attribute using a ramp."));
 
     parms.add(hutil::ParmFactory(PRM_SEPARATOR, "sep1", ""));
 

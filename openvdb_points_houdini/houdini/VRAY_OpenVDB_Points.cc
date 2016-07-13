@@ -97,14 +97,12 @@ struct GenerateBBoxOp {
                     const std::vector<Name>& excludeGroups)
         : mTransform(transform)
         , mBbox()
-        , mUseGroups(!includeGroups.empty() || !excludeGroups.empty())
         , mIncludeGroups(includeGroups)
         , mExcludeGroups(excludeGroups) { }
 
     GenerateBBoxOp(const GenerateBBoxOp& parent, tbb::split)
         : mTransform(parent.mTransform)
         , mBbox(parent.mBbox)
-        , mUseGroups(parent.mUseGroups)
         , mIncludeGroups(parent.mIncludeGroups)
         , mExcludeGroups(parent.mExcludeGroups) { }
 
@@ -121,7 +119,9 @@ struct GenerateBBoxOp {
 
                 if (pscaleType == typeNameAsString<float>())        expandBBox<float>(*leafIter, pscaleIndex);
                 else if (pscaleType == typeNameAsString<half>())    expandBBox<half>(*leafIter, pscaleIndex);
-                else                                                throw TypeError("Unsupported pscale type - " + pscaleType);
+                else {
+                    throw TypeError("Unsupported pscale type - " + pscaleType);
+                }
             }
         }
     }
@@ -156,19 +156,19 @@ struct GenerateBBoxOp {
 
         // combine the bounds of every point on this leaf into an index-space bbox
 
-        if (mUseGroups) {
+        if (!mIncludeGroups.empty() || !mExcludeGroups.empty()) {
 
             tools::MultiGroupFilter::Data data(mIncludeGroups, mExcludeGroups);
             const tools::MultiGroupFilter filter = tools::MultiGroupFilter::create(leaf, data);
-            tools::FilterIndexIter<IndexOnIter, tools::MultiGroupFilter> filterIndexIter(leaf.beginIndexOn(), filter);
+            tools::FilterIndexIter<IndexOnIter, tools::MultiGroupFilter> filteredIter(leaf.beginIndexOn(), filter);
 
-            for (; filterIndexIter; ++filterIndexIter) {
+            for (; filteredIter; ++filteredIter) {
 
-                double pscale = double(pscaleIsUniform ? uniformPscale : pscaleHandle->get(*filterIndexIter));
+                double pscale = double(pscaleIsUniform ? uniformPscale : pscaleHandle->get(*filteredIter));
 
                 // pscale needs to be transformed to index space
                 Vec3d radius = mTransform.worldToIndex(Vec3d(pscale));
-                Vec3d position = filterIndexIter.indexIter().getCoord().asVec3d() + positionHandle->get(*filterIndexIter);
+                Vec3d position = filteredIter.indexIter().getCoord().asVec3d() + positionHandle->get(*filteredIter);
 
                 mBbox.expand(position - radius);
                 mBbox.expand(position + radius);
@@ -197,7 +197,6 @@ struct GenerateBBoxOp {
 
     const math::Transform&      mTransform;
     BBoxd                       mBbox;
-    const bool                  mUseGroups;
     const std::vector<Name>&    mIncludeGroups;
     const std::vector<Name>&    mExcludeGroups;
 
@@ -206,78 +205,81 @@ struct GenerateBBoxOp {
 //////////////////////////////////////
 
 
-template <typename PointDataTreeType, typename Vec3T>
-struct CreateColorFromVelocityOp {
+template <typename PointDataTreeT, typename ColorVec3T, typename VelocityVec3T>
+struct PopulateColorFromVelocityOp {
 
-    typedef typename PointDataTreeType::LeafNodeType                LeafNode;
-    typedef typename LeafNode::IndexOnIter                          IndexOnIter;
-    typedef typename tree::LeafManager<PointDataTreeType>           LeafManagerT;
-    typedef typename LeafManagerT::LeafRange                        LeafRangeT;
+    typedef typename PointDataTreeT::LeafNodeType           LeafNode;
+    typedef typename LeafNode::IndexOnIter                  IndexOnIter;
+    typedef typename tree::LeafManager<PointDataTreeT>      LeafManagerT;
+    typedef typename LeafManagerT::LeafRange                LeafRangeT;
+    typedef tools::MultiGroupFilter                         MultiGroupFilter;
 
-    CreateColorFromVelocityOp(  const size_t colorIndex,
-                                const size_t velocityIndex,
-                                const UT_Ramp& ramp,
-                                const float maxSpeed,
-                                const std::vector<Name>& includeGroups,
-                                const std::vector<Name>& excludeGroups,
-                                const bool collapseVelocityAfter)
+    PopulateColorFromVelocityOp(    const size_t colorIndex,
+                                    const size_t velocityIndex,
+                                    const UT_Ramp& ramp,
+                                    const float maxSpeed,
+                                    const std::vector<Name>& includeGroups,
+                                    const std::vector<Name>& excludeGroups,
+                                    const bool collapseVelocityAfter)
         : mColorIndex(colorIndex)
         , mVelocityIndex(velocityIndex)
         , mRamp(ramp)
         , mMaxSpeed(maxSpeed)
-        , mUseGroups(!includeGroups.empty() || !excludeGroups.empty())
         , mIncludeGroups(includeGroups)
         , mExcludeGroups(excludeGroups)
         , mCollapseVelocityAfter(collapseVelocityAfter) { }
 
-    Vec3f getColorFromRamp(const Vec3T& velocity) const{
+    ColorVec3T getColorFromRamp(const VelocityVec3T& velocity) const{
 
         float proportionalSpeed = (mMaxSpeed == 0.0f ? 0.0f : velocity.length()/mMaxSpeed);
 
         if (proportionalSpeed > 1.0f)   proportionalSpeed = 1.0f;
+        if (proportionalSpeed < 0.0f)   proportionalSpeed = 0.0f;
 
         float rampVal[4];
         mRamp.rampLookup(proportionalSpeed, rampVal);
-        return Vec3f(rampVal[0], rampVal[1], rampVal[2]);
+        return ColorVec3T(rampVal[0], rampVal[1], rampVal[2]);
     }
 
     void operator()(LeafRangeT& range) const{
 
-        for (typename LeafRangeT::Iterator leaf=range.begin(); leaf; ++leaf) {
+        for (typename LeafRangeT::Iterator leafIter=range.begin(); leafIter; ++leafIter) {
 
-            tools::AttributeWriteHandle<Vec3f>::Ptr colorHandle =
-                tools::AttributeWriteHandle<Vec3f>::create(leaf->attributeArray(mColorIndex));
+            typename PointDataTreeT::LeafNodeType& leaf = *leafIter;
 
-            typename tools::AttributeWriteHandle<Vec3T>::Ptr velocityHandle =
-                tools::AttributeWriteHandle<Vec3T>::create(leaf->attributeArray(mVelocityIndex));
+            typename tools::AttributeWriteHandle<ColorVec3T>::Ptr colorHandle =
+                tools::AttributeWriteHandle<ColorVec3T>::create(leaf.attributeArray(mColorIndex));
+
+            typename tools::AttributeWriteHandle<VelocityVec3T>::Ptr velocityHandle =
+                tools::AttributeWriteHandle<VelocityVec3T>::create(leaf.attributeArray(mVelocityIndex));
 
             const bool uniform = velocityHandle->isUniform();
-            const Vec3f uniformColor = getColorFromRamp(velocityHandle->get(0));
+            const ColorVec3T uniformColor = getColorFromRamp(velocityHandle->get(0));
 
-            if (mUseGroups) {
+            if (!mIncludeGroups.empty() || !mExcludeGroups.empty()) {
 
-                tools::MultiGroupFilter::Data data(mIncludeGroups, mExcludeGroups);
-                const tools::MultiGroupFilter filter = tools::MultiGroupFilter::create(*leaf, data);
-                tools::FilterIndexIter<IndexOnIter, tools::MultiGroupFilter> filterIndexIter(leaf->beginIndexOn(), filter);
+                MultiGroupFilter::Data data(mIncludeGroups, mExcludeGroups);
+                const MultiGroupFilter filter = MultiGroupFilter::create(leaf, data);
+                tools::FilterIndexIter<IndexOnIter, MultiGroupFilter> filteredIter(leaf.beginIndexOn(), filter);
 
-                for (; filterIndexIter; ++filterIndexIter) {
+                for (; filteredIter; ++filteredIter) {
 
-                    Vec3f color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(Index64(*filterIndexIter)));
-                    colorHandle->set(*filterIndexIter, color);
+                    ColorVec3T color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(*filteredIter));
+                    colorHandle->set(*filteredIter, color);
                 }
             }
             else {
 
-                IndexOnIter iter = leaf->beginIndexOn();
+                IndexOnIter iter = leaf.beginIndexOn();
 
                 for (; iter; ++iter) {
 
-                    Vec3f color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(Index64(*iter)));
+                    ColorVec3T color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(*iter));
                     colorHandle->set(*iter, color);
                 }
             }
 
-            if (mCollapseVelocityAfter)     velocityHandle->collapse(Vec3T(0));
+            if (mCollapseVelocityAfter)     velocityHandle->collapse(VelocityVec3T(0));
         }
     }
 
@@ -287,7 +289,6 @@ struct CreateColorFromVelocityOp {
     const size_t                            mVelocityIndex;
     const UT_Ramp&                          mRamp;
     const float                             mMaxSpeed;
-    const bool                              mUseGroups;
     const std::vector<Name>&                mIncludeGroups;
     const std::vector<Name>&                mExcludeGroups;
     const bool                              mCollapseVelocityAfter;
@@ -477,9 +478,9 @@ VRAY_OpenVDB_Points::render()
     std::vector<Name> excludeAttributes;
     tools::AttributeSet::Descriptor::parseNames(includeAttributes, excludeAttributes, mAttrStr.toStdString());
 
-    // if nothing was explicitly included or excluded: "all attributes" is implied with an empty vector
-    // if nothing was explicitly included but something was explicitly excluded: add all attributes but then remove the excluded
-    // if something was explicitly included: add only explicitly included attributes and then removed any excluded
+    // if nothing was included or excluded: "all attributes" is implied with an empty vector
+    // if nothing was included but something was explicitly excluded: add all attributes but then remove the excluded
+    // if something was included: add only explicitly included attributes and then removed any excluded
 
     if (includeAttributes.empty() && !excludeAttributes.empty()) {
 
@@ -533,31 +534,55 @@ VRAY_OpenVDB_Points::render()
             PointDataTree::LeafIter leafIter = tree.beginLeaf();
             if (!leafIter) continue;
 
-            if (leafIter->hasAttribute("Cd"))   dropAttribute(tree, "Cd");
-
-            const AttributeSet::Util::NameAndType colorNameAndType("Cd", tools::TypedAttributeArray<Vec3f>::attributeType());
-            appendAttribute(tree, colorNameAndType);
-            size_t colorIndex = leafIter->attributeSet().find("Cd");
-
             size_t velocityIndex = leafIter->attributeSet().find("v");
             if (velocityIndex != AttributeSet::INVALID_POS) {
 
-                const NamePair type = leafIter->attributeSet().descriptor().type(velocityIndex);
+                const std::string velocityType = leafIter->attributeSet().descriptor().type(velocityIndex).first;
+
+                // keep existing Cd attribute only if it is a supported type (float or half)
+                size_t colorIndex = leafIter->attributeSet().find("Cd");
+                std::string colorType = "";
+                if (colorIndex != AttributeSet::INVALID_POS) {
+                    colorType = leafIter->attributeSet().descriptor().type(colorIndex).first;
+                    if (colorType != typeNameAsString<Vec3f>() && colorType != typeNameAsString<Vec3H>()) {
+                        dropAttribute(tree, "Cd");
+                        colorIndex = AttributeSet::INVALID_POS;
+                    }
+                }
+
+                // create new Cd attribute of supported type if one did not previously exist
+                if (colorIndex == AttributeSet::INVALID_POS) {
+                    NamePair colorTypePair = tools::TypedAttributeArray<Vec3H>::attributeType();
+                    const AttributeSet::Util::NameAndType colorNameAndType("Cd", colorTypePair);
+                    appendAttribute(tree, colorNameAndType);
+                    colorType = typeNameAsString<Vec3H>();
+                    colorIndex = leafIter->attributeSet().find("Cd");
+                }
 
                 tree::LeafManager<PointDataTree> leafManager(tree);
 
                 bool collapseVelocityAfter =
                     !validAttributes.empty() && !std::binary_search(validAttributes.begin(), validAttributes.end(), "v");
 
-                if (type.first == "vec3s") {
-                    CreateColorFromVelocityOp<PointDataTree, Vec3f> createColor(colorIndex, velocityIndex, mFunctionRamp,
-                        mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
-                    tbb::parallel_for(leafManager.leafRange(), createColor);
+                if (colorType == typeNameAsString<Vec3f>() && velocityType == typeNameAsString<Vec3f>()) {
+                    PopulateColorFromVelocityOp<PointDataTree, Vec3f, Vec3f> populateColor(colorIndex, velocityIndex,
+                        mFunctionRamp, mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
+                    tbb::parallel_for(leafManager.leafRange(), populateColor);
                 }
-                else if (type.first == "vec3h") {
-                    CreateColorFromVelocityOp<PointDataTree, Vec3H> createColor(colorIndex, velocityIndex, mFunctionRamp,
-                        mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
-                    tbb::parallel_for(leafManager.leafRange(), createColor);
+                else if (colorType == typeNameAsString<Vec3f>() && velocityType == typeNameAsString<Vec3H>()) {
+                    PopulateColorFromVelocityOp<PointDataTree, Vec3f, Vec3H> populateColor(colorIndex, velocityIndex,
+                        mFunctionRamp, mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
+                    tbb::parallel_for(leafManager.leafRange(), populateColor);
+                }
+                else if (colorType == typeNameAsString<Vec3H>() && velocityType == typeNameAsString<Vec3f>()) {
+                    PopulateColorFromVelocityOp<PointDataTree, Vec3H, Vec3f> populateColor(colorIndex, velocityIndex,
+                        mFunctionRamp, mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
+                    tbb::parallel_for(leafManager.leafRange(), populateColor);
+                }
+                else if (colorType == typeNameAsString<Vec3H>() && velocityType == typeNameAsString<Vec3H>()) {
+                    PopulateColorFromVelocityOp<PointDataTree, Vec3H, Vec3H> populateColor(colorIndex, velocityIndex,
+                        mFunctionRamp, mMaxSpeed, mIncludeGroups, mExcludeGroups, collapseVelocityAfter);
+                    tbb::parallel_for(leafManager.leafRange(), populateColor);
                 }
             }
         }
