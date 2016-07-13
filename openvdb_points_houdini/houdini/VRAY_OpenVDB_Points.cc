@@ -160,15 +160,15 @@ struct GenerateBBoxOp {
 
             tools::MultiGroupFilter::Data data(mIncludeGroups, mExcludeGroups);
             const tools::MultiGroupFilter filter = tools::MultiGroupFilter::create(leaf, data);
-            tools::FilterIndexIter<IndexOnIter, tools::MultiGroupFilter> filteredIter(leaf.beginIndexOn(), filter);
+            tools::FilterIndexIter<IndexOnIter, tools::MultiGroupFilter> iter(leaf.beginIndexOn(), filter);
 
-            for (; filteredIter; ++filteredIter) {
+            for (; iter; ++iter) {
 
-                double pscale = double(pscaleIsUniform ? uniformPscale : pscaleHandle->get(*filteredIter));
+                double pscale = double(pscaleIsUniform ? uniformPscale : pscaleHandle->get(*iter));
 
                 // pscale needs to be transformed to index space
                 Vec3d radius = mTransform.worldToIndex(Vec3d(pscale));
-                Vec3d position = filteredIter.indexIter().getCoord().asVec3d() + positionHandle->get(*filteredIter);
+                Vec3d position = iter.indexIter().getCoord().asVec3d() + positionHandle->get(*iter);
 
                 mBbox.expand(position - radius);
                 mBbox.expand(position + radius);
@@ -260,12 +260,12 @@ struct PopulateColorFromVelocityOp {
 
                 MultiGroupFilter::Data data(mIncludeGroups, mExcludeGroups);
                 const MultiGroupFilter filter = MultiGroupFilter::create(leaf, data);
-                tools::FilterIndexIter<IndexOnIter, MultiGroupFilter> filteredIter(leaf.beginIndexOn(), filter);
+                tools::FilterIndexIter<IndexOnIter, MultiGroupFilter> iter(leaf.beginIndexOn(), filter);
 
-                for (; filteredIter; ++filteredIter) {
+                for (; iter; ++iter) {
 
-                    ColorVec3T color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(*filteredIter));
-                    colorHandle->set(*filteredIter, color);
+                    ColorVec3T color = uniform ? uniformColor : getColorFromRamp(velocityHandle->get(*iter));
+                    colorHandle->set(*iter, color);
                 }
             }
             else {
